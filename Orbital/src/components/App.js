@@ -3,7 +3,7 @@ import Header from './Header';
 
 class App extends React.Component {
   state = {
-    pageHeader: 'Naming Contests',
+    pageHeader: 'Orbital Project',
     age: '10'
   };
   
@@ -11,7 +11,6 @@ class App extends React.Component {
     return(
 	<div className="App">
           <Header message={this.state.pageHeader}/>
-          <Header message={this.state.age}/>
 	</div>
     );
   }
