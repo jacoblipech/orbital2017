@@ -9,10 +9,10 @@ class App extends React.Component {
   
   render() {
     return(
-			<div className="App">
-        <Header message={this.state.pageHeader}/>
-        <Header message={this.state.age}/>
-			</div>
+	<div className="App">
+          <Header message={this.state.pageHeader}/>
+          <Header message={this.state.age}/>
+	</div>
     );
   }
 } 
