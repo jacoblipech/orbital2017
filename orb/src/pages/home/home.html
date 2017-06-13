@@ -1,0 +1,40 @@
+<ion-content>
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-title>
+
+    <ion-buttons end>
+    <button ion-button (click)="openModal()">
+      	Plans
+      </button>
+      <button ion-button (click)="launchLoginPage()">
+        Login
+      </button>
+      <button ion-button (click)="launchSignupPage()">
+      	SignUp
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<img src="assets/images/background.jpg"/>
+<ion-slides autoplay="4000" pager loop>
+        <ion-slide>
+            <h4>Welcome!</h4>
+            <p>Let us take care of you for the weekend</p>
+        </ion-slide>
+        <ion-slide>
+            <h4>Escape For A Holiday!</h4>
+            <p>Let us take care of you for the weekend</p>
+        </ion-slide>
+        <ion-slide>
+            <h4>Make A Plan Easily!</h4>
+            <p>Let us take care of you for the weekend</p>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>
