@@ -52,8 +52,8 @@ const Header = ({message}) => {
   
 }; 
 
-Header.propTypes = {
-  message: React.PropTypes.string.isRequired
-};
+// Header.propTypes = {
+//   message: React.PropTypes.string.isRequired
+// };
 
 export default Header;
