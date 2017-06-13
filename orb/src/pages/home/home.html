@@ -1,4 +1,4 @@
-<ion-content>
+
 
 <ion-header>
   <ion-navbar>
@@ -21,7 +21,22 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content>
 <img src="assets/images/background.jpg"/>
+<form class="myForm">
+	<ion-item href="#">
+		<ion-searchbar placeholder="Country" name="country"></ion-searchbar>
+	</ion-item>
+	<ion-item href="#">
+		<ion-label>Month</ion-label>
+		<ion-datetime displayFormat="MMMM" name="month"></ion-datetime>	
+	</ion-item>
+	<ion-item href="#">
+		<ion-label>Number Of Days</ion-label>
+		<ion-input type="number" name="days"></ion-input>
+	</ion-item>
+	<button ion-button type="submit" block>Go!</button>
+</form>
 <ion-slides autoplay="4000" pager loop>
         <ion-slide>
             <h4>Welcome!</h4>
