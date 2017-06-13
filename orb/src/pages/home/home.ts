@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, ViewController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
-
+import { EditPage } from '../edit/edit';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +10,11 @@ import { SignupPage } from '../signup/signup';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  country: string;
+  month: any;
+  days: number;
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public viewCtrl: ViewController) {
 
   }
 
@@ -26,6 +30,15 @@ export class HomePage {
   	let modal = this.modalCtrl.create(SignupPage);
 
   	modal.present();
+  }
+
+  logForm() {
+  	let plan = {
+  		country: this.country,
+  		month: this.month,
+  		days: this.days
+  	}
+  	this.navCtrl.push(EditPage, plan);
   }
 
 }

@@ -23,17 +23,18 @@
 </ion-header>
 <ion-content>
 <img src="assets/images/background.jpg"/>
-<form class="myForm">
+<form class="myForm" (ngSubmit)="logForm()">
 	<ion-item href="#">
-		<ion-searchbar placeholder="Country" name="country"></ion-searchbar>
+		<ion-label>Country</ion-label>
+		<ion-input [(ngModel)]="country" name="country"></ion-input>
 	</ion-item>
 	<ion-item href="#">
 		<ion-label>Month</ion-label>
-		<ion-datetime displayFormat="MMMM" name="month"></ion-datetime>	
+		<ion-datetime displayFormat="MMMM" [(ngModel)]="month" name="month"></ion-datetime>	
 	</ion-item>
 	<ion-item href="#">
 		<ion-label>Number Of Days</ion-label>
-		<ion-input type="number" name="days"></ion-input>
+		<ion-input type="number" [(ngModel)]="days" name="days"></ion-input>
 	</ion-item>
 	<button ion-button type="submit" block>Go!</button>
 </form>
