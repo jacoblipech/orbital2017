@@ -32,21 +32,35 @@ var UserSchema = new mongoose.Schema({
 
 var PlanSchema = new mongoose.Schema({
 	country: String,
-	month: String,
+	month: Date,
 	days: {
 		type: Number, min: 1, max: 15
 	}
-})
+});
+
+var ActivitySchema = new mongoose.Schema({
+    activity: String,
+    url: String,
+    expenses: String,
+    address: String,
+    openingHours: String,
+    nearestLandmark: String,
+    remarks: String,
+    imageUrl: String
+
+});
 
 UserSchema.plugin(passportLocalMongoose);
 
 var User = mongoose.model("User", UserSchema);
 var Plan = mongoose.model("Plan", PlanSchema);
+var Activity = mongoose.model("Activity", ActivitySchema);
 
 server.get('/', function(req,res){
 	  res.send('index');
 });
 
+// Get plans route
 server.get('/plan', function(req, res) {
 	
 	console.log("fetching plan");
@@ -56,7 +70,7 @@ server.get('/plan', function(req, res) {
             if (err){
                 res.send(err)
             }else{
-            	Plan.findById(newPlan._id, function(err, plan) {	
+            	Plan.findById(plan._id, function(err, plan) {	
             		if (err){
             			res.send(err);
             		}
@@ -66,6 +80,7 @@ server.get('/plan', function(req, res) {
         });
 });
 
+// Create plan route
 server.post('/plan', function(req, res) {
  
         console.log("creating a plan");
@@ -90,6 +105,44 @@ server.post('/plan', function(req, res) {
         });
  
 });
+
+// Create activity route
+server.post('/activity', function(req,res) {
+    console.log("creating activity");
+    var newActivity = {
+        activity: req.body.activity,
+        url: req.body.url,
+        expenses: req.body.expenses,
+        address: req.body.address,
+        openingHours: req.body.openingHours,
+        nearestLandmark: req.body.nearestLandmark,
+        remarks: req.body.remarks,
+        imageUrl: req.body.imageUrl
+    }
+
+    Activity.create(newActivity, function(err, newActivity) {
+        if (err) {
+            res.send(err);
+        } else {
+            Activity.findById(newActivity._id, function(err,activity) {
+                if (err){
+                        res.send(err);
+                }
+                res.json(activity);
+            });
+        }
+    });
+});
+
+// Delete activity route
+server.delete('/activity/:activity_id', function(req, res) {
+        Activity.remove({
+            _id : req.params.activity_id
+        }, function(err, activity) {
+ 
+        });
+    });
+
 
 // server.use('/api', apiRouter);
 // server.use(express.static('public'));
