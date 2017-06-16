@@ -25,24 +25,6 @@ server.use(function(req, res, next) {
    next();
 });
 
-//User Login Functions
-var UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    email:{
-        type: String,
-        unique: true,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    }
-});
-
 //Database to be stored for a new page
 var PlanSchema = new mongoose.Schema({
 	country: String,
