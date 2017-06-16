@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
-import { Auth } from '../../providers/auth';
+import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
-import { SignupPage } from '../signup-page/signup-page';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the LoginPage page.
@@ -21,8 +21,8 @@ export class LoginPage {
   password: string;
   loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: Auth, public loadingCtrl: LoadingController) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+}
 
   ionViewDidLoad() {
     this.showLoader();

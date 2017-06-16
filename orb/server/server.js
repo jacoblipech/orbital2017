@@ -9,6 +9,9 @@ var express =require("express"),
     LocalStrategy = require('passport-local').Strategy,
 	passportLocalMongoose = require('passport-local-mongoose');
 
+    var databaseConfig = require('./config/database');
+    var router = require('./routes');
+
 mongoose.connect("mongodb://localhost/orb");
 server.use(morgan('dev'));
 server.use(bodyParser.urlencoded({extended: true}));
@@ -46,9 +49,6 @@ var ActivitySchema = new mongoose.Schema({
 
 });
 
-UserSchema.plugin(passportLocalMongoose);
-
-var User = mongoose.model("User", UserSchema);
 var Plan = mongoose.model("Plan", PlanSchema);
 var Activity = mongoose.model("Activity", ActivitySchema);
 

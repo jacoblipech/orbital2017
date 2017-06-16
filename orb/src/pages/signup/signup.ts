@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController,, LoadingController } from 'ionic-angular';
-import { Auth } from '../../providers/auth';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 
 /**
@@ -18,9 +18,10 @@ export class SignupPage {
 
   email: string;
   password: string;
+  loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: Auth, public loadingCtrl: LoadingController) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');

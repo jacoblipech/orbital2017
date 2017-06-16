@@ -1,7 +1,7 @@
 var AuthenticationController = require('./controllers/authentication'),  
     // TodoController = require('./controllers/todos'),  
     express = require('express'),
-    passportService = require('../config/passport'),
+    passportService = require('./config/passport'),
     passport = require('passport');
  
 var requireAuth = passport.authenticate('jwt', {session: false}),
@@ -19,6 +19,9 @@ module.exports = function(app){
     authRoutes.post('/register', AuthenticationController.register);
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
  
+    authRoutes.get('/protected', requireAuth, function(req, res){
+        res.send({ content: 'Success'});
+    });
     // Set up routes
     app.use('/api', apiRoutes);
  

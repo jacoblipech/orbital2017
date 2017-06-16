@@ -27495,6 +27495,119 @@ page-home #formHeader {
   color: white;
 }
 
+page-login ion-content {
+  background-color: #32db64;
+}
+
+page-login scroll-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-login ion-row {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-login ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+page-login ion-list {
+  margin: 0;
+}
+
+page-login .login-logo {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+page-login .login-form {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+page-login .create-account {
+  color: #fff;
+  text-decoration: underline;
+  background: none;
+}
+
+page-login .login-button {
+  border-radius: 30px;
+  font-size: 0.9em;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+page-signup ion-content {
+  background-color: #32db64;
+}
+
+page-signup scroll-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-signup ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+page-signup ion-list {
+  margin: 0;
+}
+
+page-signup .heading-text {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-signup .heading-text h3 {
+  color: #fff;
+}
+
+page-signup .account-form {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+page-signup .continue-button {
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 30px;
+  font-size: 0.9em;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
 page-template .card-page {
   background: #A4CFF1;
 }
