@@ -4,10 +4,10 @@ var express =require("express"),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     cors = require('cors'),
-    mongoose = require("mongoose"),
-    passport = require("passport"),
-    LocalStrategy = require("passport-local"),
-	passportLocalMongoose = require("passport-local-mongoose");
+    mongoose = require('mongoose'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+	passportLocalMongoose = require('passport-local-mongoose');
 
 mongoose.connect("mongodb://localhost/orb");
 server.use(morgan('dev'));
@@ -16,7 +16,7 @@ server.use(bodyParser.json());                                     // parse appl
 server.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 server.use(methodOverride());
 server.use(cors());
-// router(server);
+router(server);
 
 server.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*");
@@ -25,11 +25,25 @@ server.use(function(req, res, next) {
    next();
 });
 
+//User Login Functions
 var UserSchema = new mongoose.Schema({
-    username: String,
-    password: String
+    username: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    email:{
+        type: String,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
+//Database to be stored for a new page
 var PlanSchema = new mongoose.Schema({
 	country: String,
 	month: Date,
