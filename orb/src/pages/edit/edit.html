@@ -10,14 +10,20 @@
       <button ion-button icon-only (click)="goToHome()">
         <ion-icon name="home"></ion-icon>
       </button>
-      <h1>Travel Plan for : {{this.navParams.get('country')}} </h1>
+      <h1>Travel Plan for : {{plan.country}} </h1>
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="launchLoginPage()">
+      <button ion-button *ngIf="plan.logged && plan.user.isLoggedIn">
+        Logout
+      </button>
+      <button ion-button *ngIf="plan.logged && plan.user.isLoggedIn">
+        {{plan.user.email}}
+      </button>
+      <button ion-button *ngIf="plan.logged && !plan.user.isLoggedIn" (click)="launchLoginPage()">
         Login
       </button>
-      <button ion-button (click)="launchSignupPage()">
+      <button ion-button *ngIf="plan.logged && !plan.user.isLoggedIn" (click)="launchSignupPage()">
       	SignUp
       </button>
       <button ion-button (click)="presentPopover($event)">

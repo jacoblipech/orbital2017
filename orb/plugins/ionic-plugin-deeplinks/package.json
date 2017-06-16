@@ -1,0 +1,69 @@
+{
+  "_from": "ionic-plugin-deeplinks",
+  "_id": "ionic-plugin-deeplinks@1.0.15",
+  "_inBundle": false,
+  "_integrity": "sha1-ZV3uNApLGfuflh8ZXw6fCP/QLEo=",
+  "_location": "/ionic-plugin-deeplinks",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ionic-plugin-deeplinks",
+    "name": "ionic-plugin-deeplinks",
+    "escapedName": "ionic-plugin-deeplinks",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ionic-plugin-deeplinks/-/ionic-plugin-deeplinks-1.0.15.tgz",
+  "_shasum": "655dee340a4b19fb9f961f195f0e9f08ffd02c4a",
+  "_spec": "ionic-plugin-deeplinks",
+  "_where": "/home/vivek/webdev/angular2app/orb/node_modules",
+  "author": {
+    "name": "Max Lynch",
+    "email": "max@ionic.io"
+  },
+  "bugs": {
+    "url": "https://github.com/driftyco/ionic-plugin-deeplinks/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "ionic-plugin-deeplinks",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {
+    "mkpath": ">=1.0.0",
+    "node-version-compare": ">=1.0.1",
+    "plist": ">=1.2.0",
+    "xml2js": ">=0.4"
+  },
+  "deprecated": false,
+  "description": "Ionic Deeplinks Plugin",
+  "homepage": "https://github.com/driftyco/ionic-plugin-deeplinks#readme",
+  "issue": "https://github.com/driftyco/ionic-plugin-deeplinks/issues",
+  "keywords": [
+    "ionic",
+    "cordova",
+    "deeplink",
+    "deeplinks",
+    "mobile",
+    "hybrid",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "ionic-plugin-deeplinks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driftyco/ionic-plugin-deeplinks.git"
+  },
+  "version": "1.0.15"
+}

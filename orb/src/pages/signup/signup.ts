@@ -36,11 +36,17 @@ export class SignupPage {
         email: this.email,
         password: this.password,
     };
+
+    let user = {
+        email: this.email,
+        isLoggedIn: true
+    };
  
     this.authService.createAccount(details).then((result) => {
       this.loading.dismiss();
       this.isLoggedIn = true;
       console.log(result);
+      this.viewCtrl.dismiss(user);
     }, (err) => {
         this.loading.dismiss();
     });

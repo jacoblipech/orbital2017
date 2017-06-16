@@ -32,12 +32,7 @@ export class LoginPage {
         this.authService.checkAuthentication().then((res) => {
             console.log("Already authorized");
             this.loading.dismiss();
-            let user = {
-                email: this.authService.getUser(res),
-                isLoggedIn: true
-            };
-            console.log(this.email);
-            this.navCtrl.setRoot(HomePage, user);
+            this.navCtrl.setRoot(HomePage);
             this.navCtrl.popToRoot();
         }, (err) => {
             console.log("Not already authorized");
@@ -53,12 +48,18 @@ export class LoginPage {
             email: this.email,
             password: this.password
         };
+
+        let user = {
+                email: this.email,
+                isLoggedIn: true
+        };
  
         this.authService.login(credentials).then((result) => {
-            this.loading.dismiss();
+            this.loading.dismiss(user);
             console.log(result);
+            this.viewCtrl.dismiss(user);
         }, (err) => {
-            this.loading.dismiss();
+            this.loading.dismiss(user);
             console.log(err);
         });
  
