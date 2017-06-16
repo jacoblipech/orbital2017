@@ -20,8 +20,8 @@ export class LoginPage {
   email: string;
   password: string;
   loading: any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,, public authService: Auth, public loadingCtrl: LoadingController) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: Auth, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {

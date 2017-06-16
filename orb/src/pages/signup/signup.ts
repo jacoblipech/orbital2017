@@ -19,7 +19,7 @@ export class SignupPage {
   email: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: Auth, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
