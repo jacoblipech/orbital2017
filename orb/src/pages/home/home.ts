@@ -6,6 +6,8 @@ import { EditPage } from '../edit/edit';
 import { PlansProvider } from '../../providers/plans/plans';
 import { PopoverPage } from '../popover/popover';
 
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

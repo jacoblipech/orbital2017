@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
+import { Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +17,7 @@ import { ActivityPage } from '../pages/activity/activity';
 import { PlansProvider } from '../providers/plans/plans';
 import { ChatProvider } from '../providers/chat/chat';
 import { ActivityProvider } from '../providers/activity/activity';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ActivityProvider } from '../providers/activity/activity';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlansProvider,
     ChatProvider,
-    ActivityProvider
+    ActivityProvider,
+    AuthProvider,
+    Storage
   ]
 })
 export class AppModule {}

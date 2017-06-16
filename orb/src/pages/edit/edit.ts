@@ -13,9 +13,7 @@ import { TemplatePage } from '../template/template';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage({
-	name:'edit'
-})
+@IonicPage()
 @Component({
   selector: 'page-edit',
   templateUrl: 'edit.html',
