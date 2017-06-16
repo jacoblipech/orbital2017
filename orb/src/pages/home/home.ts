@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, ViewController, App, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController, App, PopoverController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
 import { EditPage } from '../edit/edit';
@@ -7,7 +7,7 @@ import { PlansProvider } from '../../providers/plans/plans';
 import { PopoverPage } from '../popover/popover';
 
 
-
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,15 +17,20 @@ export class HomePage {
   country: string;
   month: any;
   days: number;
-
+  user: object = this.navParams.data;
   constructor(
     private app: App, 
     public navCtrl: NavController, 
     public modalCtrl: ModalController, 
     public viewCtrl: ViewController, 
     public planService: PlansProvider,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    public navParams: NavParams
     ) {}
+
+  ionViewDidLoad() {
+    console.log(this.navParams.data);
+  }
 
   launchLoginPage() {
 
@@ -42,7 +47,7 @@ export class HomePage {
   }
 
   goToHome() {
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot('HomePage');
     this.navCtrl.popToRoot();
   }
 

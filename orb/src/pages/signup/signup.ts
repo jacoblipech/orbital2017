@@ -19,6 +19,7 @@ export class SignupPage {
   email: string;
   password: string;
   loading: any;
+  isLoggedIn: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
 }
@@ -38,6 +39,7 @@ export class SignupPage {
  
     this.authService.createAccount(details).then((result) => {
       this.loading.dismiss();
+      this.isLoggedIn = true;
       console.log(result);
     }, (err) => {
         this.loading.dismiss();

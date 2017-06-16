@@ -5,6 +5,7 @@
     <ion-title>
       <button ion-button icon-only (click)="goToHome()">
         <ion-icon name="home"></ion-icon>
+       
       </button>
     </ion-title>
 
@@ -26,7 +27,7 @@
 <img src="assets/images/background.jpg"/>
 
 <form class="myForm" (ngSubmit)="logForm()">
-  <h1 id="formHeader">Pick Your Destination!</h1>
+  <h1 id="formHeader">Pick Your Destination <span *ngIf="user.isLoggedIn">{{user.email}}</span></h1>
 	<ion-item href="#">
 		<ion-label>Country</ion-label>
 		<ion-input [(ngModel)]="country" name="country"></ion-input>

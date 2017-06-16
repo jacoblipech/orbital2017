@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
@@ -21,7 +21,8 @@ export class LoginPage {
   password: string;
   loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController, 
+    public modalCtrl: ModalController) {
 }
 
   ionViewDidLoad() {
@@ -31,7 +32,13 @@ export class LoginPage {
         this.authService.checkAuthentication().then((res) => {
             console.log("Already authorized");
             this.loading.dismiss();
-            this.navCtrl.setRoot(HomePage);
+            let user = {
+                email: this.authService.getUser(res),
+                isLoggedIn: true
+            };
+            console.log(this.email);
+            this.navCtrl.setRoot(HomePage, user);
+            this.navCtrl.popToRoot();
         }, (err) => {
             console.log("Not already authorized");
             this.loading.dismiss();
@@ -58,7 +65,10 @@ export class LoginPage {
     }
  
     launchSignup(){
-        this.navCtrl.push(SignupPage);
+      let modal = this.modalCtrl.create(SignupPage);
+
+      modal.present();
+      this.viewCtrl.dismiss();
     }
  
     showLoader(){

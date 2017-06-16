@@ -13,9 +13,21 @@ import 'rxjs/add/operator/map';
 export class AuthProvider {
 
   public token: any;
-
+  data: any;
   constructor(public http: Http, public storage: Storage) {
     
+  }
+
+  getUser(id){
+ 
+    return new Promise(resolve => {
+ 
+      this.http.get('http://localhost:3000/' + id)
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
   }
 
   checkAuthentication(){
