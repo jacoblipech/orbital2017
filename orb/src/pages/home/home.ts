@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController, App, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController, App, PopoverController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
 import { EditPage } from '../edit/edit';
@@ -8,6 +8,9 @@ import { PopoverPage } from '../popover/popover';
 import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth';
 
+@IonicPage({
+  name: 'welcome'
+})
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -98,7 +101,7 @@ export class HomePage {
   	}
     let opts = { animate: true, animation: "transition",duration: 1000}
     this.planService.createPlan(plan);
-  	this.navCtrl.setRoot(EditPage, plan, opts);
+  	this.navCtrl.setRoot('edit', plan, opts);
     this.navCtrl.popToRoot();
   }
 

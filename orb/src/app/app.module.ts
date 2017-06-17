@@ -23,34 +23,22 @@ import { AuthProvider } from '../providers/auth/auth';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     LoginPage,
     SignupPage,
-    EditPage,
     PopoverPage,
-    TemplatePage,
-    ActivityPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp, {}, {
-      links: [
-         { component: EditPage, name: 'edit' }
-     ]
-  }),
+    IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     LoginPage,
     SignupPage,
-    EditPage,
     PopoverPage,
-    TemplatePage,
-    ActivityPage
   ],
   providers: [
     StatusBar,
