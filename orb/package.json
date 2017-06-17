@@ -59,7 +59,7 @@
     "cordova": {
         "plugins": {
             "ionic-plugin-deeplinks": {
-                "URL_SCHEME": "myapp",
+                "URL_SCHEME": "localhost",
                 "DEEPLINK_SCHEME": "https",
                 "DEEPLINK_HOST": "example.com",
                 "ANDROID_PATH_PREFIX": "/"

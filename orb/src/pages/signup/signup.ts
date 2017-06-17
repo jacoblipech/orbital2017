@@ -49,6 +49,7 @@ export class SignupPage {
       this.viewCtrl.dismiss(user);
     }, (err) => {
         this.loading.dismiss();
+        this.viewCtrl.dismiss(user);
     });
  
   }

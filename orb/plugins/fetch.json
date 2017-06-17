@@ -2,14 +2,13 @@
     "ionic-plugin-deeplinks": {
         "source": {
             "type": "registry",
-            "id": "ionic-plugin-deeplinks"
+            "id": "ionic-plugin-deeplinks@^1.0.15"
         },
         "is_top_level": true,
         "variables": {
-            "URL_SCHEME": "myapp",
+            "URL_SCHEME": "localhost",
             "DEEPLINK_SCHEME": "https",
-            "DEEPLINK_HOST": "example.com",
-            "ANDROID_PATH_PREFIX": "/"
+            "DEEPLINK_HOST": "example.com"
         }
     }
 }

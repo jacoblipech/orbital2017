@@ -10,16 +10,16 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button *ngIf="logged && user.isLoggedIn">
+      <button ion-button *ngIf="user && user.isLoggedIn" (click)="logout()">
         Logout
       </button>
-      <button ion-button *ngIf="logged && user.isLoggedIn">
+      <button ion-button *ngIf="user && user.isLoggedIn">
         {{user.email}}
       </button>
-      <button ion-button *ngIf="logged && !user.isLoggedIn" (click)="launchLoginPage()">
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">
         Login
       </button>
-      <button ion-button *ngIf="logged && !user.isLoggedIn" (click)="launchSignupPage()">
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchSignupPage()">
       	SignUp
       </button>
       <button ion-button (click)="presentPopover($event)">
@@ -33,7 +33,7 @@
 <img src="assets/images/background.jpg"/>
 
 <form class="myForm" (ngSubmit)="logForm()">
-  <h1 id="formHeader">Pick Your Destination <span *ngIf="logged && user.isLoggedIn">{{user.email}} !</span></h1>
+  <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.email}} !</span></h1>
 	<ion-item href="#">
 		<ion-label>Country</ion-label>
 		<ion-input [(ngModel)]="country" name="country" required></ion-input>

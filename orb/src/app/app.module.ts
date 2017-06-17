@@ -34,7 +34,11 @@ import { AuthProvider } from '../providers/auth/auth';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {}, {
+      links: [
+         { component: EditPage, name: 'edit' }
+     ]
+  }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

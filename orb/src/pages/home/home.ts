@@ -6,7 +6,7 @@ import { EditPage } from '../edit/edit';
 import { PlansProvider } from '../../providers/plans/plans';
 import { PopoverPage } from '../popover/popover';
 import { Storage } from '@ionic/storage';
-
+import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
   selector: 'page-home',
@@ -17,7 +17,7 @@ export class HomePage {
   country: string;
   month: any;
   days: number;
-  logged: boolean = false;
+  logged: boolean = true;
   user: object;
   constructor(
     private app: App, 
@@ -27,32 +27,35 @@ export class HomePage {
     public planService: PlansProvider,
     public popoverCtrl: PopoverController,
     public navParams: NavParams,
-    public storage: Storage
+    public storage: Storage,
+    public authService: AuthProvider
     ) {}
 
   ngOnInit() {
-    this.storage.get('currUser').then(data => {
-    console.log(data);
-    if (data) {
-      this.logged = true;
-    } else {
-      this.logged = false;
-    }
-    this.user= data;
 
-    });
-    console.log(this.user); 
+    if (this.navParams.data != false) {
+      this.storage.get('currUser').then(data => {
+        console.log(data);
+        this.user = data;
+      });
+    } else {
+      this.storage.set('currUser', null);
+    }
   }
 
   launchLoginPage() {
 
   	let modal = this.modalCtrl.create(LoginPage);
     modal.onDidDismiss(data => {
-        this.user = data;
-        this.storage.set('currUser', data);
+        
         if (data) {
-          this.logged = true;
+          this.user = data;
+          //this.logged = true;
+          this.storage.set('currUser', data);
+        } else {
+          //this.logged = false;
         }
+        
     });
   	modal.present();
   }
@@ -61,31 +64,42 @@ export class HomePage {
 
   	let modal = this.modalCtrl.create(SignupPage);
     modal.onDidDismiss(data => {
-        this.user = data;
-        this.storage.set('currUser', data);
-        console.log(data);
+        
         if (data) {
-          this.logged = true;
+          this.user = data;
+          //this.logged = true;
+          this.storage.set('currUser', data);
+        } else {
+          //this.logged = false;
         }
+        
+        console.log(data);
     });
   	modal.present();
   }
 
   goToHome() {
+    let opts = { animate: true, animation: "transition",duration: 1000}
     this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot();
   }
 
   logForm() {
+    this.storage.get('currUser').then(data => {
+      console.log(data);
+      this.user = data;
+    });
   	let plan = {
   		country: this.country,
   		month: this.month,
   		days: this.days,
       user: this.user,
-      logged: this.logged
+      //logged: this.logged
   	}
+    let opts = { animate: true, animation: "transition",duration: 1000}
     this.planService.createPlan(plan);
-  	this.app.getRootNav().setRoot(EditPage, plan);
+  	this.navCtrl.setRoot(EditPage, plan, opts);
+    this.navCtrl.popToRoot();
   }
 
   presentPopover(myEvent) {
@@ -93,6 +107,14 @@ export class HomePage {
     popover.present({
       ev: myEvent
     });
+  }
+
+  logout() {
+    console.log(this.user);
+    this.authService.logout();
+    this.user = null;
+    //this.logged = false;
+    console.log(this.user);
   }
 
 }
