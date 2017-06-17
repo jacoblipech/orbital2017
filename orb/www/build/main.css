@@ -27543,13 +27543,11 @@ page-login .login-form {
 page-login .create-account {
   color: #fff;
   text-decoration: underline;
-  background: none;
 }
 
 page-login .login-button {
   border-radius: 30px;
   font-size: 0.9em;
-  background-color: transparent;
   border: 1px solid #fff;
 }
 
@@ -27604,7 +27602,6 @@ page-signup .continue-button {
   border-radius: 30px;
   margin-top: 30px;
   font-size: 0.9em;
-  background-color: transparent;
   border: 1px solid #fff;
 }
 

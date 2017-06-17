@@ -29,7 +29,7 @@ PopoverPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */]),
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */]
