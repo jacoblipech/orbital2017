@@ -8,7 +8,9 @@ var LocalStrategy = require('passport-local').Strategy;
 var localOptions = {
     usernameField: 'email'
 };
- 
+
+//findOne method to find a user in the database with the same email! If cannot find, return err
+//if we find the user, comparePassword function will check if it is correct or not
 var localLogin = new LocalStrategy(localOptions, function(email, password, done){
  
     User.findOne({
@@ -29,7 +31,6 @@ var localLogin = new LocalStrategy(localOptions, function(email, password, done)
             if(!isMatch){
                 return done(null, false, {error: 'Login failed. Please try again.'});
             }
- 
             return done(null, user);
  
         });
@@ -37,12 +38,15 @@ var localLogin = new LocalStrategy(localOptions, function(email, password, done)
     });
  
 });
- 
+
+//extractJwt is a function to extract the JWT sent with the request and use secret to check its validity
 var jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: config.secret
+    //secret is obtained from the code in config/auth.js
 };
- 
+
+//use the _id from JWT to check for matching users in dataase with that id
 var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
  
     User.findById(payload._id, function(err, user){
