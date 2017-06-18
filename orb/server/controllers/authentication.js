@@ -67,9 +67,3 @@ exports.register = function(req, res, next){
         });
     });
 }
-
-exports.logut = function(req, res){
-    this.user = null;
-    //the question is where does we store this local storage function?
-    //Local storage.clear()
-}

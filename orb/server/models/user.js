@@ -56,6 +56,5 @@ UserSchema.methods.comparePassword = function(passwordAttempt, cb){
     });
  
 }
-
 //exports the file to be used by other files
 module.exports = mongoose.model('User', UserSchema);
