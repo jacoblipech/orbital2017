@@ -28,30 +28,6 @@ server.use(function(req, res, next) {
    next();
 });
 
-//Database to be stored for a new page
-var PlanSchema = new mongoose.Schema({
-	country: String,
-	month: Date,
-	days: {
-		type: Number, min: 1, max: 15
-	}
-});
-
-var ActivitySchema = new mongoose.Schema({
-    activity: String,
-    url: String,
-    expenses: String,
-    address: String,
-    openingHours: String,
-    nearestLandmark: String,
-    remarks: String,
-    imageUrl: String
-
-});
-
-var Plan = mongoose.model("Plan", PlanSchema);
-var Activity = mongoose.model("Activity", ActivitySchema);
-
 server.get('/', function(req,res){
 	  res.send('index');
 });
@@ -80,7 +56,6 @@ server.get('/plan', function(req, res) {
 server.post('/plan', function(req, res) {
  
         console.log("creating a plan");
- 
         // create a plan
         var newPlan = {
         	country : req.body.country,
@@ -138,7 +113,6 @@ server.delete('/activity/:activity_id', function(req, res) {
  
         });
     });
-
 
 // server.use('/api', apiRouter);
 // server.use(express.static('public'));
