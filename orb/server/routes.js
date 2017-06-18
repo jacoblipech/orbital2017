@@ -23,13 +23,13 @@ module.exports = function(app){
     authRoutes.post('/')
     
     
-        Campground.findById(req.params.id, function(err, foundCampground){
-            if(err){
-                res.redirect("/campgrounds")
-            }else{
-                res.render("campgrounds/edit", {campground: foundCampground});
-            }
-        });
+        // Campground.findById(req.params.id, function(err, foundCampground){
+        //     if(err){
+        //         res.redirect("/campgrounds")
+        //     }else{
+        //         res.render("campgrounds/edit", {campground: foundCampground});
+        //     }
+        // });
 
     // uses requireAuth to check if a user is authenticated by hitting this URL (Remember me functions)
     authRoutes.get('/protected', requireAuth, function(req, res){
