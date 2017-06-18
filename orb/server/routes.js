@@ -20,7 +20,6 @@ module.exports = function(app){
     authRoutes.post('/register', AuthenticationController.register);
     //requireLogin function ensures that the correct login details are checked before given their JWT
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
-    authRoutes.post('/logout', AuthenticationController.logout);
     authRoutes.post('/')
     
     // uses requireAuth to check if a user is authenticated by hitting this URL (Remember me functions)
