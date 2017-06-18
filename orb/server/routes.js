@@ -15,10 +15,15 @@ module.exports = function(app){
  
     // Auth Routes
     apiRoutes.use('/auth', authRoutes);
- 
+    
+    // "/api/auth/register" handles registering a new user. invokes the register function in AuthenticationController
     authRoutes.post('/register', AuthenticationController.register);
+    //requireLogin function ensures that the correct login details are checked before given their JWT
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
- 
+    authRoutes.post('/logout', AuthenticationController.logout);
+    authRoutes.post('/')
+    
+    // uses requireAuth to check if a user is authenticated by hitting this URL (Remember me functions)
     authRoutes.get('/protected', requireAuth, function(req, res){
         res.send({ content: 'Success'});
     });
