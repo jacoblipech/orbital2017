@@ -10,10 +10,16 @@
       <button ion-button icon-only (click)="goToHome()">
         <ion-icon name="home"></ion-icon>
       </button>
-      <h1>Travel Plan for : {{plan.country}} </h1>
+      <h2 style="display:inline; ">Travel Plan for : {{plan.country}} </h2>
     </ion-title>
 
     <ion-buttons end>
+      <button ion-button *ngIf="user && user.isLoggedIn">
+        <ion-icon name="person-add"></ion-icon>Invite
+      </button>
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">
+        <ion-icon name="person-add"></ion-icon>Invite
+      </button>
       <button ion-button *ngIf="user && user.isLoggedIn" (click)="logout()">
         Logout
       </button>

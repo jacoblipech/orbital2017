@@ -10,6 +10,11 @@
 	
 	<ion-card class="card" *ngFor="let activity of activities">
 		<ion-card-content>
+		<ion-buttons end>
+			<button ion-button round outline small>1</button>
+			<button class="cardButton" ion-button outline color="warning" (click)="launchActivityPage()">
+			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
+		</ion-buttons>
 			<ion-grid>
 				<ion-row align-items-center>
 					  <ion-col col-2>
@@ -23,19 +28,21 @@
 					  </ion-col>
 				  </ion-row>
 			</ion-grid>
-			<ion-list no-lines>
+
+			<ion-scroll scrollY="true" text-wrap>
 				<p>Activity Name: {{activity.activity}}</p>
 				<p>Address: {{activity.address}}</p>
 				<p>Opening Hours: {{activity.openingHours}}</p>
 				<p>Expenses: {{activity.expenses}}</p>
 				<p>Nearest Landmark{{activity.nearestLandmark}}</p>
 				<p>Remarks: {{activity.remarks}}</p>
-				<p>Images: {{activity.imageUrl}}</p>
+				<p >Images: {{activity.imageUrl}}</p>
 				<p>More Info: <a href="http://{{activity.url}}">{{activity.url}}</a></p>
-			</ion-list>
+			</ion-scroll>
+
 			<ion-buttons end>
-				<button class="delete" ion-button outline color="danger" (click)="deleteActivity(activity)">
-				<ion-icon name="trash"></ion-icon>Delete</button>
+				<button class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
+				<ion-icon name="trash"></ion-icon> Delete</button>
 			</ion-buttons>
 		</ion-card-content>
 		
