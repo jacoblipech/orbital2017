@@ -26,6 +26,7 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     SignupPage,
     PopoverPage,
+    ActivityPage
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     SignupPage,
     PopoverPage,
+    ActivityPage
   ],
   providers: [
     StatusBar,
