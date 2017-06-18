@@ -6,7 +6,9 @@ var PlanSchema = new mongoose.Schema({
     month: Date,
     days: {
         type: Number, min: 1, max: 15
-    }
+    },
+    activities: [],
+    users: []
 });
 
 //exports the file to be used by other files
