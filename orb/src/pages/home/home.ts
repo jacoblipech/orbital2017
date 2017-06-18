@@ -83,7 +83,7 @@ export class HomePage {
 
   goToHome() {
     let opts = { animate: true, animation: "transition",duration: 1000}
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot('welcome');
     this.navCtrl.popToRoot();
   }
 
