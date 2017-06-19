@@ -10,7 +10,7 @@ var ActivitySchema = new mongoose.Schema({
     nearestLandmark: String,
     remarks: String,
     imageUrl: String
-
+    
 });
 
 //exports the file to be used by other files

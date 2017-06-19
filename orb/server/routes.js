@@ -10,8 +10,7 @@ var requireAuth = passport.authenticate('jwt', {session: false}),
 module.exports = function(app){
  
     var apiRoutes = express.Router(),
-        authRoutes = express.Router(),
-        todoRoutes = express.Router();
+        authRoutes = express.Router();
  
     // Auth Routes
     apiRoutes.use('/auth', authRoutes);
@@ -21,15 +20,6 @@ module.exports = function(app){
     //requireLogin function ensures that the correct login details are checked before given their JWT
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
     authRoutes.post('/')
-    
-    
-        // Campground.findById(req.params.id, function(err, foundCampground){
-        //     if(err){
-        //         res.redirect("/campgrounds")
-        //     }else{
-        //         res.render("campgrounds/edit", {campground: foundCampground});
-        //     }
-        // });
 
     // uses requireAuth to check if a user is authenticated by hitting this URL (Remember me functions)
     authRoutes.get('/protected', requireAuth, function(req, res){

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+var Plan = require('./plan');
  
  //Set up the user schema
 var UserSchema = new mongoose.Schema({
@@ -14,9 +15,10 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    plans: []
-}, {
-    timestamps: true
+    plans: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Plan"
+    }]
 });
  
 //pre function runs the object before it is saved to database. This allows the data to be hashed before bcrpt-ed and sotred

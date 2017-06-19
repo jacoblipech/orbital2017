@@ -11,6 +11,8 @@ var express =require("express"),
 
     var databaseConfig = require('./config/database');
     var router = require('./routes');
+    var Plan = require('./models/plan');
+    var Activity = require('./models/activity');
 
 mongoose.connect("mongodb://localhost/orb");
 server.use(morgan('dev'));
@@ -29,7 +31,7 @@ server.use(function(req, res, next) {
 });
 
 server.get('/', function(req,res){
-	  res.send('index');
+	  res.console('index');
 });
 
 // Get plans route
@@ -74,7 +76,6 @@ server.post('/plan', function(req, res) {
             	});
             }
         });
- 
 });
 
 // Create activity route
@@ -110,9 +111,27 @@ server.delete('/activity/:activity_id', function(req, res) {
         Activity.remove({
             _id : req.params.activity_id
         }, function(err, activity) {
- 
+            
         });
     });
+
+
+server.get("/edit/:plan_id", function(req, res){
+    Edit.findById(req.params.plan_id, function(err, foundPlan){
+        if(err){
+            console.log(err);
+        }
+        
+    })
+});
+
+// Campground.findById(req.params.id, function(err, foundCampground){
+        //     if(err){
+        //         res.redirect("/campgrounds")
+        //     }else{
+        //         res.render("campgrounds/edit", {campground: foundCampground});
+        //     }
+        // });
 
 // server.use('/api', apiRouter);
 // server.use(express.static('public'));
