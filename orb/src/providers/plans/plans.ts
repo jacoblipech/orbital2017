@@ -35,12 +35,12 @@ export class PlansProvider {
  
   }
  
-  createPlan(plan){
+  createPlan(plan, id){
  
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
  
-    this.http.post('http://localhost:3000/plan', JSON.stringify(plan), {headers: headers})
+    this.http.post('http://localhost:3000/edit/' + id, JSON.stringify(plan), {headers: headers})
       .subscribe(res => {
         console.log(res.json());
       });

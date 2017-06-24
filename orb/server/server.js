@@ -55,9 +55,19 @@ server.get('/plan', function(req, res) {
         });
 });
 
+server.get("/edit/:id", function(req, res){
+User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            console.log("error " + err);
+        }else{
+            res.json(foundUser);
+        }     
+    })
+});
+
 // Create plan route
-server.post('/plan', function(req, res) {
- 
+server.post('/edit/:id', function(req, res) {
+        
         console.log("creating a plan");
         // create a plan
         var newPlan = {
@@ -69,14 +79,28 @@ server.post('/plan', function(req, res) {
             if (err){
                 res.send(err);
             }else{
-            	Plan.findById(newPlan._id, function(err, plan) {	
-            		if (err){
-            			res.send(err);
-            		}
-                	res.json(plan);
-            	});
-            }
-        });
+                User.findById(req.params.id, function(err, foundUser){
+                if(err){
+                    res.send(err);
+                }else{
+                    foundUser.plans.push(newPlan);
+                    foundUser.save(function(err, newPlan){
+                        if(err){
+                            res.send(err);
+                        }
+                        console.log(newPlan);
+                    })
+                }
+            } 
+        );     
+            Plan.findById(newPlan._id, function(err, plan) {    
+                if (err){
+                    res.send(err);
+                }
+                res.json(plan);
+            });
+        }
+    });
 });
 
 // Create activity route
@@ -116,16 +140,6 @@ server.delete('/activity/:activity_id', function(req, res) {
         });
     });
 
-
-server.get("/edit/:plan_id", function(req, res){
-User.findById(req.params.plan_id, function(err, foundUser){
-        if(err){
-            console.log("error " + err);
-        }else{
-            res.json(foundUser);
-        }     
-    })
-});
 
 // Campground.findById(req.params.id, function(err, foundCampground){
         //     if(err){

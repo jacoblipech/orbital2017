@@ -104,7 +104,7 @@ export class HomePage {
       //logged: this.logged
   	}
     let opts = { animate: true, animation: "transition",duration: 1000}
-    this.planService.createPlan(plan);
+    this.planService.createPlan(plan, this.user.result.user._id);
   	this.navCtrl.setRoot('edit', plan, opts);
     this.navCtrl.popToRoot();
   }
