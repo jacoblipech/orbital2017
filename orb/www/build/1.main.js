@@ -89,11 +89,13 @@ var EditPage = (function () {
         this.numbers = Array.apply(null, { length: this.navParams.get('days') }).map(Number.call, Number);
         this.tab1Root = 'template';
     }
-    EditPage.prototype.ionViewDidLoad = function () {
-        console.log(this.plan);
-        console.log(this.user);
+    EditPage.prototype.ionViewWillLoad = function () {
+        //console.log(this.plan);
+        //console.log(this.user);
+        console.log(this.authService.getUser(this.navParams.get('id')));
     };
     EditPage.prototype.ngOnInit = function () {
+        //this.authService.getUser(this.navParams.get('id'));
     };
     EditPage.prototype.launchLoginPage = function () {
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);

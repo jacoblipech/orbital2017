@@ -13,6 +13,7 @@ var express =require("express"),
     var router = require('./routes');
     var Plan = require('./models/plan');
     var Activity = require('./models/activity');
+    var User = require('./models/user');
 
 mongoose.connect("mongodb://localhost/orb");
 server.use(morgan('dev'));
@@ -117,11 +118,12 @@ server.delete('/activity/:activity_id', function(req, res) {
 
 
 server.get("/edit/:plan_id", function(req, res){
-    Edit.findById(req.params.plan_id, function(err, foundPlan){
+User.findById(req.params.plan_id, function(err, foundUser){
         if(err){
-            console.log(err);
-        }
-        
+            console.log("error " + err);
+        }else{
+            res.json(foundUser);
+        }     
     })
 });
 

@@ -40,13 +40,14 @@ export class EditPage {
   		this.tab1Root = 'template';
 	  }
 
-  ionViewDidLoad() {
-    console.log(this.plan);
-    console.log(this.user);
+  ionViewWillLoad() {
+    //console.log(this.plan);
+    //console.log(this.user);
+    console.log(this.authService.getUser(this.navParams.get('id')));
   }
 
   ngOnInit() {
-  	
+  	//this.authService.getUser(this.navParams.get('id'));
   }
 
   launchLoginPage() {

@@ -22,7 +22,7 @@ export class AuthProvider {
  
     return new Promise(resolve => {
  
-      this.http.get('http://localhost:3000/' + id)
+      this.http.get('http://localhost:3000/edit/' + id)
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
