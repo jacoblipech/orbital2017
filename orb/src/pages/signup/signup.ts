@@ -39,10 +39,12 @@ export class SignupPage {
 
     let user = {
         email: this.email,
-        isLoggedIn: true
+        isLoggedIn: true,
+        result: {}
     };
  
     this.authService.createAccount(details).then((result) => {
+      user.result = result;
       this.loading.dismiss();
       this.isLoggedIn = true;
       console.log(result);

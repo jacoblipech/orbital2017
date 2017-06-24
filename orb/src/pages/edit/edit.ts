@@ -15,7 +15,8 @@ import { AuthProvider } from '../../providers/auth/auth';
  * on Ionic pages and navigation.
  */
 @IonicPage({
-  name: 'edit'
+  name: 'edit',
+  segment: 'edit/:id'
 })
 @Component({
   selector: 'page-edit',
@@ -41,6 +42,7 @@ export class EditPage {
 
   ionViewDidLoad() {
     console.log(this.plan);
+    console.log(this.user);
   }
 
   ngOnInit() {

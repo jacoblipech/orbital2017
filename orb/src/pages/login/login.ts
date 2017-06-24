@@ -51,12 +51,14 @@ export class LoginPage {
 
         let user = {
                 email: this.email,
-                isLoggedIn: true
+                isLoggedIn: true,
+                result: {}
         };
  
         this.authService.login(credentials).then((result) => {
+            user.result = result;
             this.loading.dismiss(user);
-            console.log(result);
+            console.log(user);
             this.viewCtrl.dismiss(user);
         }, (err) => {
             this.loading.dismiss(user);

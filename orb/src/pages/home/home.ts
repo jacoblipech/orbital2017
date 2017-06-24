@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage({
-  name: 'welcome'
+  name: 'welcome',
+  segment: 'home'
 })
 @Component({
   selector: 'page-home',
@@ -21,7 +22,7 @@ export class HomePage {
   month: any;
   days: number;
   logged: boolean = true;
-  user: object;
+  user: any;
   constructor(
     private app: App, 
     public navCtrl: NavController, 
@@ -92,11 +93,14 @@ export class HomePage {
       console.log(data);
       this.user = data;
     });
+    console.log(this.user)
   	let plan = {
   		country: this.country,
   		month: this.month,
   		days: this.days,
+      id: this.user.result.user._id,
       user: this.user,
+
       //logged: this.logged
   	}
     let opts = { animate: true, animation: "transition",duration: 1000}
