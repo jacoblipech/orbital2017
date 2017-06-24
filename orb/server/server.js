@@ -93,10 +93,11 @@ server.post('/edit/:id', function(req, res) {
                 }
             } 
         );     
-            Plan.findById(newPlan._id, function(err, plan) {    
+            Plan.findById(newPlan._id).populate("plans").exec(function(err, plan) {    
                 if (err){
                     res.send(err);
                 }
+                console.log(plan);
                 res.json(plan);
             });
         }
