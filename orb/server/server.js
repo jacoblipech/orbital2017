@@ -36,24 +36,24 @@ server.get('/', function(req,res){
 });
 
 // Get plans route
-server.get('/plan', function(req, res) {
+// server.get('/plan', function(req, res) {
 	
-	console.log("fetching plan");
-        // use mongoose to get all reviews in the database
-        Plan.find(function(err, plan) {
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err){
-                res.send(err)
-            }else{
-            	Plan.findById(plan._id, function(err, plan) {	
-            		if (err){
-            			res.send(err);
-            		}
-                	res.json(plan);
-            	});
-            }
-        });
-});
+// 	console.log("fetching plan");
+//         // use mongoose to get all reviews in the database
+//         Plan.find(function(err, plan) {
+//             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+//             if (err){
+//                 res.send(err)
+//             }else{
+//             	Plan.findById(plan._id, function(err, plan) {	
+//             		if (err){
+//             			res.send(err);
+//             		}
+//                 	res.json(plan);
+//             	});
+//             }
+//         });
+// });
 
 server.get("/edit/:id", function(req, res){
 User.findById(req.params.id, function(err, foundUser){

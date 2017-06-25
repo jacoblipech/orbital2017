@@ -27605,6 +27605,10 @@ page-signup .continue-button {
   border: 1px solid #fff;
 }
 
+page-signup .invalid {
+  border: 1px solid #ea6153;
+}
+
 page-template .card-page {
   background: #A4CFF1;
 }

@@ -20,17 +20,27 @@
   <ion-row class="account-form">
         <ion-col>
             <ion-list inset>
+              <form [formGroup]="signUpForm">
  
                 <ion-item>
                     <ion-label><ion-icon name="mail"></ion-icon></ion-label>
-                    <ion-input [(ngModel)]="email" placeholder="Email" type="email"></ion-input>
+                    <ion-input [(ngModel)]="email" formControlName="email" placeholder="Email" type="email"></ion-input>
+                </ion-item>
+
+                <ion-item *ngIf="!signUpForm.controls.email.valid  && (signUpForm.controls.email.dirty || submitAttempt)">
+                    <p>Please enter a valid email.</p>
                 </ion-item>
  
                 <ion-item>
                     <ion-label><ion-icon name="lock"></ion-icon></ion-label>
-                    <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+                    <ion-input [(ngModel)]="password" formControlName="password" placeholder="Password" type="password"></ion-input>
                 </ion-item>
- 
+
+                <ion-item *ngIf="!signUpForm.controls.password.valid  && (signUpForm.controls.password.dirty || submitAttempt)">
+                    <p>Please enter a password that is 8 characters long.</p>
+                </ion-item>
+
+              </form>
             </ion-list>
  
             <button ion-button (click)="register()" class="continue-button">Register</button>

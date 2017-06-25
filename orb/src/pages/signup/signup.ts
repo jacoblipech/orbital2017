@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 
@@ -20,14 +21,25 @@ export class SignupPage {
   password: string;
   loading: any;
   isLoggedIn: boolean;
+  signUpForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController) {
-}
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public viewCtrl: ViewController, public authService: AuthProvider, 
+    public loadingCtrl: LoadingController, public formBuilder: FormBuilder) {
+
+    this.signUpForm = formBuilder.group({
+        email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.+[a-zA-Z0-9-.]'), Validators.required])],
+        password: ['', Validators.compose([Validators.minLength(8), 
+          // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'), 
+          Validators.required])]
+    });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
 
+ 
   register(){
  
     this.showLoader();
@@ -43,6 +55,7 @@ export class SignupPage {
         result: {}
     };
  
+  if(this.signUpForm.valid){
     this.authService.createAccount(details).then((result) => {
       user.result = result;
       this.loading.dismiss();
@@ -50,9 +63,12 @@ export class SignupPage {
       console.log(result);
       this.viewCtrl.dismiss(user);
     }, (err) => {
-        this.loading.dismiss();
-        this.viewCtrl.dismiss(user);
+
     });
+  }else {
+      this.loading.dismiss();
+      // this.viewCtrl.dismiss();
+  }
  
   }
 
