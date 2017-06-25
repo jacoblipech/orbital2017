@@ -19,6 +19,7 @@ import { ActivityProvider } from '../../providers/activity/activity';
 export class TemplatePage {
 
   activities: any[] = [];
+  another: any[] = [];
   day: number = this.navParams.data;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public activityService: ActivityProvider) {
  
@@ -40,6 +41,20 @@ export class TemplatePage {
     });
 
   	modal.present();
+  }
+
+  launchAnotherPage() {
+
+    let modal = this.modalCtrl.create(ActivityPage);
+
+    modal.onDidDismiss(activity => {
+      if(activity){
+        this.activities.push(activity);
+        this.activityService.createActivity(activity);        
+      }
+    });
+
+    modal.present();
   }
 
   deleteActivity(activity){

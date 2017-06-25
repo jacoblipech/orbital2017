@@ -36,15 +36,32 @@
   <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.email}} !</span></h1>
 	<ion-item href="#">
 		<ion-label>Country</ion-label>
-		<ion-input [(ngModel)]="country" name="country" required></ion-input>
+		<ion-input [(ngModel)]="country" name="country" required text-right></ion-input>
 	</ion-item>
-	<ion-item href="#">
+	<!-- <ion-item href="#">
 		<ion-label>Month</ion-label>
 		<ion-datetime displayFormat="MMMM" [(ngModel)]="month" name="month"></ion-datetime>	
-	</ion-item>
+	</ion-item> -->
+  <ion-item>
+  <ion-label>Month</ion-label>
+    <ion-select [(ngModel)]="month" name="month">
+      <ion-option value="January">January</ion-option>
+      <ion-option value="February">February</ion-option>
+      <ion-option value="March">March</ion-option>
+      <ion-option value="April">April</ion-option>
+      <ion-option value="May">May</ion-option>
+      <ion-option value="June">June</ion-option>
+      <ion-option value="July">July</ion-option>
+      <ion-option value="August">August</ion-option>
+      <ion-option value="September">September</ion-option>
+      <ion-option value="October">October</ion-option>
+      <ion-option value="November">November</ion-option>
+      <ion-option value="December">December</ion-option>
+    </ion-select>
+  </ion-item>
 	<ion-item href="#">
 		<ion-label>Number Of Days</ion-label>
-		<ion-input type="number" [(ngModel)]="days" name="days"></ion-input>
+		<ion-input type="number" [(ngModel)]="days" name="days" required text-right></ion-input>
 	</ion-item>
 	<button ion-button type="submit" block>Go!</button>
 </form>

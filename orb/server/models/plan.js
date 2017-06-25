@@ -5,7 +5,7 @@ var User = require('./user');
  //Set up the user schema
 var PlanSchema = new mongoose.Schema({
     country: String,
-    month: Date,
+    month: String,
     days: {
         type: Number, min: 1, max: 15
     },
