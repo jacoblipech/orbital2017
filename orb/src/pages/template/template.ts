@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
 import { ActivityPage } from '../activity/activity';
+import { AlternativesPage } from '../alternatives/alternatives';
 import { ActivityProvider } from '../../providers/activity/activity';
+import { AlternativeModel } from '../../app/models/alternative-model';
 
 /**
  * Generated class for the TemplatePage page.
@@ -35,7 +37,11 @@ export class TemplatePage {
 
   	modal.onDidDismiss(activity => {
       if(activity){
-        this.activities.push(activity);
+        //console.log(activity)
+        let currActivity = new AlternativeModel(activity, []);
+        this.activities.push(currActivity);
+        //console.log(currActivity);
+        //console.log(this.activities);
         this.activityService.createActivity(activity);        
       }
     });
@@ -43,16 +49,24 @@ export class TemplatePage {
   	modal.present();
   }
 
-  launchAnotherPage() {
+  launchAnotherPage(index) {
 
     let modal = this.modalCtrl.create(ActivityPage);
 
     modal.onDidDismiss(activity => {
       if(activity){
-        this.activities.push(activity);
+        this.activities[index].addItem(activity);
+        console.log(this.activities[index]);
         this.activityService.createActivity(activity);        
       }
     });
+
+    modal.present();
+  }
+
+  launchAlternativesPage(index) {
+
+    let modal = this.modalCtrl.create(AlternativesPage, this.activities[index]);
 
     modal.present();
   }

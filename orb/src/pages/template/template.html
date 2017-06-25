@@ -7,12 +7,12 @@
 
 
 <ion-content class="card-page">
-	
-	<ion-card class="card" *ngFor="let activity of activities">
+
+	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
 		<ion-buttons end>
-			<button ion-button round outline small>1</button>
-			<button class="cardButton" ion-button outline color="warning" (click)="launchActivityPage()">
+			<button ion-button round outline small (click)="launchAlternativesPage(i)">1</button>
+			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
 			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
 		</ion-buttons>
 			<ion-grid>
@@ -30,14 +30,14 @@
 			</ion-grid>
 
 			<ion-scroll scrollY="true" text-wrap>
-				<p>Activity Name: {{activity.activity}}</p>
-				<p>Address: {{activity.address}}</p>
-				<p>Opening Hours: {{activity.openingHours}}</p>
-				<p>Expenses: {{activity.expenses}}</p>
-				<p>Nearest Landmark{{activity.nearestLandmark}}</p>
-				<p>Remarks: {{activity.remarks}}</p>
-				<p >Images: {{activity.imageUrl}}</p>
-				<p>More Info: <a href="http://{{activity.url}}">{{activity.url}}</a></p>
+				<p>Activity Name: {{activity.activity.activity}}</p>
+				<p>Address: {{activity.activity.address}}</p>
+				<p>Opening Hours: {{activity.activity.openingHours}}</p>
+				<p>Expenses: {{activity.activity.expenses}}</p>
+				<p>Nearest Landmark{{activity.activity.nearestLandmark}}</p>
+				<p>Remarks: {{activity.activity.remarks}}</p>
+				<p >Images: {{activity.activity.imageUrl}}</p>
+				<p>More Info: <a href="http://{{activity.url}}">{{activity.activity.url}}</a></p>
 			</ion-scroll>
 
 			<ion-buttons end>

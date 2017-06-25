@@ -15,6 +15,7 @@ import { EditPage } from '../pages/edit/edit';
 import { PopoverPage } from '../pages/popover/popover';
 import { TemplatePage } from '../pages/template/template';
 import { ActivityPage } from '../pages/activity/activity';
+import { AlternativesPage } from '../pages/alternatives/alternatives';
 import { PlansProvider } from '../providers/plans/plans';
 import { ChatProvider } from '../providers/chat/chat';
 import { ActivityProvider } from '../providers/activity/activity';
@@ -26,7 +27,8 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     SignupPage,
     PopoverPage,
-    ActivityPage
+    ActivityPage,
+    AlternativesPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     SignupPage,
     PopoverPage,
-    ActivityPage
+    ActivityPage,
+    AlternativesPage
   ],
   providers: [
     StatusBar,

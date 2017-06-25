@@ -1,0 +1,24 @@
+page-alternatives {
+	.card-page {
+		background: #A4CFF1;
+		
+		.card {
+			width: 50%;
+			float: left;
+			position: relative;
+			height: 60%;
+			
+			
+		}
+
+		
+
+		ion-scroll {
+		    white-space: nowrap;
+		    height: 200px;
+		}
+
+		
+		
+	}
+}

@@ -27455,6 +27455,22 @@ ion-navbar.toolbar {
   }
 }
 
+page-alternatives .card-page {
+  background: #A4CFF1;
+}
+
+page-alternatives .card-page .card {
+  width: 50%;
+  float: left;
+  position: relative;
+  height: 60%;
+}
+
+page-alternatives .card-page ion-scroll {
+  white-space: nowrap;
+  height: 200px;
+}
+
 page-home img {
   position: fixed;
   top: 50%;
