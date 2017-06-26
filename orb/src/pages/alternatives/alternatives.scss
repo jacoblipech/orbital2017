@@ -16,6 +16,12 @@ page-alternatives {
 			color: red;
 		}
 
+		.alternative {
+			text-decoration: underline;
+			font-weight: bold;
+			color: blue;
+		}
+
 		ion-scroll {
 		    white-space: nowrap;
 		    height: 200px;

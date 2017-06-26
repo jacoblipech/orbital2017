@@ -32,8 +32,9 @@
 			</ion-scroll>
 		</ion-card-content>
 	</ion-card>
-	<ion-card class="card" *ngFor="let activity of alternatives.items">
+	<ion-card class="card" *ngFor="let activity of alternatives.items; let i = index;">
 		<ion-card-content>
+			<h2 class="alternative">Alternative {{i+1}}</h2>
 			<ion-scroll scrollY="true" text-wrap>
 				<p>Activity Name: {{activity.activity}}</p>
 				<p>Address: {{activity.address}}</p>

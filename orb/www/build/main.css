@@ -27477,6 +27477,10 @@ modal-wrapper {
   }
 }
 
+page-activity ion-label {
+  font-weight: bold;
+}
+
 page-alternatives .card-page {
   background: #A4CFF1;
 }
@@ -27493,6 +27497,12 @@ page-alternatives .card-page .original {
   text-decoration: underline;
   font-weight: bold;
   color: red;
+}
+
+page-alternatives .card-page .alternative {
+  text-decoration: underline;
+  font-weight: bold;
+  color: blue;
 }
 
 page-alternatives .card-page ion-scroll {
@@ -27685,4 +27695,8 @@ page-template .card-page .cardButton {
 page-template .card-page ion-scroll {
   white-space: nowrap;
   height: 200px;
+}
+
+page-template .card-page ion-label {
+  font-weight: bold;
 }

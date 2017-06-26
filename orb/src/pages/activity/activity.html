@@ -20,35 +20,35 @@
 
 <form class="activityForm" (ngSubmit)="save()">
 	<ion-item href="#">
-		<ion-label>Activity Name</ion-label>
+		<ion-label>Activity Name:</ion-label>
 		<ion-input type="text" [(ngModel)]="activity" name="activity" placeholder="Eg. Universal Studios"></ion-input>
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Address</ion-label>
+		<ion-label>Address:</ion-label>
 		<ion-input type="text" [(ngModel)]="address" name="address" placeholder="Eg. Northdale Street 12..."></ion-input>	
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Opening Hours</ion-label>
+		<ion-label>Opening Hours:</ion-label>
 		<ion-input type="text" [(ngModel)]="openingHours" name="openingHours" placeholder="Eg. 10AM - 11PM"></ion-input>
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Expenses</ion-label>
+		<ion-label>Expenses:</ion-label>
 		<ion-input type="text" [(ngModel)]="expenses" name="expenses" placeholder="Eg. $75/pax"></ion-input>
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Nearest Landmarks</ion-label>
+		<ion-label>Nearest Landmarks:</ion-label>
 		<ion-input type="text" [(ngModel)]="nearestLandmark" name="nearestLandmark" placeholder="Eg. Downtown Subway"></ion-input>	
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Remarks</ion-label>
+		<ion-label>Remarks:</ion-label>
 		<ion-textarea type="text" [(ngModel)]="remarks" name="remarks" placeholder="Enter a description"></ion-textarea>	
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>Image URL</ion-label>
+		<ion-label>Image URL:</ion-label>
 		<ion-input type="url" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Eg. www.google.com/images/978324"></ion-input>	
 	</ion-item>
 	<ion-item href="#">
-		<ion-label>URL for Extra Info</ion-label>
+		<ion-label>URL for Extra Info:</ion-label>
 		<ion-input type="url" [(ngModel)]="url" name="url" placeholder="Eg. www.inspirock.com"></ion-input>	
 	</ion-item>
 	<button ion-button type="submit" block>Done</button>
