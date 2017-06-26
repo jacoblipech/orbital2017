@@ -27554,6 +27554,62 @@ page-home .invalid {
   border: 1px solid #ea6153;
 }
 
+page-invite ion-content {
+  background-color: #32db64;
+}
+
+page-invite scroll-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-invite ion-row {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-invite ion-item {
+  border-radius: 30px !important;
+  padding-left: 10px !important;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+page-invite ion-list {
+  margin: 0;
+}
+
+page-invite .login-logo {
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+page-invite .login-form {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+page-invite .create-account {
+  color: #fff;
+  text-decoration: underline;
+}
+
+page-invite .login-button {
+  border-radius: 30px;
+  font-size: 0.9em;
+  border: 1px solid #fff;
+}
+
 page-login ion-content {
   background-color: #32db64;
 }

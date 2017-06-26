@@ -6,11 +6,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { IonicStorageModule } from '@ionic/storage';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { InvitePage } from '../pages/invite/invite';
 import { EditPage } from '../pages/edit/edit';
 import { PopoverPage } from '../pages/popover/popover';
 import { TemplatePage } from '../pages/template/template';
@@ -21,6 +23,7 @@ import { ChatProvider } from '../providers/chat/chat';
 import { ActivityProvider } from '../providers/activity/activity';
 import { AuthProvider } from '../providers/auth/auth';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +31,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SignupPage,
     PopoverPage,
     ActivityPage,
-    AlternativesPage
+    AlternativesPage,
+    InvitePage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SignupPage,
     PopoverPage,
     ActivityPage,
-    AlternativesPage
+    AlternativesPage,
+    InvitePage
   ],
   providers: [
     StatusBar,
@@ -52,7 +57,8 @@ import { AuthProvider } from '../providers/auth/auth';
     PlansProvider,
     ChatProvider,
     ActivityProvider,
-    AuthProvider
+    AuthProvider,
+    EmailComposer
   ]
 })
 export class AppModule {}

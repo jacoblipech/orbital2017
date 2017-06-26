@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ViewController, PopoverController } from 'ionic-angular';
 import { PlansProvider } from '../../providers/plans/plans';
+import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
+import { InvitePage } from '../invite/invite';
 import { HomePage } from '../home/home';
 import { PopoverPage } from '../popover/popover';
 import { TemplatePage } from '../template/template';
@@ -34,7 +36,8 @@ export class EditPage {
   	public viewCtrl: ViewController, 
   	public planService: PlansProvider,
   	public popoverCtrl: PopoverController, 
-    public authService: AuthProvider
+    public authService: AuthProvider,
+    public storage: Storage
   	) {
   		this.numbers = Array.apply(null, {length: this.navParams.get('days')}).map(Number.call, Number);
   		this.tab1Root = 'template';
@@ -50,18 +53,44 @@ export class EditPage {
   	//this.authService.getUser(this.navParams.get('id'));
   }
 
+  launchInvitePage() {
+    let modal = this.modalCtrl.create(InvitePage);
+    modal.present();
+  }
+
   launchLoginPage() {
 
-  	let modal = this.modalCtrl.create(LoginPage);
-
-  	modal.present();
+    let modal = this.modalCtrl.create(LoginPage);
+    modal.onDidDismiss(data => {
+        
+        if (data) {
+          this.user = data;
+          //this.logged = true;
+          this.storage.set('currUser', data);
+        } else {
+          //this.logged = false;
+        }
+        
+    });
+    modal.present();
   }
 
   launchSignupPage() {
 
-  	let modal = this.modalCtrl.create(SignupPage);
-
-  	modal.present();
+    let modal = this.modalCtrl.create(SignupPage);
+    modal.onDidDismiss(data => {
+        
+        if (data) {
+          this.user = data;
+          //this.logged = true;
+          this.storage.set('currUser', data);
+        } else {
+          //this.logged = false;
+        }
+        
+        console.log(data);
+    });
+    modal.present();
   }
 
   goToHome() {

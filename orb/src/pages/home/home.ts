@@ -9,6 +9,8 @@ import { PlansProvider } from '../../providers/plans/plans';
 import { PopoverPage } from '../popover/popover';
 import { AuthProvider } from '../../providers/auth/auth';
 import { DaysValidator } from  '../../validators/days';
+import { AlertController } from 'ionic-angular';
+
 
 @IonicPage({
   name: 'welcome',
@@ -36,7 +38,8 @@ export class HomePage {
     public navParams: NavParams,
     public storage: Storage,
     public authService: AuthProvider,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private alertCtrl: AlertController
     ) {
     this.destinationForm = formBuilder.group({
         country: ['', Validators.compose([Validators.required])],
@@ -57,6 +60,33 @@ export class HomePage {
     }
   }
 
+  presentLoginAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Logged In!',
+      subTitle: 'Continue your planning!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  presentLogoutAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Logged Out!',
+      subTitle: 'Comeback Soon!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+  presentSignupAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Signed Up!',
+      subTitle: 'Go start planning!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   launchLoginPage() {
 
   	let modal = this.modalCtrl.create(LoginPage);
@@ -69,6 +99,7 @@ export class HomePage {
         } else {
           //this.logged = false;
         }
+        this.presentLoginAlert();
         
     });
   	modal.present();
@@ -86,7 +117,7 @@ export class HomePage {
         } else {
           //this.logged = false;
         }
-        
+        this.presentSignupAlert();
         console.log(data);
     });
   	modal.present();
@@ -155,6 +186,7 @@ export class HomePage {
     this.user = null;
     //this.logged = false;
     console.log(this.user);
+    this.presentLogoutAlert();
   }
 
 }

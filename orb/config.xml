@@ -89,4 +89,5 @@
         <variable name="DEEPLINK_HOST" value="example.com" />
         <variable name="ANDROID_PATH_PREFIX" value="/" />
     </plugin>
+    <plugin name="cordova-plugin-email" spec="^1.2.6" />
 </widget>
