@@ -32,17 +32,13 @@ export class TemplatePage {
     console.log(this.navParams.data);
   }
 
-  delete(chip) {
-    let index = this.comments.indexOf(chip);
- 
-      if(index > -1){
-        this.comments.splice(index, 1);
-      }
+  delete(chip, index) {
+    this.activities[index].deleteComment(chip);
   }
 
-  addComment(formValue) {
+  addComment(formValue, index) {
 
-    this.comments.push(formValue.comment)
+    this.activities[index].addComment(formValue);
     this.comment = ''
   }
 
@@ -53,7 +49,7 @@ export class TemplatePage {
   	modal.onDidDismiss(activity => {
       if(activity){
         //console.log(activity)
-        let currActivity = new AlternativeModel(activity, [], 0);
+        let currActivity = new AlternativeModel(activity, [], 0, []);
         this.activities.push(currActivity);
         //console.log(currActivity);
         //console.log(this.activities);

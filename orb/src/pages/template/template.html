@@ -39,7 +39,7 @@
 				<p >Images: {{activity.activity.imageUrl}}</p>
 				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>
 			</ion-scroll>
-			<form #form="ngForm" (ngSubmit)="addComment(form.value)">
+			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">
 	        <ion-item>
 	        	<ion-label>Add a comment:</ion-label>
 	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>
@@ -48,9 +48,9 @@
 	          </button>
 	        </ion-item>
 	      	</form>
-	      <ion-chip *ngFor="let comment of comments">
-	        <ion-label>{{ comment }}</ion-label>
-	        <button ion-button small (click)="delete(comment)">
+	      <ion-chip *ngFor="let comment of activity.comments">
+	        <ion-label>{{ comment.comment }}</ion-label>
+	        <button ion-button small (click)="delete(comment, i)">
 		    	<ion-icon name="close"></ion-icon>
 		  	</button>
 	      </ion-chip>
