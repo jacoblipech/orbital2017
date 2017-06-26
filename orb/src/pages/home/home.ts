@@ -103,19 +103,38 @@ export class HomePage {
       console.log(data);
       this.user = data;
     });
-    console.log(this.user)
-  	let plan = {
-  		country: this.country,
-  		month: this.month,
-  		days: this.days,
-      id: this.user.result.user._id,
-      user: this.user,
+    console.log(this.user);
+    let plan = {}
+    if (!this.user) {
+      plan = {
+        country: this.country,
+        month: this.month,
+        days: this.days,
+        id: '4321',
+        user: this.user,
 
-      //logged: this.logged
-  	}
+        //logged: this.logged
+      }
+    } else {
+      plan = {
+        country: this.country,
+        month: this.month,
+        days: this.days,
+        id: this.user.result.user._id,
+        user: this.user,
+
+        //logged: this.logged
+      }
+    }
+  	
     if(this.destinationForm.valid){
       let opts = { animate: true, animation: "transition",duration: 1000}
-      this.planService.createPlan(plan, this.user.result.user._id);
+      if (!this.user) {
+        this.planService.createPlan(plan, '4312');
+      } else {
+        this.planService.createPlan(plan, this.user.result.user._id);
+      }
+      
     	this.navCtrl.setRoot('edit', plan, opts);
       this.navCtrl.popToRoot();
     }else{
