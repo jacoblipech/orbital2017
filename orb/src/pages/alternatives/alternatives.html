@@ -15,8 +15,23 @@
 
 </ion-header>
 
-<ion-content class="card-page">
+<ion-content class="card-page" padding>
 
+	<ion-card class="card">
+		<ion-card-content>
+			<h2 class="original">Original</h2>
+			<ion-scroll scrollY="true" text-wrap>
+				<p>Activity Name: {{alternatives.activity.activity}}</p>
+				<p>Address: {{alternatives.activity.address}}</p>
+				<p>Opening Hours: {{alternatives.activity.openingHours}}</p>
+				<p>Expenses: {{alternatives.activity.expenses}}</p>
+				<p>Nearest Landmark{{alternatives.activity.nearestLandmark}}</p>
+				<p>Remarks: {{alternatives.activity.remarks}}</p>
+				<p >Images: {{alternatives.activity.imageUrl}}</p>
+				<p>More Info: <a href="http://{{alternatives.activity.url}}">{{alternatives.activity.url}}</a></p>
+			</ion-scroll>
+		</ion-card-content>
+	</ion-card>
 	<ion-card class="card" *ngFor="let activity of alternatives.items">
 		<ion-card-content>
 			<ion-scroll scrollY="true" text-wrap>
@@ -29,11 +44,6 @@
 				<p >Images: {{activity.imageUrl}}</p>
 				<p>More Info: <a href="http://{{activity.url}}">{{activity.url}}</a></p>
 			</ion-scroll>
-
-			<ion-buttons end>
-				<button class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
-				<ion-icon name="trash"></ion-icon> Delete</button>
-			</ion-buttons>
 		</ion-card-content>
 		
 	</ion-card>

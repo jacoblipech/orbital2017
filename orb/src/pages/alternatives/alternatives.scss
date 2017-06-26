@@ -3,20 +3,26 @@ page-alternatives {
 		background: #A4CFF1;
 		
 		.card {
-			width: 50%;
+			width: 30%;
 			float: left;
 			position: relative;
-			height: 60%;
-			
-			
+			height: 50%;
+			margin-top: 0;
 		}
 
-		
+		.original {
+			text-decoration: underline;
+			font-weight: bold;
+			color: red;
+		}
 
 		ion-scroll {
 		    white-space: nowrap;
 		    height: 200px;
+
 		}
+
+		
 
 		
 		

@@ -21,7 +21,8 @@ import { AlternativeModel } from '../../app/models/alternative-model';
 export class TemplatePage {
 
   activities: any[] = [];
-  another: any[] = [];
+  comment: string = '';
+  comments: any[] = [];
   day: number = this.navParams.data;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public activityService: ActivityProvider) {
  
@@ -31,6 +32,20 @@ export class TemplatePage {
     console.log(this.navParams.data);
   }
 
+  delete(chip) {
+    let index = this.comments.indexOf(chip);
+ 
+      if(index > -1){
+        this.comments.splice(index, 1);
+      }
+  }
+
+  addComment(formValue) {
+
+    this.comments.push(formValue.comment)
+    this.comment = ''
+  }
+
   launchActivityPage() {
 
   	let modal = this.modalCtrl.create(ActivityPage);
@@ -38,7 +53,7 @@ export class TemplatePage {
   	modal.onDidDismiss(activity => {
       if(activity){
         //console.log(activity)
-        let currActivity = new AlternativeModel(activity, []);
+        let currActivity = new AlternativeModel(activity, [], 0);
         this.activities.push(currActivity);
         //console.log(currActivity);
         //console.log(this.activities);
@@ -57,7 +72,7 @@ export class TemplatePage {
       if(activity){
         this.activities[index].addItem(activity);
         console.log(this.activities[index]);
-        this.activityService.createActivity(activity);        
+        this.activityService.createActivity(activity);      
       }
     });
 

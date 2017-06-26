@@ -11,7 +11,7 @@
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
 		<ion-buttons end>
-			<button ion-button round outline small (click)="launchAlternativesPage(i)">1</button>
+			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>
 			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
 			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
 		</ion-buttons>
@@ -37,9 +37,23 @@
 				<p>Nearest Landmark{{activity.activity.nearestLandmark}}</p>
 				<p>Remarks: {{activity.activity.remarks}}</p>
 				<p >Images: {{activity.activity.imageUrl}}</p>
-				<p>More Info: <a href="http://{{activity.url}}">{{activity.activity.url}}</a></p>
+				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>
 			</ion-scroll>
-
+			<form #form="ngForm" (ngSubmit)="addComment(form.value)">
+	        <ion-item>
+	        	<ion-label>Add a comment:</ion-label>
+	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>
+	          <button ion-button item-right type="submit" icon-only>
+	          	<ion-icon name="send" md="md-send"></ion-icon>
+	          </button>
+	        </ion-item>
+	      	</form>
+	      <ion-chip *ngFor="let comment of comments">
+	        <ion-label>{{ comment }}</ion-label>
+	        <button ion-button small (click)="delete(comment)">
+		    	<ion-icon name="close"></ion-icon>
+		  	</button>
+	      </ion-chip>
 			<ion-buttons end>
 				<button class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
 				<ion-icon name="trash"></ion-icon> Delete</button>
