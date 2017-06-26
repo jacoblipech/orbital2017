@@ -96,10 +96,11 @@ export class HomePage {
           this.user = data;
           //this.logged = true;
           this.storage.set('currUser', data);
+          this.presentLoginAlert();
         } else {
           //this.logged = false;
         }
-        this.presentLoginAlert();
+        
         
     });
   	modal.present();
@@ -114,10 +115,11 @@ export class HomePage {
           this.user = data;
           //this.logged = true;
           this.storage.set('currUser', data);
+          this.presentSignupAlert();
         } else {
           //this.logged = false;
         }
-        this.presentSignupAlert();
+        
         console.log(data);
     });
   	modal.present();
