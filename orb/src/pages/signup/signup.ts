@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, LoadingController 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
-
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the SignupPage page.
  *
@@ -25,7 +25,7 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public viewCtrl: ViewController, public authService: AuthProvider, 
-    public loadingCtrl: LoadingController, public formBuilder: FormBuilder) {
+    public loadingCtrl: LoadingController, public formBuilder: FormBuilder,private alertCtrl: AlertController) {
 
     this.signUpForm = formBuilder.group({
         email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.+[a-zA-Z0-9-.]'), Validators.required])],
@@ -39,7 +39,24 @@ export class SignupPage {
     console.log('ionViewDidLoad SignupPage');
   }
 
+  presentFailAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Error! Please try again!',
+      
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
  
+   presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   register(){
  
     this.showLoader();
@@ -63,10 +80,13 @@ export class SignupPage {
       console.log(result);
       this.viewCtrl.dismiss(user);
     }, (err) => {
-
+      this.loading.dismiss();
+      if (err.status == 422)
+      this.presentAlert('This user already exists.');
     });
   }else {
       this.loading.dismiss();
+      this.presentFailAlert();
       // this.viewCtrl.dismiss();
   }
  

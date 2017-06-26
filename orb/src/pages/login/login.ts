@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, LoadingController,
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
-
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the LoginPage page.
  *
@@ -22,7 +22,7 @@ export class LoginPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public authService: AuthProvider, public loadingCtrl: LoadingController, 
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,private alertCtrl: AlertController) {
 }
 
   ionViewDidLoad() {
@@ -38,6 +38,17 @@ export class LoginPage {
             console.log("Not already authorized");
             this.loading.dismiss();
         });
+  }
+
+  
+
+  presentAlert(error) {
+    let alert = this.alertCtrl.create({
+      title: error,
+      
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   login(){
@@ -62,7 +73,9 @@ export class LoginPage {
             this.viewCtrl.dismiss(user);
         }, (err) => {
             this.loading.dismiss(user);
-            console.log(err);
+            if (err.status == 400)
+            this.presentAlert('Please enter a valid email or password');
+            //console.log(err);
         });
  
     }

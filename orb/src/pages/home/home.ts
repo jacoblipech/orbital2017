@@ -69,6 +69,15 @@ export class HomePage {
     alert.present();
   }
 
+  presentFailAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Error! Please try again!',
+      
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   presentLogoutAlert() {
     let alert = this.alertCtrl.create({
       title: 'Logged Out!',
