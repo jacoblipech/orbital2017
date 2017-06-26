@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ViewController, App, PopoverController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
 import { EditPage } from '../edit/edit';
 import { PlansProvider } from '../../providers/plans/plans';
 import { PopoverPage } from '../popover/popover';
-import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth';
+import { DaysValidator } from  '../../validators/days';
 
 @IonicPage({
   name: 'welcome',
@@ -23,6 +25,7 @@ export class HomePage {
   days: number;
   logged: boolean = true;
   user: any;
+  destinationForm: FormGroup;
   constructor(
     private app: App, 
     public navCtrl: NavController, 
@@ -32,8 +35,15 @@ export class HomePage {
     public popoverCtrl: PopoverController,
     public navParams: NavParams,
     public storage: Storage,
-    public authService: AuthProvider
-    ) {}
+    public authService: AuthProvider,
+    public formBuilder: FormBuilder
+    ) {
+    this.destinationForm = formBuilder.group({
+        country: ['', Validators.compose([Validators.required])],
+        month: [''],
+        days: ['', Validators.compose([DaysValidator.isValid, Validators.required])]
+    });
+  }
 
   ngOnInit() {
 
@@ -103,10 +113,14 @@ export class HomePage {
 
       //logged: this.logged
   	}
-    let opts = { animate: true, animation: "transition",duration: 1000}
-    this.planService.createPlan(plan, this.user.result.user._id);
-  	this.navCtrl.setRoot('edit', plan, opts);
-    this.navCtrl.popToRoot();
+    if(this.destinationForm.valid){
+      let opts = { animate: true, animation: "transition",duration: 1000}
+      this.planService.createPlan(plan, this.user.result.user._id);
+    	this.navCtrl.setRoot('edit', plan, opts);
+      this.navCtrl.popToRoot();
+    }else{
+      this.navCtrl.popToRoot();
+    }
   }
 
   presentPopover(myEvent) {

@@ -27511,6 +27511,10 @@ page-home #formHeader {
   color: white;
 }
 
+page-home .invalid {
+  border: 1px solid #ea6153;
+}
+
 page-login ion-content {
   background-color: #32db64;
 }
@@ -27619,10 +27623,6 @@ page-signup .continue-button {
   margin-top: 30px;
   font-size: 0.9em;
   border: 1px solid #fff;
-}
-
-page-signup .invalid {
-  border: 1px solid #ea6153;
 }
 
 page-template .card-page {

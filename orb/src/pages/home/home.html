@@ -32,19 +32,23 @@
 
 <img src="assets/images/background.jpg"/>
 
-<form class="myForm" (ngSubmit)="logForm()">
+<form [formGroup]="destinationForm" class="myForm" (ngSubmit)="logForm()">
   <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.email}} !</span></h1>
 	<ion-item href="#">
 		<ion-label>Country</ion-label>
-		<ion-input [(ngModel)]="country" name="country" required text-right></ion-input>
+		<ion-input [(ngModel)]="country" formControlName="country" name="country" required text-right></ion-input>
 	</ion-item>
+
+  <ion-item *ngIf="!destinationForm.controls.country.valid  && (destinationForm.controls.country.dirty || submitAttempt)">
+     <p>Please enter your destination.</p>
+  </ion-item>
 	<!-- <ion-item href="#">
 		<ion-label>Month</ion-label>
 		<ion-datetime displayFormat="MMMM" [(ngModel)]="month" name="month"></ion-datetime>	
 	</ion-item> -->
   <ion-item>
   <ion-label>Month</ion-label>
-    <ion-select [(ngModel)]="month" name="month">
+    <ion-select [(ngModel)]="month" formControlName="month" name="month">
       <ion-option value="January">January</ion-option>
       <ion-option value="February">February</ion-option>
       <ion-option value="March">March</ion-option>
@@ -61,8 +65,13 @@
   </ion-item>
 	<ion-item href="#">
 		<ion-label>Number Of Days</ion-label>
-		<ion-input type="number" [(ngModel)]="days" name="days" required text-right></ion-input>
+		<ion-input [(ngModel)]="days" type="number" name="days" formControlName="days" required text-right></ion-input>
 	</ion-item>
+
+  <ion-item *ngIf="!destinationForm.controls.days.valid  && (destinationForm.controls.days.dirty || submitAttempt)">
+     <p>Please enter minimum 1 day and maximum 15.</p>
+  </ion-item>
+
 	<button ion-button type="submit" block>Go!</button>
 </form>
 <ion-slides autoplay="4000" pager loop>
