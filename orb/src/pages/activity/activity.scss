@@ -1,5 +1,23 @@
+$primary-color: #488aff;
+
 page-activity {
+	// ion-label {
+	// 	font-weight: bold;
+	// 	color: $primary-color;
+	// }
+
+	ion-input[name="activity"]{
+		color: $primary-color;
+	}
+
+	activity{
+		color: $primary-color;
+	}
+}
+
+.activityForm{
 	ion-label {
 		font-weight: bold;
+		font-color: $primary-color;
 	}
 }

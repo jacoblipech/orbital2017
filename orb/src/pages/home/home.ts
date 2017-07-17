@@ -28,6 +28,7 @@ export class HomePage {
   logged: boolean = true;
   user: any;
   destinationForm: FormGroup;
+
   constructor(
     private app: App, 
     public navCtrl: NavController, 
@@ -41,6 +42,7 @@ export class HomePage {
     public formBuilder: FormBuilder,
     private alertCtrl: AlertController
     ) {
+
     this.destinationForm = formBuilder.group({
         country: ['', Validators.compose([Validators.required])],
         month: [''],
@@ -52,7 +54,7 @@ export class HomePage {
 
     if (this.navParams.data != false) {
       this.storage.get('currUser').then(data => {
-        console.log(data);
+        // console.log(data);
         this.user = data;
       });
     } else {
@@ -97,7 +99,6 @@ export class HomePage {
   }
 
   launchLoginPage() {
-
   	let modal = this.modalCtrl.create(LoginPage);
     modal.onDidDismiss(data => {
         
@@ -109,14 +110,11 @@ export class HomePage {
         } else {
           //this.logged = false;
         }
-        
-        
     });
   	modal.present();
   }
 
   launchSignupPage() {
-
   	let modal = this.modalCtrl.create(SignupPage);
     modal.onDidDismiss(data => {
         
@@ -128,25 +126,27 @@ export class HomePage {
         } else {
           //this.logged = false;
         }
-        
-        console.log(data);
+        // console.log(data);
     });
   	modal.present();
   }
 
+  //navigate to home page
   goToHome() {
     let opts = { animate: true, animation: "transition",duration: 1000}
     this.navCtrl.setRoot('welcome');
     this.navCtrl.popToRoot();
   }
 
+  //the function to populate the data from home to edit page
   logForm() {
     this.storage.get('currUser').then(data => {
-      console.log(data);
+      // console.log(data);
       this.user = data;
     });
-    console.log(this.user);
+    // console.log(this.user);
     let plan = {}
+    // if user is not logged in, random id to retrieve data
     if (!this.user) {
       plan = {
         country: this.country,
@@ -170,13 +170,15 @@ export class HomePage {
     }
   	
     if(this.destinationForm.valid){
-      let opts = { animate: true, animation: "transition",duration: 1000}
+      let opts = { animate: true, animation: "transition", duration: 1000}
       if (!this.user) {
-        this.planService.createPlan(plan, '4312');
+        this.planService.createPlan(plan, '4321');
       } else {
         this.planService.createPlan(plan, this.user.result.user._id);
       }
       
+      //set edit page as the root page! Is this necessary?
+      //passing the plan data into the next params
     	this.navCtrl.setRoot('edit', plan, opts);
       this.navCtrl.popToRoot();
     }else{
@@ -184,6 +186,7 @@ export class HomePage {
     }
   }
 
+  //for the plans page which is not configured yet
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverPage);
     popover.present({

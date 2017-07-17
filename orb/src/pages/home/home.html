@@ -33,7 +33,7 @@
 <img src="assets/images/background.jpg"/>
 
 <form [formGroup]="destinationForm" class="myForm" (ngSubmit)="logForm()">
-  <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.email}} !</span></h1>
+  <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.email}}!</span></h1>
 	<ion-item href="#">
 		<ion-label>Country</ion-label>
 		<ion-input [(ngModel)]="country" formControlName="country" name="country" required text-right></ion-input>
@@ -74,6 +74,7 @@
 
 	<button ion-button type="submit" block>Go!</button>
 </form>
+
 <ion-slides autoplay="4000" pager loop>
         <ion-slide>
             <h4>Welcome!</h4>
@@ -88,5 +89,4 @@
             <p>Let us take care of you for the weekend</p>
         </ion-slide>
     </ion-slides>
-
 </ion-content>

@@ -27477,8 +27477,17 @@ modal-wrapper {
   }
 }
 
-page-activity ion-label {
+page-activity ion-input[name="activity"] {
+  color: #488aff;
+}
+
+page-activity activity {
+  color: #488aff;
+}
+
+.activityForm ion-label {
   font-weight: bold;
+  font-color: #488aff;
 }
 
 page-alternatives .card-page {
@@ -27547,7 +27556,7 @@ page-home .myForm {
 }
 
 page-home #formHeader {
-  color: white;
+  color: primary;
 }
 
 page-home .invalid {

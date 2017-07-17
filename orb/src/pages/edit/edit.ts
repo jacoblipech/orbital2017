@@ -20,16 +20,20 @@ import { AuthProvider } from '../../providers/auth/auth';
   name: 'edit',
   segment: 'edit/:id'
 })
+
 @Component({
   selector: 'page-edit',
   templateUrl: 'edit.html',
 })
+
 export class EditPage { 
 
+  //getting data about plan from home!
   plan: any = this.navParams.data;
   user: object = this.navParams.get('user');
   numbers: number[];
   tab1Root: any;
+
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	public modalCtrl: ModalController, 
@@ -39,14 +43,27 @@ export class EditPage {
     public authService: AuthProvider,
     public storage: Storage
   	) {
-  		this.numbers = Array.apply(null, {length: this.navParams.get('days')}).map(Number.call, Number);
+      this.storage.set('data', this.navParams.data);
+      this.storage.get('data').then((data)=>{
+        console.log(data);
+      });
+
+  		this.numbers = Array.apply(null, {
+        length: this.plan.days
+      }).map(Number.call, Number);
+
   		this.tab1Root = 'template';
 	  }
 
   ionViewWillLoad() {
-    //console.log(this.plan);
-    //console.log(this.user);
-    console.log(this.authService.getUser(this.navParams.get('id')));
+    //allows this.plan to retrieve data from storage upon being loaded
+    this.storage.get('data').then((data)=>{
+        this.plan = data;
+    });
+
+    // console.log(this.plan); plan is correctly passed from home.ts
+    // console.log(this.user);
+    // console.log(this.authService.getUser(this.navParams.get('id')));
   }
 
   ngOnInit() {
@@ -59,7 +76,6 @@ export class EditPage {
   }
 
   launchLoginPage() {
-
     let modal = this.modalCtrl.create(LoginPage);
     modal.onDidDismiss(data => {
         
@@ -70,13 +86,11 @@ export class EditPage {
         } else {
           //this.logged = false;
         }
-        
     });
     modal.present();
   }
 
   launchSignupPage() {
-
     let modal = this.modalCtrl.create(SignupPage);
     modal.onDidDismiss(data => {
         
@@ -87,8 +101,7 @@ export class EditPage {
         } else {
           //this.logged = false;
         }
-        
-        console.log(data);
+        // console.log(data);
     });
     modal.present();
   }
@@ -107,12 +120,12 @@ export class EditPage {
   }
 
   logout() {
-    console.log(this.user);
+    // console.log(this.user);
     this.authService.logout();
     this.user = null;
     this.navCtrl.setRoot('welcome', false);
     this.navCtrl.popToRoot();
-    console.log(this.user);
+    // console.log(this.user);
   }
 
 }
