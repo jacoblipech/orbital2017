@@ -27551,12 +27551,30 @@ page-home ion-slides .swiper-pagination-bullet {
 }
 
 page-home .myForm {
-  margin: 70px;
-  width: 500px;
+  position: relative;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 700px;
 }
 
-page-home #formHeader {
-  color: primary;
+page-home .myForm #formHeader {
+  font-family: "Times New Roman", Times, serif;
+  padding-bottom: 50px;
+  font-size: 45px;
+  text-align: center;
+  color: white;
+}
+
+page-home .myForm #submit {
+  font-family: "Times New Roman", Times, serif;
+  padding: 20px;
+  font-size: 25px;
+}
+
+page-home .myForm #space {
+  padding: 8px;
 }
 
 page-home .invalid {

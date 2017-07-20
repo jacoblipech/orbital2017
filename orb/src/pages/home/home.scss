@@ -31,12 +31,30 @@ page-home {
     }
 
     .myForm {
-    	margin: 70px;
-    	width: 500px;
-    }
+        //not responsive at the moment....
+        position: relative;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    	width: 700px;
 
-    #formHeader {
-        color: primary;
+        #formHeader{
+            font-family: "Times New Roman", Times, serif;
+            padding-bottom: 50px;
+            font-size: 45px;
+            text-align: center;
+            color: white;
+        }
+
+        #submit{
+            font-family: "Times New Roman", Times, serif;
+            padding: 20px;
+            font-size: 25px;
+        }
+        #space{
+            padding: 8px;
+        }
+
     }
     
     .invalid {

@@ -27,6 +27,7 @@ export class HomePage {
   days: number;
   logged: boolean = true;
   user: any;
+  username: any;
   destinationForm: FormGroup;
 
   constructor(
@@ -56,6 +57,11 @@ export class HomePage {
       this.storage.get('currUser').then(data => {
         // console.log(data);
         this.user = data;
+        
+        var name = this.user + '';
+        this.username = name.split("@")[0];
+        console.log(this.username);
+        
       });
     } else {
       this.storage.set('currUser', null);
@@ -104,6 +110,8 @@ export class HomePage {
         
         if (data) {
           this.user = data;
+          var name = this.user + '';
+          this.username = name.split("@")[0];
           //this.logged = true;
           this.storage.set('currUser', data);
           this.presentLoginAlert();
@@ -120,6 +128,8 @@ export class HomePage {
         
         if (data) {
           this.user = data;
+          var name = this.user + '';
+          this.username = name.split("@")[0];
           //this.logged = true;
           this.storage.set('currUser', data);
           this.presentSignupAlert();
