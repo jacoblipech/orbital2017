@@ -17,7 +17,7 @@ export class PlansProvider {
     this.data = null;
   }
  
-  getPlan(){
+  getPlan(id){
  
     if (this.data) {
       return Promise.resolve(this.data);
@@ -25,7 +25,7 @@ export class PlansProvider {
  
     return new Promise(resolve => {
  
-      this.http.get('http://localhost:3000/plan')
+      this.http.get('http://localhost:3000/plan/' + id)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

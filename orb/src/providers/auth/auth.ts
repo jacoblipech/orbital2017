@@ -25,7 +25,8 @@ export class AuthProvider {
       this.http.get('http://localhost:3000/edit/' + id)
         .subscribe(data => {
           this.data = data;
-          resolve(this.data);
+          //console.log(data.json(), "hello");
+          resolve(this.data.json());
         });
     });
   }
