@@ -28,24 +28,24 @@
 </ion-header>
 <ion-content>
 
-<img src="assets/images/background.jpg"/>
+<img src="assets/images/background3.jpg"/>
 
 <form [formGroup]="destinationForm" class="myForm" (ngSubmit)="logForm()">
-  <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{user.username}}!</span></h1>
+  <h1 id="formHeader">Pick Your Destination <span *ngIf="user && user.isLoggedIn">{{username}}!</span></h1>
 	<ion-item href="#">
-		<ion-label>Country</ion-label>
+		<ion-label class="title">Country</ion-label>
 		<ion-input [(ngModel)]="country" formControlName="country" name="country" required text-right></ion-input>
 	</ion-item>
 
   <ion-item *ngIf="!destinationForm.controls.country.valid  && (destinationForm.controls.country.dirty || submitAttempt)">
-     <p>Please enter your destination.</p>
+     <p class="invalid">Please enter your destination.</p>
   </ion-item>
 	<!-- <ion-item href="#">
 		<ion-label>Month</ion-label>
 		<ion-datetime displayFormat="MMMM" [(ngModel)]="month" name="month"></ion-datetime>	
 	</ion-item> -->
   <ion-item>
-  <ion-label>Month</ion-label>
+  <ion-label class="title">Month</ion-label>
     <ion-select [(ngModel)]="month" formControlName="month" name="month">
       <ion-option value="January">January</ion-option>
       <ion-option value="February">February</ion-option>
@@ -62,27 +62,27 @@
     </ion-select>
   </ion-item>
 	<ion-item href="#">
-		<ion-label>Number Of Days</ion-label>
+		<ion-label class="title">Number Of Days</ion-label>
 		<ion-input [(ngModel)]="days" type="number" name="days" formControlName="days" required text-right></ion-input>
 	</ion-item>
 
   <ion-item *ngIf="!destinationForm.controls.days.valid  && (destinationForm.controls.days.dirty || submitAttempt)">
-     <p>Please enter minimum 1 day and maximum 15.</p>
+     <p class="invalid">Please enter minimum 1 day and maximum 15.</p>
   </ion-item>
   <ul id="space"></ul>
 	<button id="submit" ion-button type="submit" block>Go!</button>
 </form>
 
-<ion-slides autoplay="4000" pager loop>
-        <ion-slide>
+<ion-slides class="screentext" autoplay="4000" pager loop>
+        <ion-slide class="screentext">
             <h4>Welcome!</h4>
             <p>Let us take care of you for the weekend</p>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="screentext">
             <h4>Escape For A Holiday!</h4>
             <p>Let us take care of you for the weekend</p>
         </ion-slide>
-        <ion-slide>
+        <ion-slide class="screentext">
             <h4>Make A Plan Easily!</h4>
             <p>Let us take care of you for the weekend</p>
         </ion-slide>

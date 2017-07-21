@@ -33,17 +33,25 @@ page-home {
     .myForm {
         //not responsive at the moment....
         position: relative;
-        top: 25%;
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
     	width: 700px;
 
+        .title{
+            padding-left: 15px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
         #formHeader{
             font-family: "Times New Roman", Times, serif;
             padding-bottom: 50px;
-            font-size: 45px;
+            font-size: 50px;
             text-align: center;
             color: white;
+            text-transform: capitalize;
+
         }
 
         #submit{
@@ -55,10 +63,25 @@ page-home {
             padding: 8px;
         }
 
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #7E7AA0;
+        }
+
     }
     
     .invalid {
-        border: 1px solid #ea6153;
+        // border: 1px solid #ea6153;
+        color: #ea6153;
+        padding-left: 15px;
+    }
+
+    .screentext {
+
+        padding-bottom: 60px;
+        // background: #646464;
+        // color: #1FC8EB;
+        color: white;
+        font-size: 130%;
     }
 
 }

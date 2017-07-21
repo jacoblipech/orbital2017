@@ -27552,19 +27552,26 @@ page-home ion-slides .swiper-pagination-bullet {
 
 page-home .myForm {
   position: relative;
-  top: 25%;
+  top: 30%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 700px;
 }
 
+page-home .myForm .title {
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 page-home .myForm #formHeader {
   font-family: "Times New Roman", Times, serif;
   padding-bottom: 50px;
-  font-size: 45px;
+  font-size: 50px;
   text-align: center;
   color: white;
+  text-transform: capitalize;
 }
 
 page-home .myForm #submit {
@@ -27577,8 +27584,20 @@ page-home .myForm #space {
   padding: 8px;
 }
 
+page-home .myForm ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #7E7AA0;
+}
+
 page-home .invalid {
-  border: 1px solid #ea6153;
+  color: #ea6153;
+  padding-left: 15px;
+}
+
+page-home .screentext {
+  padding-bottom: 60px;
+  color: white;
+  font-size: 130%;
 }
 
 page-invite ion-content {
