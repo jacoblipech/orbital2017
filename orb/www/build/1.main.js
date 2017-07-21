@@ -81,6 +81,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var EditPage = (function () {
     function EditPage(navCtrl, navParams, modalCtrl, viewCtrl, planService, popoverCtrl, authService, storage) {
+        // this.storage.set('data', this.navParams.data);
+        // this.storage.get('data').then((data)=>{
+        //   console.log(data);
+        // });
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.modalCtrl = modalCtrl;
@@ -92,10 +96,6 @@ var EditPage = (function () {
         //getting data about plan from home!
         this.plan = this.navParams.data;
         this.user = this.navParams.get('user');
-        this.storage.set('data', this.navParams.data);
-        this.storage.get('data').then(function (data) {
-            console.log(data);
-        });
         this.numbers = Array.apply(null, {
             length: this.plan.days
         }).map(Number.call, Number);
@@ -109,9 +109,16 @@ var EditPage = (function () {
         });
         // console.log(this.plan); plan is correctly passed from home.ts
         // console.log(this.user);
-        // console.log(this.authService.getUser(this.navParams.get('id')));
+        //console.log(this.plansID);
     };
     EditPage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.getUser(this.navParams.get('id')).subscribe(function (data) {
+            console.log(data.plans[data.plans.length - 1]);
+            _this.plansID = data.plans[data.plans.length - 1];
+            console.log(_this.plansID);
+            _this.planService.getPlan(_this.plansID).subscribe(function (data) { return console.log(data, "hello"); });
+        });
         //this.authService.getUser(this.navParams.get('id'));
     };
     EditPage.prototype.launchInvitePage = function () {

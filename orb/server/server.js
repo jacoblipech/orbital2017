@@ -83,23 +83,29 @@ server.post('/edit/:id', function(req, res) {
                 if(err){
                     res.send(err);
                 }else{
+                    
                     foundUser.plans.push(newPlan);
-                    foundUser.save(function(err, newPlan){
+                    foundUser.save(function(err, newUser){
                         if(err){
                             res.send(err);
                         }
-                        console.log(newPlan);
+                        newPlan.users.push(newUser);
+                        newPlan.save(function(err, newPlan) {
+                            
+                        });
+                        console.log("this is the newPlan" + newPlan + "this is the newPlan");
+                        res.json(newPlan);
                     })
                 }
             } 
         );     
-            Plan.findById(newPlan._id).populate("plans").exec(function(err, plan) {    
-                if (err){
-                    res.send(err);
-                }
-                console.log(plan);
-                res.json(plan);
-            });
+            // Plan.findById(newPlan._id).populate("plans").exec(function(err, plan) {    
+            //     if (err){
+            //         res.send(err);
+            //     }
+            //     console.log(" i am doing something " + plan + " i am doing something ");
+            //     res.json(plan);
+            // });
         }
     });
 });
@@ -141,6 +147,16 @@ server.delete('/activity/:activity_id', function(req, res) {
         });
     });
 
+
+server.get("/plan/:id", function(req, res){
+Plan.findById(req.params.id, function(err, foundPlan){
+        if(err){
+            console.log("error " + err);
+        }else{
+            res.json(foundPlan);
+        }     
+    })
+});
 
 // Campground.findById(req.params.id, function(err, foundCampground){
         //     if(err){

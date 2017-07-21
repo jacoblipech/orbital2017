@@ -19,19 +19,14 @@ export class PlansProvider {
  
   getPlan(id){
  
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
+    
  
-    return new Promise(resolve => {
+    
  
-      this.http.get('http://localhost:3000/plan/' + id)
+      return this.http.get('http://localhost:3000/plan/' + id)
         .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        });
-    });
+        
+   
  
   }
  

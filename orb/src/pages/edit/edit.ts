@@ -33,6 +33,7 @@ export class EditPage {
   user: object = this.navParams.get('user');
   numbers: number[];
   tab1Root: any;
+  plansID: string;
 
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
@@ -43,10 +44,10 @@ export class EditPage {
     public authService: AuthProvider,
     public storage: Storage
   	) {
-      this.storage.set('data', this.navParams.data);
-      this.storage.get('data').then((data)=>{
-        console.log(data);
-      });
+      // this.storage.set('data', this.navParams.data);
+      // this.storage.get('data').then((data)=>{
+      //   console.log(data);
+      // });
 
   		this.numbers = Array.apply(null, {
         length: this.plan.days
@@ -63,10 +64,18 @@ export class EditPage {
 
     // console.log(this.plan); plan is correctly passed from home.ts
     // console.log(this.user);
-    this.authService.getUser(this.navParams.get('id')).subscribe(data => console.log(data));
+    
+    //console.log(this.plansID);
+    
   }
 
   ngOnInit() {
+    this.authService.getUser(this.navParams.get('id')).subscribe(data => {
+      console.log(data.plans[data.plans.length-1]);
+      this.plansID = data.plans[data.plans.length-1];
+      console.log(this.plansID);
+      this.planService.getPlan(this.plansID).subscribe(data => console.log(data, "hello"));
+    });
   	//this.authService.getUser(this.navParams.get('id'));
   }
 
