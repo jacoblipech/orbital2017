@@ -29,9 +29,10 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class EditPage { 
 
   //getting data about plan from home!
+
   plan: any = this.navParams.data;
-  user: object = this.navParams.get('user');
-  numbers: number[];
+  user: object;
+  numbers: number[] = [0,1];
   tab1Root: any;
   plansID: string;
 
@@ -48,20 +49,37 @@ export class EditPage {
       // this.storage.get('data').then((data)=>{
       //   console.log(data);
       // });
+      console.log(this.plan.days, this.plan.month, this.plan.country);
+  		// this.numbers = Array.apply(null, {
+    //     length: this.plan.days
+    //   }).map(Number.call, Number);
 
-  		this.numbers = Array.apply(null, {
-        length: this.plan.days
-      }).map(Number.call, Number);
-
+      this.storage.get('currUser').then(data => {
+        // console.log(data);
+        this.user = data; 
+      });
   		this.tab1Root = 'template';
 	  }
 
   ionViewWillLoad() {
     //allows this.plan to retrieve data from storage upon being loaded
-    this.storage.get('data').then((data)=>{
-        this.plan = data;
-    });
+    // this.storage.get('data').then((data)=>{
+    //     this.plan = data;
+    // });
+      this.authService.getUser(this.navParams.get('id')).subscribe(data => {
+        console.log(data.plans[data.plans.length-1]);
+        this.plansID = data.plans[data.plans.length-1];
+        console.log(this.plansID);
+        this.planService.getPlan(this.plansID).subscribe(data => {
+          
+          this.plan = data
+          console.log(this.plan);
+          console.log(this.plan.days, this.plan.month, this.plan.country);
+          
 
+        });
+      });
+     
     // console.log(this.plan); plan is correctly passed from home.ts
     // console.log(this.user);
     
@@ -69,13 +87,19 @@ export class EditPage {
     
   }
 
+  create() {
+    var num = [];
+    // this.storage.get('days').then(data => {
+    //     // console.log(data);
+        
+    //   });
+    // console.log(this.plan.days, num);
+    
+          return num;
+  }
+
   ngOnInit() {
-    this.authService.getUser(this.navParams.get('id')).subscribe(data => {
-      console.log(data.plans[data.plans.length-1]);
-      this.plansID = data.plans[data.plans.length-1];
-      console.log(this.plansID);
-      this.planService.getPlan(this.plansID).subscribe(data => console.log(data, "hello"));
-    });
+    
   	//this.authService.getUser(this.navParams.get('id'));
   }
 

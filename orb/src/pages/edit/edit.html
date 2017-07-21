@@ -10,7 +10,7 @@
       <button ion-button icon-only (click)="goToHome()">
         <ion-icon name="home"></ion-icon>
       </button>
-      <h2 style="display:inline; ">You are travelling to {{plan.country}} during {{plan.month}}</h2>
+      <h2 style="display:inline; ">You are travelling to {{plan.country}} during {{plan.month}} for {{plan.days}} days</h2>
     </ion-title>
 
     <ion-buttons end>
@@ -43,6 +43,7 @@
 <ion-content padding>
 
 	<ion-tabs>
+  <!-- {{plan.days}} -->
 		<ion-tab *ngFor="let number of numbers" [root]="tab1Root" tabTitle="Day {{number + 1}}" [rootParams]="number"></ion-tab>
 	</ion-tabs>
 

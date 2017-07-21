@@ -6,9 +6,7 @@ var User = require('./user');
 var PlanSchema = new mongoose.Schema({
     country: String,
     month: String,
-    days: {
-        type: Number, min: 1, max: 15
-    },
+    days: [Number],
     users: [{
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "User"

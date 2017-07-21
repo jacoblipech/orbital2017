@@ -148,6 +148,10 @@ export class HomePage {
 
   //the function to populate the data from home to edit page
   logForm() {
+    let num = [];
+    for (var i=0; i < this.days; i++) {
+            num[i] = i;
+    }
     this.storage.get('currUser').then(data => {
       // console.log(data);
       this.user = data;
@@ -169,7 +173,7 @@ export class HomePage {
       plan = {
         country: this.country,
         month: this.month,
-        days: this.days,
+        days: num,
         id: this.user.result.user._id,
         user: this.user,
 
