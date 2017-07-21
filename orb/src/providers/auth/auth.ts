@@ -20,15 +20,11 @@ export class AuthProvider {
 
   getUser(id){
  
-    return new Promise(resolve => {
+    
  
-      this.http.get('http://localhost:3000/edit/' + id)
-        .subscribe(data => {
-          this.data = data;
-          //console.log(data.json(), "hello");
-          resolve(this.data.json());
-        });
-    });
+      return this.http.get('http://localhost:3000/edit/' + id).map(res => res.json());
+        
+    
   }
 
   checkAuthentication(){

@@ -63,7 +63,7 @@ export class EditPage {
 
     // console.log(this.plan); plan is correctly passed from home.ts
     // console.log(this.user);
-    // console.log(this.authService.getUser(this.navParams.get('id')));
+    this.authService.getUser(this.navParams.get('id')).subscribe(data => console.log(data));
   }
 
   ngOnInit() {
