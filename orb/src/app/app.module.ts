@@ -16,6 +16,7 @@ import { InvitePage } from '../pages/invite/invite';
 import { EditPage } from '../pages/edit/edit';
 import { PopoverPage } from '../pages/popover/popover';
 import { TemplatePage } from '../pages/template/template';
+import { TempPage } from '../pages/temp/temp';
 import { ActivityPage } from '../pages/activity/activity';
 import { AlternativesPage } from '../pages/alternatives/alternatives';
 import { PlansProvider } from '../providers/plans/plans';

@@ -27766,6 +27766,43 @@ page-signup .continue-button {
   border: 1px solid #fff;
 }
 
+page-temp .card-page {
+  background: #A4CFF1;
+}
+
+page-temp .card-page .card {
+  width: 50%;
+  position: relative;
+  height: 80%;
+  left: 50%;
+  margin-left: -25%;
+}
+
+page-temp .card-page .plus {
+  font-size: 100px;
+  margin-top: 100px;
+  position: relative;
+  top: 50%;
+  left: 45%;
+  height: 40%;
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+page-temp .card-page .cardButton {
+  height: 20px;
+}
+
+page-temp .card-page ion-scroll {
+  white-space: nowrap;
+  height: 200px;
+}
+
+page-temp .card-page ion-label {
+  font-weight: bold;
+}
+
 page-template .card-page {
   background: #A4CFF1;
 }

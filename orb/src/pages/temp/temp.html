@@ -1,0 +1,128 @@
+<!--
+  Generated template for the TemplatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      <button ion-button icon-only (click)="goToHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+      <h2 style="display:inline; ">You are travelling to {{plan.country}} during {{plan.month}} for {{plan.days}} days</h2>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button *ngIf="user && user.isLoggedIn" (click)="launchInvitePage()">
+        <ion-icon name="person-add"></ion-icon>Invite
+      </button>
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">
+        <ion-icon name="person-add"></ion-icon>Invite
+      </button>
+      <button ion-button *ngIf="user && user.isLoggedIn" (click)="logout()">
+        Logout
+      </button>
+      <button ion-button *ngIf="user && user.isLoggedIn">
+        {{user.email}}
+      </button>
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">
+        Login
+      </button>
+      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchSignupPage()">
+        SignUp
+      </button>
+      <button ion-button (click)="presentPopover($event)">
+      	Plans
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-page">
+
+	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
+		<ion-card-content>
+		<ion-buttons end>
+			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>
+			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
+			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
+		</ion-buttons>
+			<ion-grid>
+				<ion-row align-items-center>
+					  <ion-col col-2>
+						<ion-datetime displayFormat="hh:mm A" placeholder="Start Time"></ion-datetime>
+						</ion-col>
+					  <ion-col col-1>
+					  	 <p>-</p>
+					  </ion-col>
+					  <ion-col col-2>
+					  	<ion-datetime displayFormat="hh:mm A" placeholder="End Time"></ion-datetime>
+					  </ion-col>
+				  </ion-row>
+			</ion-grid>
+
+			<ion-scroll scrollY="true" text-wrap>
+				<p>Activity Name: {{activity.activity.activity}}</p>
+				<p>Address: {{activity.activity.address}}</p>
+				<p>Opening Hours: {{activity.activity.openingHours}}</p>
+				<p>Expenses: {{activity.activity.expenses}}</p>
+				<p>Nearest Landmark{{activity.activity.nearestLandmark}}</p>
+				<p>Remarks: {{activity.activity.remarks}}</p>
+				<p >Images: {{activity.activity.imageUrl}}</p>
+				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>
+			</ion-scroll>
+			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">
+	        <ion-item>
+	        	<ion-label>Add a comment:</ion-label>
+	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>
+	          <button ion-button item-right type="submit" icon-only>
+	          	<ion-icon name="send" md="md-send"></ion-icon>
+	          </button>
+	        </ion-item>
+	      	</form>
+	      <ion-chip *ngFor="let comment of activity.comments">
+	        <ion-label>{{ comment.comment }}</ion-label>
+	        <button ion-button small (click)="delete(comment, i)">
+		    	<ion-icon name="close"></ion-icon>
+		  	</button>
+	      </ion-chip>
+			<ion-buttons end>
+				<button class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
+				<ion-icon name="trash"></ion-icon> Delete</button>
+			</ion-buttons>
+		</ion-card-content>
+		
+	</ion-card>
+
+	<ion-card class="card">
+		<ion-card-content>
+			<ion-grid>
+				<ion-row align-items-center>
+					  <ion-col col-2>
+						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>
+						</ion-col>
+					  <ion-col col-1>
+					  	 <p>-</p>
+					  </ion-col>
+					  <ion-col col-2>
+					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>
+					  </ion-col>
+				  </ion-row>
+			</ion-grid>
+			<ion-icon class="plus" name="add-circle" md="md-add-circle" (click)="launchActivityPage()"></ion-icon>
+		</ion-card-content>
+	</ion-card>
+	<ion-tabs>
+  <!-- {{plan.days}} -->
+		<ion-tab  tabTitle="Day 1" [rootParams]="1"></ion-tab>
+    <ion-buttons>
+      <button ion-button (click)="next()">
+        Next
+      </button>
+      <button ion-button (click)="back()">
+        Back
+      </button>
+    </ion-buttons>
+	</ion-tabs>
+</ion-content>

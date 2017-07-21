@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 279:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alternatives__ = __webpack_require__(205);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlternativesPageModule", function() { return AlternativesPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(13);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,26 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AlternativesPageModule = (function () {
-    function AlternativesPageModule() {
+var HomePageModule = (function () {
+    function HomePageModule() {
     }
-    return AlternativesPageModule;
+    return HomePageModule;
 }());
-AlternativesPageModule = __decorate([
+HomePageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__alternatives__["a" /* AlternativesPage */],
-        ],
+        declarations: [__WEBPACK_IMPORTED_MODULE_1__home__["a" /* HomePage */]],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__alternatives__["a" /* AlternativesPage */]),
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__home__["a" /* HomePage */])
         ],
-        exports: [
-            __WEBPACK_IMPORTED_MODULE_2__alternatives__["a" /* AlternativesPage */]
+        entryComponents: [
+            __WEBPACK_IMPORTED_MODULE_1__home__["a" /* HomePage */]
         ]
     })
-], AlternativesPageModule);
+], HomePageModule);
 
-//# sourceMappingURL=alternatives.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ })
 

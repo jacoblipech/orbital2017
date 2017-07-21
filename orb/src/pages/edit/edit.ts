@@ -9,6 +9,7 @@ import { HomePage } from '../home/home';
 import { PopoverPage } from '../popover/popover';
 import { TemplatePage } from '../template/template';
 import { AuthProvider } from '../../providers/auth/auth';
+import { TempPage } from '../temp/temp';
 
 /**
  * Generated class for the EditPage page.
@@ -35,7 +36,7 @@ export class EditPage {
   numbers: number[] = [0,1];
   tab1Root: any;
   plansID: string;
-
+  counter: number = -3;
   constructor(public navCtrl: NavController, 
   	public navParams: NavParams, 
   	public modalCtrl: ModalController, 
@@ -49,7 +50,7 @@ export class EditPage {
       // this.storage.get('data').then((data)=>{
       //   console.log(data);
       // });
-      console.log(this.plan.days, this.plan.month, this.plan.country);
+      
   		// this.numbers = Array.apply(null, {
     //     length: this.plan.days
     //   }).map(Number.call, Number);
@@ -58,6 +59,7 @@ export class EditPage {
         // console.log(data);
         this.user = data; 
       });
+      console.log(this.plan.days, this.plan.month, this.plan.country, this.navParams.data, this.user);
   		this.tab1Root = 'template';
 	  }
 
@@ -87,15 +89,11 @@ export class EditPage {
     
   }
 
-  create() {
-    var num = [];
-    // this.storage.get('days').then(data => {
-    //     // console.log(data);
-        
-    //   });
-    // console.log(this.plan.days, num);
-    
-          return num;
+  next() {
+   this.counter++;
+   if (this.counter <= this.plan.days.length) {
+     this.navCtrl.push('temp', this.plan);
+   }
   }
 
   ngOnInit() {
