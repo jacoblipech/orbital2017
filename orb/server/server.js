@@ -91,7 +91,7 @@ server.post('/edit/:id', function(req, res) {
                         }
                         newPlan.users.push(newUser);
                         newPlan.save(function(err, newPlan) {
-                            
+
                         });
                         console.log("this is the newPlan" + newPlan + "this is the newPlan");
                         res.json(newPlan);
@@ -110,8 +110,19 @@ server.post('/edit/:id', function(req, res) {
     });
 });
 
+server.get("/activity/:id", function(req, res){
+Activity.findById(req.params.id, function(err, foundActivity){
+        if(err){
+            console.log("error " + err);
+        }else{
+            console.log(foundActivity);
+            res.json(foundActivity);
+        }     
+    })
+});
+
 // Create activity route
-server.post('/activity', function(req,res) {
+server.post('/activity/:plan_id', function(req,res) {
     console.log("creating activity");
     var newActivity = {
         activity: req.body.activity,
@@ -128,12 +139,25 @@ server.post('/activity', function(req,res) {
         if (err) {
             res.send(err);
         } else {
-            Activity.findById(newActivity._id, function(err,activity) {
-                if (err){
-                        res.send(err);
+            Plan.findById(req.params.plan_id, function(err, foundPlan) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    foundPlan.activities.push(newActivity);
+                    foundPlan.save(function(err, newPlan){
+                        console.log(newPlan);
+                    });
+                    
+                    res.json(foundPlan);
                 }
-                res.json(activity);
             });
+            // Activity.findById(newActivity._id, function(err,activity) {
+            //     if (err){
+            //             res.send(err);
+            //     }
+            //     console.log(activity)
+            //     res.json(activity);
+            // });
         }
     });
 });

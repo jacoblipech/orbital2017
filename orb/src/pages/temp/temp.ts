@@ -104,7 +104,7 @@ export class TempPage {
         this.activities.push(currActivity);
         //console.log(currActivity);
         //console.log(this.activities);
-        this.activityService.createActivity(activity);        
+        this.activityService.createActivity(activity, this.plansID);        
       }
     });
 
@@ -119,7 +119,7 @@ export class TempPage {
       if(activity){
         this.activities[index].addItem(activity);
         console.log(this.activities[index]);
-        this.activityService.createActivity(activity);      
+        this.activityService.createActivity(activity, this.plansID);      
       }
     });
 

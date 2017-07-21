@@ -6,7 +6,7 @@
 -->
 
 
-<ion-content class="card-page">
+<ion-content class="card-page" *ngIf="activities">
 
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
@@ -120,3 +120,4 @@
 	</ion-card> -->
 
 </ion-content>
+ 
