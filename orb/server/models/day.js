@@ -1,17 +1,13 @@
 var mongoose = require('mongoose');
- 
+ var Activity = require('./activity');
  //Set up the activity schema
 var DaySchema = new mongoose.Schema({
-    activity: String,
-    url: String,
-    expenses: String,
-    address: String,
-    openingHours: String,
-    nearestLandmark: String,
-    remarks: String,
-    imageUrl: String
+    activities: [{
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: "Activity"
+    }]
     
 });
 
 //exports the file to be used by other files
-module.exports = mongoose.model('Day', ActivitySchema);
+module.exports = mongoose.model('Day', DaySchema);

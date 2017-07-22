@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController, ViewController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, ModalController, ViewController, NavParams, PopoverController } from 'ionic-angular';
 import { ActivityPage } from '../activity/activity';
 import { AlternativesPage } from '../alternatives/alternatives';
 import { ActivityProvider } from '../../providers/activity/activity';
 import { AlternativeModel } from '../../app/models/alternative-model';
-
+import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
+import { SignupPage } from '../signup/signup';
+import { InvitePage } from '../invite/invite';
+import { HomePage } from '../home/home';
+import { PopoverPage } from '../popover/popover';
+import { AuthProvider } from '../../providers/auth/auth';
+import { PlansProvider } from '../../providers/plans/plans';
 /**
  * Generated class for the TemplatePage page.
  *
@@ -19,17 +26,45 @@ import { AlternativeModel } from '../../app/models/alternative-model';
   templateUrl: 'template.html',
 })
 export class TemplatePage {
-
+  plan: any = this.navParams.data;
+  user: object;
+  plansID: string;
   activities: any[] = [];
   comment: string = '';
   comments: any[] = [];
-  day: number = this.navParams.data;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public activityService: ActivityProvider) {
- 
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, 
+    public viewCtrl: ViewController, public activityService: ActivityProvider,public planService: PlansProvider,
+    public popoverCtrl: PopoverController, 
+    public authService: AuthProvider,
+    public storage: Storage) {
+    this.storage.get('currUser').then(data => {
+        console.log(data);
+        this.user = data; 
+      });
   }
 
-  ionViewDidLoad() {
-    console.log(this.navParams.data);
+  ionViewWillLoad() {
+    this.storage.get('currUser').then(user => {
+        this.authService.getUser(user.result.user._id).subscribe(data => {
+          console.log(data.plans[data.plans.length-1]);
+          this.plansID = data.plans[data.plans.length-1];
+          console.log(this.plansID);
+          this.planService.getPlan(this.plansID).subscribe(data => {       
+            this.plan = data
+            this.activities = data.activities;
+            // this.activityService.getActivity(this.plansID).subscribe(dat => {
+            //   console.log(dat);
+            //   if (dat){
+            //     this.activities = dat;
+            //   }
+            // }); 
+            console.log(this.plan);
+            console.log(this.activities);
+          });
+        });
+      });
+      
   }
 
   delete(chip, index) {
@@ -53,7 +88,7 @@ export class TemplatePage {
         this.activities.push(currActivity);
         //console.log(currActivity);
         //console.log(this.activities);
-        this.activityService.createActivity(activity);        
+        this.activityService.createActivity(activity, this.plansID);        
       }
     });
 
@@ -68,7 +103,7 @@ export class TemplatePage {
       if(activity){
         this.activities[index].addItem(activity);
         console.log(this.activities[index]);
-        this.activityService.createActivity(activity);      
+        this.activityService.createActivity(activity, this.plansID);      
       }
     });
 

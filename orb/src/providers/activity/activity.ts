@@ -17,12 +17,16 @@ export class ActivityProvider {
   	this.data = null;
   }
 
-  createActivity(activity){
+  getActivity(id){ 
+      return this.http.get('http://localhost:3000/activity/' + id).map(res => res.json()); 
+  }
+
+  createActivity(activity, id){
  
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
  
-    this.http.post('http://localhost:3000/activity', JSON.stringify(activity), {headers: headers})
+    this.http.post('http://localhost:3000/activity/' + id, JSON.stringify(activity), {headers: headers})
       .subscribe(res => {
         console.log(res.json());
       });

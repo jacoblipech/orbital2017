@@ -32,7 +32,7 @@ export class EditPage {
 
   plan: any = this.navParams.data;
   user: object;
-  numbers: number[] = [0,1];
+  
   tab1Root: any;
   plansID: string;
 
@@ -61,7 +61,7 @@ export class EditPage {
   		this.tab1Root = 'template';
 	  }
 
-  ionViewWillLoad() {
+  ngOnInit() {
     //allows this.plan to retrieve data from storage upon being loaded
     // this.storage.get('data').then((data)=>{
     //     this.plan = data;
@@ -98,10 +98,10 @@ export class EditPage {
           return num;
   }
 
-  ngOnInit() {
+  // ngOnInit() {
     
-  	//this.authService.getUser(this.navParams.get('id'));
-  }
+  // 	//this.authService.getUser(this.navParams.get('id'));
+  // }
 
   launchInvitePage() {
     let modal = this.modalCtrl.create(InvitePage);
