@@ -130,4 +130,24 @@ export class TemplatePage {
     this.activityService.deleteActivity(activity._id);
   }
 
+  editActivity(activity){
+
+    let modal = this.modalCtrl.create(ActivityPage);
+
+    modal.onDidDismiss(activity => {
+      if(activity){
+        //console.log(activity)
+        let currActivity = new AlternativeModel(activity, [], 0, []);
+        this.activities.push(currActivity);
+        //console.log(currActivity);
+        //console.log(this.activities);
+        this.activityService.createActivity(activity, this.plansID);        
+      }
+    });
+
+    modal.present();
+
+    this.activityService.editActivity(activity._id);
+  }
+
 }

@@ -27790,10 +27790,6 @@ page-template .card-page .plus {
   display: block;
 }
 
-page-template .card-page .cardButton {
-  height: 20px;
-}
-
 page-template .card-page ion-scroll {
   white-space: nowrap;
   height: 200px;

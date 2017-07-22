@@ -54,10 +54,15 @@
 		    	<ion-icon name="close"></ion-icon>
 		  	</button>
 	      </ion-chip>
-			<ion-buttons end>
-				<button class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
-				<ion-icon name="trash"></ion-icon> Delete</button>
-			</ion-buttons>
+
+	      	<ion-item>
+				<ion-buttons end>
+					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">
+					Edit</button>
+					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
+					 Delete</button>
+				</ion-buttons>
+		   	</ion-item>
 		</ion-card-content>
 		
 	</ion-card>

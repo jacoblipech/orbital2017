@@ -41,4 +41,12 @@ export class ActivityProvider {
  
   }
 
+  editActivity(id){
+ 
+    this.http.get('http://localhost:3000/activity/' + id).subscribe((res) => {
+      console.log(res.json());
+    });    
+ 
+  }
+
 }

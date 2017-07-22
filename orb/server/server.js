@@ -20,13 +20,13 @@ server.use(morgan('dev'));
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());                                     // parse application/json
 server.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-server.use(methodOverride());
+server.use(methodOverride("_method"));
 server.use(cors());
 router(server);
 
 server.use(function(req, res, next) {
    res.header("Access-Control-Allow-Origin", "*");
-   res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+   res.header('Access-Control-Allow-Methods', 'DELETE, PUT, UPDATE');
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    next();
 });
@@ -111,7 +111,7 @@ server.post('/edit/:id', function(req, res) {
 });
 
 server.get("/activity/:id", function(req, res){ 
-Activity.findById(req.params.id, function(err, foundActivity){ 
+    Activity.findById(req.params.id, function(err, foundActivity){ 
         if(err){ 
             console.log("error " + err); 
         }else{ 
@@ -155,18 +155,50 @@ server.post('/activity/:plan_id', function(req,res) {
     });
 });
 
+//Edit activity route
+server.get('/activity/:id/edit', function(req, res){
+    Activity.findById(req.params.id, function(err, foundActivity){
+        if(err){
+            console.log("edit error " + err); 
+        }else{
+            res.json(foundActivity);
+        }
+    })
+})
+
+//Update activity route
+
 // Delete activity route
 server.delete('/activity/:activity_id', function(req, res) {
-        Activity.remove({
+
+    Activity.remove({
             _id : req.params.activity_id
         }, function(err, activity) {
             
-        });
     });
 
+    Plan.findById(req.params.plan_id, function(err, foundPlan) { 
+            if (err) { 
+                res.send(err); 
+            } 
+            else { 
+                foundPlan.activities.remove({
+                    _id : req.params.activity_id
+                }, function(err, activity){
+
+                });
+            }
+
+          // foundPlan.save(function(err, newPlan){ 
+                    // console.log(newPlan); 
+                // }); 
+                    // res.json(foundPlan); 
+                // } 
+    });
+});
 
 server.get("/plan/:id", function(req, res){
-Plan.findById(req.params.id, function(err, foundPlan){
+    Plan.findById(req.params.id, function(err, foundPlan){
         if(err){
             console.log("error " + err);
         }else{
