@@ -6,10 +6,10 @@
 -->
 
 
-<ion-content class="card-page" *ngIf="activities">
+<ion-content class="card-page" >
 
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
-		<ion-card-content>
+		<ion-card-content >
 		<ion-buttons end>
 			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>
 			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
@@ -29,7 +29,7 @@
 				  </ion-row>
 			</ion-grid>
 
-			<ion-scroll scrollY="true" text-wrap>
+			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">
 				<p>Activity Name: {{activity.activity.activity}}</p>
 				<p>Address: {{activity.activity.address}}</p>
 				<p>Opening Hours: {{activity.activity.openingHours}}</p>
