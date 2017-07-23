@@ -57,6 +57,8 @@
 
 	      	<ion-item>
 				<ion-buttons end>
+					<button ion-button outline color="primary" (click)="increase()">
+					<ion-icon name="thumbs-up"></ion-icon>{{likes}}</button>
 					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">
 					Edit</button>
 					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">

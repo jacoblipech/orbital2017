@@ -32,7 +32,7 @@ export class TemplatePage {
   activities: any[] = [];
   comment: string = '';
   comments: any[] = [];
-  
+  likes:number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, 
     public viewCtrl: ViewController, public activityService: ActivityProvider,public planService: PlansProvider,
     public popoverCtrl: PopoverController, 
@@ -75,6 +75,9 @@ export class TemplatePage {
 
     this.activities[index].addComment(formValue);
     this.comment = ''
+  }
+  increase() {
+    this.likes++;
   }
 
   launchActivityPage() {
