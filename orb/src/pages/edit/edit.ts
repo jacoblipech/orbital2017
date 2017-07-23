@@ -32,7 +32,7 @@ export class EditPage {
 
   plan: any = this.navParams.data;
   user: object;
-  
+  dayLength: any;
   tab1Root: any;
   plansID: string;
 
@@ -73,6 +73,7 @@ export class EditPage {
         this.planService.getPlan(this.plansID).subscribe(data => {
           
           this.plan = data
+          this.dayLength = this.plan.days.length;
           console.log(this.plan);
           console.log(this.plan.days, this.plan.month, this.plan.country);
           

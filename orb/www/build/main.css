@@ -27473,7 +27473,7 @@ modal-wrapper {
     top: 2%;
     left: 12%;
     width: 75%;
-    height: 90%;
+    height: 60%;
   }
 }
 
@@ -27704,6 +27704,7 @@ page-login .login-logo {
 }
 
 page-login .login-form {
+  padding-top: 75px;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -27761,6 +27762,7 @@ page-signup .heading-text h3 {
 }
 
 page-signup .account-form {
+  padding-top: 75px;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -27781,11 +27783,11 @@ page-template .card-page .background {
 }
 
 page-template .card-page .card {
-  width: 50%;
+  width: 35%;
   position: relative;
   height: 65%;
-  left: 50%;
-  margin-left: -25%;
+  left: 35%;
+  margin-left: 0%;
 }
 
 page-template .card-page .plus {

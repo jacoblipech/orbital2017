@@ -49,7 +49,7 @@
 	        </ion-item>
 	      	</form>
 	      <ion-chip *ngFor="let comment of activity.comments">
-	        <ion-label>{{ comment.comment }}</ion-label>
+	        <ion-label>{{username}}: {{ comment.comment }}</ion-label>
 	        <button ion-button small (click)="delete(comment, i)">
 		    	<ion-icon name="close"></ion-icon>
 		  	</button>

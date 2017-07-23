@@ -177,24 +177,24 @@ server.delete('/activity/:activity_id', function(req, res) {
             
     });
 
-    Plan.findById(req.params.plan_id, function(err, foundPlan) { 
-            if (err) { 
-                res.send(err); 
-            } 
-            else { 
-                foundPlan.activities.remove({
-                    _id : req.params.activity_id
-                }, function(err, activity){
+    // Plan.findById(req.params.plan_id, function(err, foundPlan) { 
+    //         if (err) { 
+    //             res.send(err); 
+    //         } 
+    //         else { 
+    //             foundPlan.activities.remove({
+    //                 _id : req.params.activity_id
+    //             }, function(err, activity){
 
-                });
-            }
+    //             });
+    //         }
 
           // foundPlan.save(function(err, newPlan){ 
                     // console.log(newPlan); 
                 // }); 
                     // res.json(foundPlan); 
                 // } 
-    });
+    // });
 });
 
 server.get("/plan/:id", function(req, res){

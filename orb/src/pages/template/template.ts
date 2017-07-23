@@ -27,7 +27,8 @@ import { PlansProvider } from '../../providers/plans/plans';
 })
 export class TemplatePage {
   plan: any = this.navParams.data;
-  user: object;
+  user: any;
+  username: any;
   plansID: string;
   activities: any[] = [];
   comment: string = '';
@@ -41,6 +42,7 @@ export class TemplatePage {
     this.storage.get('currUser').then(data => {
         console.log(data);
         this.user = data; 
+        this.username = this.user.email.split("@")[0];
       });
   }
 
