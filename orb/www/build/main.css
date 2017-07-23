@@ -27519,6 +27519,14 @@ page-alternatives .card-page ion-scroll {
   height: 200px;
 }
 
+page-edit .header {
+  text-transform: uppercase;
+}
+
+page-edit .home {
+  padding-right: px;
+}
+
 page-home img {
   position: fixed;
   top: 50%;
@@ -27766,14 +27774,16 @@ page-signup .continue-button {
   border: 1px solid #fff;
 }
 
-page-template .card-page {
-  background: #A4CFF1;
+page-template .card-page .background {
+  background-image: url("../assets/images/background4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 page-template .card-page .card {
   width: 50%;
   position: relative;
-  height: 80%;
+  height: 50%;
   left: 50%;
   margin-left: -25%;
 }

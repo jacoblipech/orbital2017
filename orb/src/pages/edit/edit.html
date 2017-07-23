@@ -7,10 +7,10 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <button ion-button icon-only (click)="goToHome()">
+      <button ion-button icon-only class="home" (click)="goToHome()">
         <ion-icon name="home"></ion-icon>
       </button>
-      <h2 style="display:inline; ">You are travelling to {{plan.country}} during {{plan.month}} for {{plan.days}} days</h2>
+      <h2 class="header" style="display:inline;">Planning Trip to {{plan.country}} during {{plan.month}} for {{plan.days}} days</h2>
     </ion-title>
 
     <ion-buttons end>

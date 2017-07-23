@@ -29,8 +29,6 @@ export class InvitePage {
     });
   }
 
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad InvitePage');
   }

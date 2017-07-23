@@ -76,7 +76,6 @@ export class EditPage {
           console.log(this.plan);
           console.log(this.plan.days, this.plan.month, this.plan.country);
           
-
         });
       });
      
