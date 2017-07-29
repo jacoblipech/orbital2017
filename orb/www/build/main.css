@@ -27470,9 +27470,9 @@ modal-wrapper {
 @media only screen and (min-height: 0px) and (min-width: 0px) {
   .modal-wrapper {
     position: relative;
-    top: 2%;
-    left: 12%;
-    width: 75%;
+    top: 10%;
+    left: 27%;
+    width: 50%;
     height: 60%;
   }
 }
@@ -27495,10 +27495,10 @@ page-alternatives .card-page {
 }
 
 page-alternatives .card-page .card {
-  width: 30%;
+  width: 35%;
   float: left;
   position: relative;
-  height: 50%;
+  height: 70%;
   margin-top: 0;
 }
 
@@ -27785,7 +27785,7 @@ page-template .card-page .background {
 page-template .card-page .card {
   width: 35%;
   position: relative;
-  height: 65%;
+  height: 73%;
   left: 35%;
   margin-left: 0%;
 }
