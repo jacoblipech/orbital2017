@@ -34,6 +34,7 @@ export class TemplatePage {
   comment: string = '';
   comments: any[] = [];
   likes:number = 0;
+  days:number = 1;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, 
     public viewCtrl: ViewController, public activityService: ActivityProvider,public planService: PlansProvider,
     public popoverCtrl: PopoverController, 
@@ -54,15 +55,37 @@ export class TemplatePage {
           console.log(this.plansID);
           this.planService.getPlan(this.plansID).subscribe(data => {       
             this.plan = data
-            this.activities = data.activities;
-            // this.activityService.getActivity(this.plansID).subscribe(dat => {
-            //   console.log(dat);
-            //   if (dat){
-            //     this.activities = dat;
-            //   }
-            // }); 
-            console.log(this.plan);
+
+
+            var actlength = data.activities.length;
+
+            console.log("hi");
+            console.log("ur act length "+ data.activities.length);
+
+            //this.activities = data.activities;
+            for(var i2 = 0; i2 < actlength; i2++){
+              this.activityService.getActivity(data.activities[i2]).subscribe(dat => {
+
+
+
+                // for(var i2 = 0; i2 < actlength; i2++){
+
+                //   console.log("i cmae here " + i2);
+                //   console.log(data.activities[i2]);
+                // }
+
+
+                console.log(dat);
+                if (dat){
+                  this.activities.push(dat);
+                  console.log(this.activities);
+                }
+              }); 
+              
+            }
             console.log(this.activities);
+            console.log(this.plan);
+            
           });
         });
       });
@@ -89,8 +112,8 @@ export class TemplatePage {
   	modal.onDidDismiss(activity => {
       if(activity){
         //console.log(activity)
-        let currActivity = new AlternativeModel(activity, [], 0, []);
-        this.activities.push(currActivity);
+        //let currActivity = new AlternativeModel(activity, [], 0, []);
+        this.activities.push(activity);
         //console.log(currActivity);
         //console.log(this.activities);
         this.activityService.createActivity(activity, this.plansID);        

@@ -10,7 +10,7 @@ import { EditPage } from '../pages/edit/edit';
 })
 export class MyApp {
   rootPage:any = 'welcome';
-
+  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

@@ -118,6 +118,7 @@ var EditPage = (function () {
             console.log(_this.plansID);
             _this.planService.getPlan(_this.plansID).subscribe(function (data) {
                 _this.plan = data;
+                _this.dayLength = _this.plan.days.length;
                 console.log(_this.plan);
                 console.log(_this.plan.days, _this.plan.month, _this.plan.country);
             });

@@ -111,7 +111,7 @@ server.post('/edit/:id', function(req, res) {
 });
 
 server.get("/activity/:id", function(req, res){ 
-    Activity.findById(req.params.id, function(err, foundActivity){ 
+    Activity.findOne({ '_id': req.params.id }, function(err, foundActivity){ 
         if(err){ 
             console.log("error " + err); 
         }else{ 

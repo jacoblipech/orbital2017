@@ -30,13 +30,14 @@
 			</ion-grid>
 
 			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">
-				<p>Activity Name: {{activity.activity.activity}}</p>
-				<p>Address: {{activity.activity.address}}</p>
-				<p>Opening Hours: {{activity.activity.openingHours}}</p>
-				<p>Expenses: {{activity.activity.expenses}}</p>
-				<p>Nearest Landmark{{activity.activity.nearestLandmark}}</p>
-				<p>Remarks: {{activity.activity.remarks}}</p>
-				<p >Images: {{activity.activity.imageUrl}}</p>
+			
+				<p>Activity Name: {{activity.activity}}</p>
+				<p>Address: {{activity.address}}</p>
+				<p>Opening Hours: {{activity.openingHours}}</p>
+				<p>Expenses: {{activity.expenses}}</p>
+				<p>Nearest Landmark{{activity.nearestLandmark}}</p>
+				<p>Remarks: {{activity.remarks}}</p>
+				<p >Images: {{activity.imageUrl}}</p>
 				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>
 			</ion-scroll>
 			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">
