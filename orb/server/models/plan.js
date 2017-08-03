@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Day = require('./day');
 var User = require('./user');
   var Activity = require('./activity');
  //Set up the user schema

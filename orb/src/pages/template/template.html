@@ -11,7 +11,7 @@
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
 		<ion-buttons end>
-			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>
+			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
 			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
 			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
 		</ion-buttons>
@@ -50,7 +50,7 @@
 	        </ion-item>
 	      	</form>
 	      <ion-chip *ngFor="let comment of activity.comments">
-	        <ion-label>vivek: {{ comment.comment }}</ion-label>
+	        <ion-label *ngIf="comment">{{comment.user}}: {{ comment.comment }}</ion-label>
 	        <button ion-button small (click)="delete(comment, i)">
 		    	<ion-icon name="close"></ion-icon>
 		  	</button>
@@ -58,8 +58,8 @@
 
 	      	<ion-item>
 				<ion-buttons end>
-					<button ion-button outline color="primary" (click)="increase()">
-					<ion-icon name="thumbs-up"></ion-icon>{{likes}}</button>
+					<button ion-button outline color="primary" (click)="increase(i)">
+					<ion-icon name="thumbs-up"></ion-icon>{{activity.likes}}</button>
 					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">
 					Edit</button>
 					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">

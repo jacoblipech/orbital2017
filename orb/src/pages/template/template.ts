@@ -50,17 +50,17 @@ export class TemplatePage {
   ionViewWillLoad() {
     this.storage.get('currUser').then(user => {
         this.authService.getUser(user.result.user._id).subscribe(data => {
-          console.log(data.plans[data.plans.length-1]);
+          //console.log(data.plans[data.plans.length-1]);
           this.plansID = data.plans[data.plans.length-1];
-          console.log(this.plansID);
+          //console.log(this.plansID);
           this.planService.getPlan(this.plansID).subscribe(data => {       
             this.plan = data
 
 
             var actlength = data.activities.length;
 
-            console.log("hi");
-            console.log("ur act length "+ data.activities.length);
+            //console.log("hi");
+            //console.log("ur act length "+ data.activities.length);
 
             //this.activities = data.activities;
             for(var i2 = 0; i2 < actlength; i2++){
@@ -73,18 +73,35 @@ export class TemplatePage {
                 //   console.log("i cmae here " + i2);
                 //   console.log(data.activities[i2]);
                 // }
+                
+                if (dat != null) {
+                  var commentsArr = []
+                  var j = 0;
+                  var datlength = dat.comments.length;
+                  while (j < datlength) {
+                    console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j])
+                    this.activityService.getComment(dat.comments[j]).subscribe(comment => {
+                      console.log(comment, j);
+                      commentsArr.push(comment);
 
-
+                    })
+                    j++;
+                  }
+                }
+                if (dat != null) {
+                  dat.comments = commentsArr;
+                }
+                
                 console.log(dat);
                 if (dat){
                   this.activities.push(dat);
-                  console.log(this.activities);
+                  //console.log(this.activities);
                 }
               }); 
               
             }
-            console.log(this.activities);
-            console.log(this.plan);
+            //console.log(this.activities);
+           // console.log(this.plan);
             
           });
         });
@@ -93,16 +110,43 @@ export class TemplatePage {
   }
 
   delete(chip, index) {
-    this.activities[index].deleteComment(chip);
+    console.log(chip);
+    var commentIndex = this.activities[index].comments.indexOf(chip);
+    this.activityService.deleteComment(chip._id, chip.originActivity);
+    if (index > -1) {
+      this.activities[index].comments.splice(commentIndex,1);
+      
+    }
   }
 
   addComment(formValue, index) {
-
-    this.activities[index].addComment(formValue);
+    formValue.user  = this.username;
+    this.activities[index].comments.push(formValue)
+    console.log('HELLLOOO',this.plan);
+    this.storage.get('currUser').then(user => {
+        this.authService.getUser(user.result.user._id).subscribe(data => {
+          this.plansID = data.plans[data.plans.length-1];
+          this.planService.getPlan(this.plansID).subscribe(data => {       
+            this.plan = data
+          })
+        })
+    })
+    console.log(this.plan.activities[index])
+    let newComment = {
+      user:this.username,
+      comment:formValue.comment,
+      originActivity:this.plan.activities[index]
+    }
+    this.activityService.createAndAddComment(newComment, this.plan.activities[index]); 
+    // this.activities[index].addComment(formValue);
     this.comment = ''
   }
-  increase() {
-    this.likes++;
+  increase(index) {
+    this.activities[index].likes++;
+    let lik = {
+      likes: this.activities[index].likes
+    }
+    this.activityService.addLikes(this.activities[index]._id,lik)
   }
 
   launchActivityPage() {
@@ -129,9 +173,10 @@ export class TemplatePage {
 
     modal.onDidDismiss(activity => {
       if(activity){
-        this.activities[index].addItem(activity);
+        activity.originActivity = this.activities[index]._id;
+        this.activities[index].alternatives.push(activity);
         console.log(this.activities[index]);
-        this.activityService.createActivity(activity, this.plansID);      
+        this.activityService.addAlternative(activity, this.activities[index]._id);      
       }
     });
 

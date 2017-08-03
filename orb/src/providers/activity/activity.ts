@@ -21,6 +21,10 @@ export class ActivityProvider {
       return this.http.get('http://localhost:3000/activity/' + id).map(res => res.json()); 
   }
 
+  getComment(id){ 
+      return this.http.get('http://localhost:3000/comment/' + id).map(res => res.json()); 
+  }
+
   createActivity(activity, id){
  
     let headers = new Headers();
@@ -47,6 +51,50 @@ export class ActivityProvider {
       console.log(res.json());
     });    
  
+  }
+
+  createAndAddComment(comment, id){
+ 
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+ 
+    this.http.post('http://localhost:3000/activity/' + id + '/addcomment', JSON.stringify(comment), {headers: headers})
+      .subscribe(res => {
+        console.log(res.json());
+      });
+ 
+  }
+
+  deleteComment(id, activity_id){
+ 
+    this.http.delete('http://localhost:3000/comment/' + id + '/' + activity_id).subscribe((res) => {
+      console.log(res.json());
+    });    
+ 
+  }
+
+  addLikes(id, likes) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+ 
+    this.http.post('http://localhost:3000/activity/' + id + '/addlikes', JSON.stringify(likes), {headers: headers})
+      .subscribe(res => {
+        console.log(res.json());
+      });
+  }
+
+  getAlternative(id) {
+    return this.http.get('http://localhost:3000/alternative/' + id).map(res => res.json()); 
+  }
+
+  addAlternative(activity, activity_id) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+ 
+    this.http.post('http://localhost:3000/alternative/' + activity_id, JSON.stringify(activity), {headers: headers})
+      .subscribe(res => {
+        console.log(res.json());
+      });
   }
 
 }

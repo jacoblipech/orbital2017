@@ -21,18 +21,18 @@
 		<ion-card-content>
 			<h2 class="original">Original</h2>
 			<ion-scroll scrollY="true" text-wrap>
-				<p>Activity Name: {{alternatives.activity.activity}}</p>
-				<p>Address: {{alternatives.activity.address}}</p>
-				<p>Opening Hours: {{alternatives.activity.openingHours}}</p>
-				<p>Expenses: {{alternatives.activity.expenses}}</p>
-				<p>Nearest Landmark{{alternatives.activity.nearestLandmark}}</p>
-				<p>Remarks: {{alternatives.activity.remarks}}</p>
-				<p >Images: {{alternatives.activity.imageUrl}}</p>
-				<p>More Info: <a href="http://{{alternatives.activity.url}}">{{alternatives.activity.url}}</a></p>
+				<p>Activity Name: {{alternatives.activity}}</p>
+				<p>Address: {{alternatives.address}}</p>
+				<p>Opening Hours: {{alternatives.openingHours}}</p>
+				<p>Expenses: {{alternatives.expenses}}</p>
+				<p>Nearest Landmark{{alternatives.nearestLandmark}}</p>
+				<p>Remarks: {{alternatives.remarks}}</p>
+				<p >Images: {{alternatives.imageUrl}}</p>
+				<p>More Info: <a href="http://{{alternatives.activity.url}}">{{alternatives.url}}</a></p>
 			</ion-scroll>
 		</ion-card-content>
 	</ion-card>
-	<ion-card class="card" *ngFor="let activity of alternatives.items; let i = index;">
+	<ion-card class="card" *ngFor="let activity of alternatives.alternatives; let i = index;">
 		<ion-card-content>
 			<h2 class="alternative">Alternative {{i+1}}</h2>
 			<ion-scroll scrollY="true" text-wrap>

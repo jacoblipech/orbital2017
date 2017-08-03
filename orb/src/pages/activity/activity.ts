@@ -42,7 +42,10 @@ export class ActivityPage {
 		    openingHours: this.openingHours,
 		    nearestLandmark: this.nearestLandmark,
 		    remarks: this.remarks,
-		    imageUrl: this.imageUrl
+		    imageUrl: this.imageUrl,
+		    comments: [],
+		    likes: 0,
+		    alternatives: []
 		}
 		this.viewCtrl.dismiss(activity);
 	}

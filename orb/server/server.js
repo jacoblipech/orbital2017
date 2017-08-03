@@ -14,6 +14,8 @@ var express =require("express"),
     var Plan = require('./models/plan');
     var Activity = require('./models/activity');
     var User = require('./models/user');
+    var Comment = require('./models/comment');
+    var Alternative = require('./models/alternative');
 
 mongoose.connect("mongodb://localhost/orb");
 server.use(morgan('dev'));
@@ -132,7 +134,8 @@ server.post('/activity/:plan_id', function(req,res) {
         openingHours: req.body.openingHours,
         nearestLandmark: req.body.nearestLandmark,
         remarks: req.body.remarks,
-        imageUrl: req.body.imageUrl
+        imageUrl: req.body.imageUrl,
+        likes: 0
     }
 
     Activity.create(newActivity, function(err, newActivity) {
@@ -155,6 +158,7 @@ server.post('/activity/:plan_id', function(req,res) {
     });
 });
 
+
 //Edit activity route
 server.get('/activity/:id/edit', function(req, res){
     Activity.findById(req.params.id, function(err, foundActivity){
@@ -162,6 +166,132 @@ server.get('/activity/:id/edit', function(req, res){
             console.log("edit error " + err); 
         }else{
             res.json(foundActivity);
+        }
+    })
+})
+
+server.get("/comment/:id", function(req, res){ 
+    Comment.findOne({ '_id': req.params.id }, function(err, foundComment){ 
+        if(err){ 
+            console.log("error " + err); 
+        }else{ 
+            console.log(foundComment); 
+            res.json(foundComment); 
+        }      
+    }) 
+}); 
+
+
+server.post('/activity/:id/addcomment', function(req,res) {
+    var newComment = {
+        user: req.body.user,
+        comment: req.body.comment,
+        originActivity: req.body.originActivity
+    }
+    console.log(newComment);
+    Comment.create(newComment, function(err, newComment) {
+        if (err) {
+            res.send(err);
+        } else {
+            Activity.findById(req.params.id, function(err, foundActivity) { 
+                if (err) { 
+                    res.send(err); 
+                } else { 
+                    foundActivity.comments.push(newComment); 
+                    foundActivity.save(function(err, newActivity){ 
+                        console.log(newActivity); 
+                    }); 
+                     
+                    res.json(foundActivity); 
+                } 
+            });
+        }
+    });
+})
+
+server.post('/activity/:id/addlikes', function(req,res) {
+    Activity.findById(req.params.id, function(err, foundActivity) { 
+        if (err) { 
+            res.send(err); 
+        } else { 
+            console.log(req.body.likes)
+            foundActivity.likes = req.body.likes; 
+            foundActivity.save(function(err, newActivity){ 
+                console.log(newActivity); 
+            });             
+            res.json(foundActivity); 
+        } 
+    });
+});
+
+server.delete('/comment/:comment_id/:activity_id', function(req, res) {
+
+    Comment.remove({
+            _id : req.params.comment_id
+        }, function(err, comment) {
+            console.log('Comment removed');
+    });
+    Activity.findOne({
+            _id : req.params.activity_id
+        }, function(err, activity) {
+            console.log(activity.comments);
+            activity.comments.forEach(function(comment) {
+                if (comment == req.params.comment_id) {
+                    var index = activity.comments.indexOf(comment);
+                    if (index > -1) {
+                        activity.comments.splice(index,1);
+                    }
+                }
+            });
+            activity.save(function(err, activityy){ 
+                console.log(activity); 
+            }); 
+            console.log(activity.comments);
+    });
+});
+
+server.post('/alternative/:activity_id', function(req,res) {
+    console.log("creating alternative");
+    var newAlternative = {
+        activity: req.body.activity,
+        url: req.body.url,
+        expenses: req.body.expenses,
+        address: req.body.address,
+        openingHours: req.body.openingHours,
+        nearestLandmark: req.body.nearestLandmark,
+        remarks: req.body.remarks,
+        imageUrl: req.body.imageUrl,
+        originActivity: req.params.activity_id
+    }
+
+    Alternative.create(newAlternative, function(err, newAlternative) {
+        if (err) {
+            res.send(err);
+        } else {
+            Activity.findById(req.params.activity_id, function(err, foundActivity) { 
+                if (err) { 
+                    res.send(err); 
+                } else { 
+                    foundActivity.alternatives.push(newAlternative); 
+                    foundActivity.save(function(err, newActivity){ 
+                        console.log(newActivity); 
+                    }); 
+                     
+                    res.json(foundActivity); 
+                } 
+            });
+        }
+    });
+});
+
+
+//Edit activity route
+server.get('/alternative/:alternative_id/', function(req, res){
+    Alternative.findById(req.params.alternative_id, function(err, foundAlternative){
+        if(err){
+            console.log("edit error " + err); 
+        }else{
+            res.json(foundAlternative);
         }
     })
 })
@@ -174,7 +304,7 @@ server.delete('/activity/:activity_id', function(req, res) {
     Activity.remove({
             _id : req.params.activity_id
         }, function(err, activity) {
-            
+            console.log('Activity removed');
     });
 
     // Plan.findById(req.params.plan_id, function(err, foundPlan) { 

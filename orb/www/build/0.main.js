@@ -140,14 +140,14 @@ var TemplatePage = (function () {
         var _this = this;
         this.storage.get('currUser').then(function (user) {
             _this.authService.getUser(user.result.user._id).subscribe(function (data) {
-                console.log(data.plans[data.plans.length - 1]);
+                //console.log(data.plans[data.plans.length-1]);
                 _this.plansID = data.plans[data.plans.length - 1];
-                console.log(_this.plansID);
+                //console.log(this.plansID);
                 _this.planService.getPlan(_this.plansID).subscribe(function (data) {
                     _this.plan = data;
                     var actlength = data.activities.length;
-                    console.log("hi");
-                    console.log("ur act length " + data.activities.length);
+                    //console.log("hi");
+                    //console.log("ur act length "+ data.activities.length);
                     //this.activities = data.activities;
                     for (var i2 = 0; i2 < actlength; i2++) {
                         _this.activityService.getActivity(data.activities[i2]).subscribe(function (dat) {
@@ -155,28 +155,72 @@ var TemplatePage = (function () {
                             //   console.log("i cmae here " + i2);
                             //   console.log(data.activities[i2]);
                             // }
+                            if (dat != null) {
+                                var commentsArr = [];
+                                var j = 0;
+                                var datlength = dat.comments.length;
+                                while (j < datlength) {
+                                    console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j]);
+                                    _this.activityService.getComment(dat.comments[j]).subscribe(function (comment) {
+                                        console.log(comment, j);
+                                        commentsArr.push(comment);
+                                    });
+                                    j++;
+                                }
+                            }
+                            if (dat != null) {
+                                dat.comments = commentsArr;
+                            }
                             console.log(dat);
                             if (dat) {
                                 _this.activities.push(dat);
-                                console.log(_this.activities);
+                                //console.log(this.activities);
                             }
                         });
                     }
-                    console.log(_this.activities);
-                    console.log(_this.plan);
+                    //console.log(this.activities);
+                    // console.log(this.plan);
                 });
             });
         });
     };
     TemplatePage.prototype.delete = function (chip, index) {
-        this.activities[index].deleteComment(chip);
+        console.log(chip);
+        var commentIndex = this.activities[index].comments.indexOf(chip);
+        this.activityService.deleteComment(chip._id, chip.originActivity);
+        if (index > -1) {
+            this.activities[index].comments.splice(commentIndex, 1);
+        }
     };
     TemplatePage.prototype.addComment = function (formValue, index) {
-        this.activities[index].addComment(formValue);
+        var _this = this;
+        formValue.user = this.username;
+        this.activities[index].comments.push(formValue);
+        console.log('HELLLOOO', this.plan);
+        this.storage.get('currUser').then(function (user) {
+            _this.authService.getUser(user.result.user._id).subscribe(function (data) {
+                _this.plansID = data.plans[data.plans.length - 1];
+                _this.planService.getPlan(_this.plansID).subscribe(function (data) {
+                    _this.plan = data;
+                });
+            });
+        });
+        console.log(this.plan.activities[index]);
+        var newComment = {
+            user: this.username,
+            comment: formValue.comment,
+            originActivity: this.plan.activities[index]
+        };
+        this.activityService.createAndAddComment(newComment, this.plan.activities[index]);
+        // this.activities[index].addComment(formValue);
         this.comment = '';
     };
-    TemplatePage.prototype.increase = function () {
-        this.likes++;
+    TemplatePage.prototype.increase = function (index) {
+        this.activities[index].likes++;
+        var lik = {
+            likes: this.activities[index].likes
+        };
+        this.activityService.addLikes(this.activities[index]._id, lik);
     };
     TemplatePage.prototype.launchActivityPage = function () {
         var _this = this;
@@ -198,9 +242,10 @@ var TemplatePage = (function () {
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__activity_activity__["a" /* ActivityPage */]);
         modal.onDidDismiss(function (activity) {
             if (activity) {
-                _this.activities[index].addItem(activity);
+                activity.originActivity = _this.activities[index]._id;
+                _this.activities[index].alternatives.push(activity);
                 console.log(_this.activities[index]);
-                _this.activityService.createActivity(activity, _this.plansID);
+                _this.activityService.addAlternative(activity, _this.activities[index]._id);
             }
         });
         modal.present();
@@ -241,11 +286,7 @@ TemplatePage = __decorate([
         name: 'template'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-<<<<<<< Updated upstream
-        selector: 'page-template',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/'<!--\n  Generated template for the TemplatePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-content class="card-page">\n	<ion-content class="background">\n	<ion-card class="card" *ngFor="let activity of activities; let i = index;">\n		<ion-card-content>\n		<ion-buttons end>\n			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>\n			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">\n			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>\n		</ion-buttons>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n\n			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">\n				<p>Activity Name: {{activity.activity.activity}}</p>\n				<p>Address: {{activity.activity.address}}</p>\n				<p>Opening Hours: {{activity.activity.openingHours}}</p>\n				<p>Expenses: {{activity.activity.expenses}}</p>\n				<p>Nearest Landmark{{activity.activity.nearestLandmark}}</p>\n				<p>Remarks: {{activity.activity.remarks}}</p>\n				<p >Images: {{activity.activity.imageUrl}}</p>\n				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>\n			</ion-scroll>\n			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">\n	        <ion-item>\n	        	<ion-label>Add a comment:</ion-label>\n	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>\n	          <button ion-button item-right type="submit" icon-only>\n	          	<ion-icon name="send" md="md-send"></ion-icon>\n	          </button>\n	        </ion-item>\n	      	</form>\n	      <ion-chip *ngFor="let comment of activity.comments">\n	        <ion-label>vivek: {{ comment.comment }}</ion-label>\n	        <button ion-button small (click)="delete(comment, i)">\n		    	<ion-icon name="close"></ion-icon>\n		  	</button>\n	      </ion-chip>\n\n	      	<ion-item>\n				<ion-buttons end>\n					<button ion-button outline color="primary" (click)="increase()">\n					<ion-icon name="thumbs-up"></ion-icon>{{likes}}</button>\n					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">\n					Edit</button>\n					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">\n					 Delete</button>\n				</ion-buttons>\n		   	</ion-item>\n		</ion-card-content>\n		\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle" (click)="launchActivityPage()"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<!-- <ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card> -->\n</ion-content>\n</ion-content>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/,
-=======
-        selector: 'page-template',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/'<!--\n  Generated template for the TemplatePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-content class="card-page">\n	<ion-content class="background">\n	<ion-card class="card" *ngFor="let activity of activities; let i = index;">\n		<ion-card-content>\n		<ion-buttons end>\n			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.num}}</button>\n			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">\n			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>\n		</ion-buttons>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n\n			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">\n			\n				<p>Activity Name: {{activity.activity}}</p>\n				<p>Address: {{activity.address}}</p>\n				<p>Opening Hours: {{activity.openingHours}}</p>\n				<p>Expenses: {{activity.expenses}}</p>\n				<p>Nearest Landmark{{activity.nearestLandmark}}</p>\n				<p>Remarks: {{activity.remarks}}</p>\n				<p >Images: {{activity.imageUrl}}</p>\n				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>\n			</ion-scroll>\n			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">\n	        <ion-item>\n	        	<ion-label>Add a comment:</ion-label>\n	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>\n	          <button ion-button item-right type="submit" icon-only>\n	          	<ion-icon name="send" md="md-send"></ion-icon>\n	          </button>\n	        </ion-item>\n	      	</form>\n	      <ion-chip *ngFor="let comment of activity.comments">\n	        <ion-label>{{username}}: {{ comment.comment }}</ion-label>\n	        <button ion-button small (click)="delete(comment, i)">\n		    	<ion-icon name="close"></ion-icon>\n		  	</button>\n	      </ion-chip>\n\n	      	<ion-item>\n				<ion-buttons end>\n					<button ion-button outline color="primary" (click)="increase()">\n					<ion-icon name="thumbs-up"></ion-icon>{{likes}}</button>\n					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">\n					Edit</button>\n					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">\n					 Delete</button>\n				</ion-buttons>\n		   	</ion-item>\n		</ion-card-content>\n		\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle" (click)="launchActivityPage()"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<!-- <ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card> -->\n</ion-content>\n</ion-content>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/,
->>>>>>> Stashed changes
+        selector: 'page-template',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/'<!--\n  Generated template for the TemplatePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n\n<ion-content class="card-page">\n	<ion-content class="background">\n	<ion-card class="card" *ngFor="let activity of activities; let i = index;">\n		<ion-card-content>\n		<ion-buttons end>\n			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>\n			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">\n			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>\n		</ion-buttons>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n\n			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">\n			\n				<p>Activity Name: {{activity.activity}}</p>\n				<p>Address: {{activity.address}}</p>\n				<p>Opening Hours: {{activity.openingHours}}</p>\n				<p>Expenses: {{activity.expenses}}</p>\n				<p>Nearest Landmark{{activity.nearestLandmark}}</p>\n				<p>Remarks: {{activity.remarks}}</p>\n				<p >Images: {{activity.imageUrl}}</p>\n				<p>More Info: <a href="http://{{activity.activity.url}}">{{activity.activity.url}}</a></p>\n			</ion-scroll>\n			<form #form="ngForm" (ngSubmit)="addComment(form.value, i)">\n	        <ion-item>\n	        	<ion-label>Add a comment:</ion-label>\n	          	<ion-input  [(ngModel)]="comment" name="comment"></ion-input>\n	          <button ion-button item-right type="submit" icon-only>\n	          	<ion-icon name="send" md="md-send"></ion-icon>\n	          </button>\n	        </ion-item>\n	      	</form>\n	      <ion-chip *ngFor="let comment of activity.comments">\n	        <ion-label *ngIf="comment">{{comment.user}}: {{ comment.comment }}</ion-label>\n	        <button ion-button small (click)="delete(comment, i)">\n		    	<ion-icon name="close"></ion-icon>\n		  	</button>\n	      </ion-chip>\n\n	      	<ion-item>\n				<ion-buttons end>\n					<button ion-button outline color="primary" (click)="increase(i)">\n					<ion-icon name="thumbs-up"></ion-icon>{{activity.likes}}</button>\n					<button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">\n					Edit</button>\n					<button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">\n					 Delete</button>\n				</ion-buttons>\n		   	</ion-item>\n		</ion-card-content>\n		\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle" (click)="launchActivityPage()"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<!-- <ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card>\n\n	<ion-card class="card">\n		<ion-card-content>\n			<ion-grid>\n				<ion-row align-items-center>\n					  <ion-col col-2>\n						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>\n						</ion-col>\n					  <ion-col col-1>\n					  	 <p>-</p>\n					  </ion-col>\n					  <ion-col col-2>\n					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>\n					  </ion-col>\n				  </ion-row>\n			</ion-grid>\n			<ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>\n		</ion-card-content>\n	</ion-card> -->\n</ion-content>\n</ion-content>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/template/template.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_activity_activity__["a" /* ActivityProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_activity_activity__["a" /* ActivityProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_8__providers_plans_plans__["a" /* PlansProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__providers_plans_plans__["a" /* PlansProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */]) === "function" && _j || Object])
 ], TemplatePage);
