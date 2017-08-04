@@ -55,7 +55,7 @@ export class HomePage {
 
     if (this.navParams.data != false) {
       this.storage.get('currUser').then(data => {
-        // console.log(data);
+         console.log(data);
         this.user = data;
         this.username = this.user.email.split("@")[0];
         // console.log(this.username);
@@ -200,10 +200,12 @@ export class HomePage {
 
   //for the plans page which is not configured yet
   presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverPage);
-    popover.present({
-      ev: myEvent
-    });
+    this.authService.getUser(this.user.result.user._id).subscribe(user => {
+      let popover = this.popoverCtrl.create('plans', user);
+      popover.present({
+        ev: myEvent
+      });
+    });  
   }
 
   logout() {

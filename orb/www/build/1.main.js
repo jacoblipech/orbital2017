@@ -47,13 +47,12 @@ EditPageModule = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signup_signup__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invite_invite__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__popover_popover__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_auth_auth__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__signup_signup__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invite_invite__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -72,7 +71,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 /**
  * Generated class for the EditPage page.
  *
@@ -81,6 +79,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var EditPage = (function () {
     function EditPage(navCtrl, navParams, modalCtrl, viewCtrl, planService, popoverCtrl, authService, storage) {
+        // this.storage.set('data', this.navParams.data);
+        // this.storage.get('data').then((data)=>{
+        //   console.log(data);
+        // });
+        //console.log(this.plan.days, this.plan.month, this.plan.country);
+        // this.numbers = Array.apply(null, {
+        //     length: this.plan.days
+        //   }).map(Number.call, Number);
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -92,14 +98,6 @@ var EditPage = (function () {
         this.storage = storage;
         //getting data about plan from home!
         this.plan = this.navParams.data;
-        // this.storage.set('data', this.navParams.data);
-        // this.storage.get('data').then((data)=>{
-        //   console.log(data);
-        // });
-        console.log(this.plan.days, this.plan.month, this.plan.country);
-        // this.numbers = Array.apply(null, {
-        //     length: this.plan.days
-        //   }).map(Number.call, Number);
         this.storage.get('currUser').then(function (data) {
             // console.log(data);
             _this.user = data;
@@ -112,34 +110,25 @@ var EditPage = (function () {
         // this.storage.get('data').then((data)=>{
         //     this.plan = data;
         // });
+        console.log(this.navParams.get('id'));
         this.authService.getUser(this.navParams.get('id')).subscribe(function (data) {
+            console.log(data);
             console.log(data.plans[data.plans.length - 1]);
             _this.plansID = data.plans[data.plans.length - 1];
-            console.log(_this.plansID);
+            //console.log(this.plansID);
             _this.planService.getPlan(_this.plansID).subscribe(function (data) {
                 _this.plan = data;
                 _this.dayLength = _this.plan.days.length;
-                console.log(_this.plan);
-                console.log(_this.plan.days, _this.plan.month, _this.plan.country);
+                //console.log(this.plan);
+                //console.log(this.plan.days, this.plan.month, this.plan.country);
             });
         });
         // console.log(this.plan); plan is correctly passed from home.ts
         // console.log(this.user);
         //console.log(this.plansID);
     };
-    EditPage.prototype.create = function () {
-        var num = [];
-        // this.storage.get('days').then(data => {
-        //     // console.log(data);
-        //   });
-        // console.log(this.plan.days, num);
-        return num;
-    };
-    // ngOnInit() {
-    // 	//this.authService.getUser(this.navParams.get('id'));
-    // }
     EditPage.prototype.launchInvitePage = function () {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__invite_invite__["a" /* InvitePage */]);
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__invite_invite__["a" /* InvitePage */], this.plan);
         modal.present();
     };
     EditPage.prototype.launchLoginPage = function () {
@@ -179,9 +168,12 @@ var EditPage = (function () {
         this.navCtrl.popToRoot();
     };
     EditPage.prototype.presentPopover = function (myEvent) {
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_7__popover_popover__["a" /* PopoverPage */]);
-        popover.present({
-            ev: myEvent
+        var _this = this;
+        this.authService.getUser(this.user.result.user._id).subscribe(function (user) {
+            var popover = _this.popoverCtrl.create('plans', user);
+            popover.present({
+                ev: myEvent
+            });
         });
     };
     EditPage.prototype.logout = function () {
@@ -202,16 +194,10 @@ EditPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'page-edit',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/edit/edit.html"*/'<!--\n  Generated template for the EditPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <button ion-button icon-only class="home" (click)="goToHome()">\n        <ion-icon name="home"></ion-icon>\n      </button>\n      <h2 class="header" style="display:inline;">Planning Trip to {{plan.country}} during {{plan.month}} for {{dayLength}} days</h2>\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button *ngIf="user && user.isLoggedIn" (click)="launchInvitePage()">\n        <ion-icon name="person-add"></ion-icon>Invite\n      </button>\n      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">\n        <ion-icon name="person-add"></ion-icon>Invite\n      </button>\n      <button ion-button *ngIf="user && user.isLoggedIn" (click)="logout()">\n        Logout\n      </button>\n      <button ion-button *ngIf="user && user.isLoggedIn">\n        {{user.email}}\n      </button>\n      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchLoginPage()">\n        Login\n      </button>\n      <button ion-button *ngIf="!user || !user.isLoggedIn" (click)="launchSignupPage()">\n        SignUp\n      </button>\n      <button ion-button (click)="presentPopover($event)">\n      	Plans\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding *ngIf="plan.days">\n\n	<ion-tabs >\n  <!-- {{plan.days}} -->\n		<ion-tab *ngFor="let number of plan.days" [root]="tab1Root" tabTitle="Day {{number + 1}}" [rootParams]="plan"></ion-tab>\n	</ion-tabs>\n\n</ion-content>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/edit/edit.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */],
-        __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */],
-        __WEBPACK_IMPORTED_MODULE_8__providers_auth_auth__["a" /* AuthProvider */],
-        __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* PopoverController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _h || Object])
 ], EditPage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=edit.js.map
 
 /***/ })

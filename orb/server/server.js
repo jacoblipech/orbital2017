@@ -243,7 +243,7 @@ server.delete('/comment/:comment_id/:activity_id', function(req, res) {
                     }
                 }
             });
-            activity.save(function(err, activityy){ 
+            activity.save(function(err, activity){ 
                 console.log(activity); 
             }); 
             console.log(activity.comments);
@@ -306,25 +306,6 @@ server.delete('/activity/:activity_id', function(req, res) {
         }, function(err, activity) {
             console.log('Activity removed');
     });
-
-    // Plan.findById(req.params.plan_id, function(err, foundPlan) { 
-    //         if (err) { 
-    //             res.send(err); 
-    //         } 
-    //         else { 
-    //             foundPlan.activities.remove({
-    //                 _id : req.params.activity_id
-    //             }, function(err, activity){
-
-    //             });
-    //         }
-
-          // foundPlan.save(function(err, newPlan){ 
-                    // console.log(newPlan); 
-                // }); 
-                    // res.json(foundPlan); 
-                // } 
-    // });
 });
 
 server.get("/plan/:id", function(req, res){
@@ -336,6 +317,49 @@ server.get("/plan/:id", function(req, res){
         }     
     })
 });
+
+server.post('/addUser/:plan_id/:email', function(req, res) {
+        
+        console.log("adding user");
+        User.findOne({
+            email : req.params.email
+        }, function(err, user) {
+            console.log(user);
+            // if user exists
+            if (user) {
+                // push plans id into plans array of user
+                user.plans.push(req.params.plan_id);
+                user.save(function(err, updatedUser){ 
+                    console.log(user);
+                    // find plan and push found and updated user into users array of plans
+                    Plan.findById(req.params.plan_id, function(err, foundPlan){
+                    if(err){
+                        res.send(err);
+                    }else{
+                        foundPlan.users.push(updatedUser);
+                        foundPlan.save(function(err, newPlan){
+                            if(err){
+                                res.send(err);
+                            } else {
+                                console.log("this is the newPlan" + newPlan + "this is the newPlan");
+                                res.json(newPlan);
+                            }    
+                        });
+                    }
+                }); 
+            });
+        }
+    });
+});
+
+// server.get('/getUserPlans/:user_id', function(req,res) {
+//     User.findOne({
+//             _id : req.params.user_id
+//         }, function(err, user) {
+
+//         });
+// });
+
 
 // Campground.findById(req.params.id, function(err, foundCampground){
         //     if(err){

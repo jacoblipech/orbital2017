@@ -80,13 +80,13 @@ var AlternativeModel = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__activity_activity__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alternatives_alternatives__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_activity_activity__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__activity_activity__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alternatives_alternatives__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_activity_activity__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_models_alternative_model__ = __webpack_require__(287);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_plans_plans__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_plans_plans__ = __webpack_require__(52);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatePage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -132,6 +132,7 @@ var TemplatePage = (function () {
         this.days = 1;
         this.storage.get('currUser').then(function (data) {
             console.log(data);
+            console.log(_this.plan);
             _this.user = data;
             _this.username = _this.user.email.split("@")[0];
         });
@@ -139,8 +140,9 @@ var TemplatePage = (function () {
     TemplatePage.prototype.ionViewWillLoad = function () {
         var _this = this;
         this.storage.get('currUser').then(function (user) {
+            console.log(user);
             _this.authService.getUser(user.result.user._id).subscribe(function (data) {
-                //console.log(data.plans[data.plans.length-1]);
+                console.log(data.plans[data.plans.length - 1]);
                 _this.plansID = data.plans[data.plans.length - 1];
                 //console.log(this.plansID);
                 _this.planService.getPlan(_this.plansID).subscribe(function (data) {
@@ -155,10 +157,14 @@ var TemplatePage = (function () {
                             //   console.log("i cmae here " + i2);
                             //   console.log(data.activities[i2]);
                             // }
+                            // if data exists
                             if (dat != null) {
+                                // make an empty comments array
                                 var commentsArr = [];
                                 var j = 0;
                                 var datlength = dat.comments.length;
+                                // for all comments in the activity, get the data from back end and push it into 
+                                // the comments array
                                 while (j < datlength) {
                                     console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j]);
                                     _this.activityService.getComment(dat.comments[j]).subscribe(function (comment) {
@@ -168,6 +174,8 @@ var TemplatePage = (function () {
                                     j++;
                                 }
                             }
+                            // replace the activity's comments array with the new comments array
+                            // cuz the current activity's comments array only contain id
                             if (dat != null) {
                                 dat.comments = commentsArr;
                             }
@@ -187,16 +195,22 @@ var TemplatePage = (function () {
     TemplatePage.prototype.delete = function (chip, index) {
         console.log(chip);
         var commentIndex = this.activities[index].comments.indexOf(chip);
+        // send in id of comment and delete it from back end
         this.activityService.deleteComment(chip._id, chip.originActivity);
         if (index > -1) {
+            // delete the comment in front end
             this.activities[index].comments.splice(commentIndex, 1);
         }
     };
     TemplatePage.prototype.addComment = function (formValue, index) {
         var _this = this;
+        // formValue is the comment content and we add the username to the formValue object
         formValue.user = this.username;
+        // add the comment content into the activities array for front end
         this.activities[index].comments.push(formValue);
-        console.log('HELLLOOO', this.plan);
+        //console.log('HELLLOOO',this.plan);
+        // this is to refresh the actvity id cuz when you create an activity the id has not been included in the front end,
+        // so we do this so the front end now has an activity id and we can use that info later
         this.storage.get('currUser').then(function (user) {
             _this.authService.getUser(user.result.user._id).subscribe(function (data) {
                 _this.plansID = data.plans[data.plans.length - 1];
@@ -206,6 +220,7 @@ var TemplatePage = (function () {
             });
         });
         console.log(this.plan.activities[index]);
+        // make a new comment which has username, content, and the activity ID it is under
         var newComment = {
             user: this.username,
             comment: formValue.comment,
@@ -216,10 +231,12 @@ var TemplatePage = (function () {
         this.comment = '';
     };
     TemplatePage.prototype.increase = function (index) {
+        // increase likes for front end
         this.activities[index].likes++;
         var lik = {
             likes: this.activities[index].likes
         };
+        // send likes to back end and update the activity
         this.activityService.addLikes(this.activities[index]._id, lik);
     };
     TemplatePage.prototype.launchActivityPage = function () {

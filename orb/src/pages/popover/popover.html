@@ -6,7 +6,7 @@
 -->
 <ion-list>
     <ion-list-header>Plans:</ion-list-header>
-    <button ion-item (click)="close()">Bangkok (3 Days) By vivek</button>
-    <button ion-item (click)="close()">Bali (4 Days)By vivek</button>
-    <button ion-item (click)="close()">Singapore (3 Days) By jacob</button>
+    <button *ngFor="let plan of user.plans; let i = index;" ion-item (click)="goToPlan(i)">{{plan}}</button>
+    <!-- <button ion-item (click)="close()">Bali (4 Days)By vivek</button>
+    <button ion-item (click)="close()">Singapore (3 Days) By jacob</button> -->
 </ion-list>

@@ -31,7 +31,7 @@ export class EditPage {
   //getting data about plan from home!
 
   plan: any = this.navParams.data;
-  user: object;
+  user: any;
   dayLength: any;
   tab1Root: any;
   plansID: string;
@@ -49,7 +49,7 @@ export class EditPage {
       // this.storage.get('data').then((data)=>{
       //   console.log(data);
       // });
-      console.log(this.plan.days, this.plan.month, this.plan.country);
+      //console.log(this.plan.days, this.plan.month, this.plan.country);
   		// this.numbers = Array.apply(null, {
     //     length: this.plan.days
     //   }).map(Number.call, Number);
@@ -66,16 +66,18 @@ export class EditPage {
     // this.storage.get('data').then((data)=>{
     //     this.plan = data;
     // });
+    console.log(this.navParams.get('id'))
       this.authService.getUser(this.navParams.get('id')).subscribe(data => {
+        console.log(data);
         console.log(data.plans[data.plans.length-1]);
         this.plansID = data.plans[data.plans.length-1];
-        console.log(this.plansID);
+        //console.log(this.plansID);
         this.planService.getPlan(this.plansID).subscribe(data => {
           
           this.plan = data
           this.dayLength = this.plan.days.length;
-          console.log(this.plan);
-          console.log(this.plan.days, this.plan.month, this.plan.country);
+          //console.log(this.plan);
+          //console.log(this.plan.days, this.plan.month, this.plan.country);
           
         });
       });
@@ -87,24 +89,8 @@ export class EditPage {
     
   }
 
-  create() {
-    var num = [];
-    // this.storage.get('days').then(data => {
-    //     // console.log(data);
-        
-    //   });
-    // console.log(this.plan.days, num);
-    
-          return num;
-  }
-
-  // ngOnInit() {
-    
-  // 	//this.authService.getUser(this.navParams.get('id'));
-  // }
-
   launchInvitePage() {
-    let modal = this.modalCtrl.create(InvitePage);
+    let modal = this.modalCtrl.create(InvitePage, this.plan);
     modal.present();
   }
 
@@ -146,10 +132,12 @@ export class EditPage {
   }
 
   presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverPage);
-    popover.present({
-      ev: myEvent
-    });
+    this.authService.getUser(this.user.result.user._id).subscribe(user => {
+      let popover = this.popoverCtrl.create('plans', user);
+      popover.present({
+        ev: myEvent
+      });
+    });  
   }
 
   logout() {

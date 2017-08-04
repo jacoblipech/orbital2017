@@ -29,7 +29,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     SignupPage,
-    PopoverPage,
+
     ActivityPage,
     AlternativesPage,
     InvitePage
@@ -45,7 +45,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     SignupPage,
-    PopoverPage,
+
     ActivityPage,
     AlternativesPage,
     InvitePage

@@ -42,6 +42,7 @@ export class TemplatePage {
     public storage: Storage) {
     this.storage.get('currUser').then(data => {
         console.log(data);
+        console.log(this.plan);
         this.user = data; 
         this.username = this.user.email.split("@")[0];
       });
@@ -49,8 +50,9 @@ export class TemplatePage {
 
   ionViewWillLoad() {
     this.storage.get('currUser').then(user => {
+      console.log(user);
         this.authService.getUser(user.result.user._id).subscribe(data => {
-          //console.log(data.plans[data.plans.length-1]);
+          console.log(data.plans[data.plans.length-1]);
           this.plansID = data.plans[data.plans.length-1];
           //console.log(this.plansID);
           this.planService.getPlan(this.plansID).subscribe(data => {       
@@ -73,11 +75,14 @@ export class TemplatePage {
                 //   console.log("i cmae here " + i2);
                 //   console.log(data.activities[i2]);
                 // }
-                
+                // if data exists
                 if (dat != null) {
-                  var commentsArr = []
+                  // make an empty comments array
+                  var commentsArr = [];
                   var j = 0;
                   var datlength = dat.comments.length;
+                  // for all comments in the activity, get the data from back end and push it into 
+                  // the comments array
                   while (j < datlength) {
                     console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j])
                     this.activityService.getComment(dat.comments[j]).subscribe(comment => {
@@ -88,6 +93,8 @@ export class TemplatePage {
                     j++;
                   }
                 }
+                // replace the activity's comments array with the new comments array
+                // cuz the current activity's comments array only contain id
                 if (dat != null) {
                   dat.comments = commentsArr;
                 }
@@ -112,17 +119,23 @@ export class TemplatePage {
   delete(chip, index) {
     console.log(chip);
     var commentIndex = this.activities[index].comments.indexOf(chip);
+    // send in id of comment and delete it from back end
     this.activityService.deleteComment(chip._id, chip.originActivity);
     if (index > -1) {
+      // delete the comment in front end
       this.activities[index].comments.splice(commentIndex,1);
       
     }
   }
 
   addComment(formValue, index) {
+    // formValue is the comment content and we add the username to the formValue object
     formValue.user  = this.username;
+    // add the comment content into the activities array for front end
     this.activities[index].comments.push(formValue)
-    console.log('HELLLOOO',this.plan);
+    //console.log('HELLLOOO',this.plan);
+    // this is to refresh the actvity id cuz when you create an activity the id has not been included in the front end,
+    // so we do this so the front end now has an activity id and we can use that info later
     this.storage.get('currUser').then(user => {
         this.authService.getUser(user.result.user._id).subscribe(data => {
           this.plansID = data.plans[data.plans.length-1];
@@ -132,6 +145,7 @@ export class TemplatePage {
         })
     })
     console.log(this.plan.activities[index])
+    // make a new comment which has username, content, and the activity ID it is under
     let newComment = {
       user:this.username,
       comment:formValue.comment,
@@ -142,10 +156,12 @@ export class TemplatePage {
     this.comment = ''
   }
   increase(index) {
+    // increase likes for front end
     this.activities[index].likes++;
     let lik = {
       likes: this.activities[index].likes
     }
+    // send likes to back end and update the activity
     this.activityService.addLikes(this.activities[index]._id,lik)
   }
 

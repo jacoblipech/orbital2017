@@ -97,4 +97,14 @@ export class ActivityProvider {
       });
   }
 
+  addUser(email, planID) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+     // send post request with email and plans id as parameters
+    this.http.post('http://localhost:3000/addUser/' + planID + '/' + email, {headers: headers})
+      .subscribe(res => {
+        console.log(res.json());
+      });
+  }
+
 }
