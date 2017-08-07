@@ -7,15 +7,16 @@
 
 
 <ion-content class="card-page">
+	<p class="padding"></p>
 	<ion-content class="background">
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
 		<ion-buttons end>
 			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
 			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
-			<ion-icon name="paper"></ion-icon> Suggest Another Activity</button>
+			<ion-icon name="paper"></ion-icon>Suggest Another Activity</button>
 		</ion-buttons>
-			<ion-grid>
+<!-- 			<ion-grid>
 				<ion-row align-items-center>
 					  <ion-col col-2>
 						<ion-datetime displayFormat="hh:mm A" placeholder="Start Time"></ion-datetime>
@@ -26,8 +27,8 @@
 					  <ion-col col-2>
 					  	<ion-datetime displayFormat="hh:mm A" placeholder="End Time"></ion-datetime>
 					  </ion-col>
-				  </ion-row>
-			</ion-grid>
+				</ion-row>
+			</ion-grid> -->
 
 			<ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">
 			
@@ -72,7 +73,7 @@
 
 	<ion-card class="card">
 		<ion-card-content>
-			<ion-grid>
+<!-- 			<ion-grid>
 				<ion-row align-items-center>
 					  <ion-col col-2>
 						<ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>
@@ -84,8 +85,9 @@
 					  	<ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>
 					  </ion-col>
 				  </ion-row>
-			</ion-grid>
-			<ion-icon class="plus" name="add-circle" md="md-add-circle" (click)="launchActivityPage()"></ion-icon>
+			</ion-grid> -->
+			<ion-icon class="plus" name="add-circle" (click)="launchActivityPage()"></ion-icon>
+			<p class="text"> Suggest New Activity!</p>
 		</ion-card-content>
 	</ion-card>
 

@@ -1,5 +1,8 @@
 page-template {
 	.card-page {
+		.padding{
+			padding-top: 12px;
+		}
 		
 		.background{
 			background-image: url("../assets/images/background4.jpg");
@@ -8,12 +11,11 @@ page-template {
 			
 		}
 		.card {
-			width: 35%;
+			width: 50%;
 			position: relative;
-			height: 73%;
-			left: 35%;
-			margin-left: 0%;
-			
+			height: 50%;
+			left: 25%;
+			background: #78ACFF;
 		}
 
 		.plus {
@@ -23,10 +25,19 @@ page-template {
 		    top: 50%;
 		    left: 45%;
 		    height: 40%;
-		    
 		    width: 10px;
 		    height: 10px;
 		    display: block;
+		    color: white;
+
+		}
+
+		.text{
+			margin-top: 320px;
+			margin-left: 39%;
+			position: relative;
+			font: 150% Helvetica, sans-serif;
+			color: white;
 		}
 
 		// .cardButton {			
@@ -41,6 +52,11 @@ page-template {
 			font-weight: bold;
 		}
 		
-		
 	}
 }
+
+// ion-datetime{
+// 	padding-end: 100%;
+// 	padding-bottom: 100px;
+// }
+
