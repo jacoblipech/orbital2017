@@ -1,27 +1,48 @@
 $primary-color: #488aff;
 
 page-activity {
+	
+	.form{
+		background: #78ACFF;
+	}
+
+	.activityForm{
+		width: 100% ;
+		height:0 ;
+		padding: 0 0 100% 0;
+		background: #78ACFF;
+		#activity{
+			// margin-left: 300px;
+		}
+	}
+
 	// ion-label {
 	// 	font-weight: bold;
 	// 	color: $primary-color;
 	// }
 
-	ion-input[name="activity"]{
-		color: $primary-color;
+	// ion-input{
+	// 	color: $primary-color;
+	// }
+
+	.squarebutton {
+		width: 80% ;
+		padding: 20% 0 20% 0;
+		border: 10px solid;
+		border-color: #6EA2FC;
+		font-size: 300%;
+		background: white;
+		
 	}
 
-	activity{
-		color: $primary-color;
+	.smallsquare{
+		width: 60% ;
+		padding: 20% 0 20% 0%;
+		border: 15px solid;
+		border-color: #6EA2FC;
+		font-size: 300%;
+		background: white;
+		border-collapse: collapse;
 	}
 }
 
-.activityForm{
-	ion-label {
-		font-weight: bold;
-		font-color: $primary-color;
-		font-color: yellow;
-	}
-	.activity{
-		font-color: yellow;
-	}
-}

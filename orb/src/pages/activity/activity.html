@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
     <ion-title>Activity</ion-title>
@@ -13,45 +13,80 @@
     </ion-buttons>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
-<ion-content padding>
+<ion-content class="form" padding>
 
-<form class="activityForm" (ngSubmit)="save()">
-	<ion-item href="#">
-		<ion-label class="acitivty">Activity Name:</ion-label>
-		<ion-input type="text" [(ngModel)]="activity" name="activity" placeholder="Eg. Universal Studios"></ion-input>
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Address:</ion-label>
-		<ion-input type="text" [(ngModel)]="address" name="address" placeholder="Eg. Northdale Street 12..."></ion-input>	
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Opening Hours:</ion-label>
-		<ion-input type="text" [(ngModel)]="openingHours" name="openingHours" placeholder="Eg. 10AM - 11PM"></ion-input>
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Expenses:</ion-label>
-		<ion-input type="text" [(ngModel)]="expenses" name="expenses" placeholder="Eg. $75/pax"></ion-input>
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Nearest Landmarks:</ion-label>
-		<ion-input type="text" [(ngModel)]="nearestLandmark" name="nearestLandmark" placeholder="Eg. Downtown Subway"></ion-input>	
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Remarks:</ion-label>
-		<ion-textarea type="text" [(ngModel)]="remarks" name="remarks" placeholder="Enter a description"></ion-textarea>	
-	</ion-item>
-	<ion-item href="#">
-		<ion-label>Image URL:</ion-label>
-		<ion-input type="url" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Eg. www.google.com/images/978324"></ion-input>	
-	</ion-item>
-	<ion-item href="#">
+<ion-content class="activityForm">
+
+	<ion-input [(ngModel)]="duration" id="duration" placeholder="add a duration"></ion-input>
+	<ion-grid>
+	  <ion-row>
+	    <ion-col class="square">
+	      <button ion-button block outline class="squarebutton">+</button>
+	    </ion-col>
+	    <ion-col>
+	      	<ion-item href="#">
+				<ion-input autofocus type="text" [(ngModel)]="activity" id="activity" placeholder="activity name"></ion-input>
+			</ion-item>
+			<ion-item href="#">
+				<!-- <ion-label>Address:</ion-label> -->
+				<ion-input type="text" [(ngModel)]="address" id="address" placeholder="address"></ion-input>	
+			</ion-item>
+			<ion-item href="#">
+				<!-- <ion-label>Opening Hours:</ion-label> -->
+				<ion-input type="text" [(ngModel)]="openingHours" id="openingHours" placeholder="opening hours"></ion-input>
+			</ion-item>
+			<ion-item href="#">
+				<!-- <ion-label>Expenses:</ion-label> -->
+				<ion-input type="text" [(ngModel)]="expenses" id="expenses" placeholder="expenses"></ion-input>
+			</ion-item>
+		<!-- 	<ion-item href="#">
+				<ion-label>Nearest Landmarks:</ion-label>
+				<ion-input type="text" [(ngModel)]="nearestLandmark" name="nearestLandmark" placeholder="Eg. Downtown Subway"></ion-input>	
+			</ion-item> -->
+			<ion-item href="#">
+				<!-- <ion-label>Remarks:</ion-label> -->
+				<ion-textarea type="text" [(ngModel)]="remarks" id="remarks" placeholder="add remarks"></ion-textarea>	
+			</ion-item>
+		</ion-col>
+	  </ion-row>
+	  
+	  <ion-row>
+	    <ion-col>
+	      <button ion-button block outline class="smallsquare">+</button>
+	    </ion-col>
+	    <ion-col>
+	      <button ion-button block outline class="smallsquare">+</button>	
+	    </ion-col>
+	    <ion-col>
+	      <ion-input placeholder="image URL"></ion-input>
+	    </ion-col>
+	    <ion-col>
+	    </ion-col>
+	  </ion-row>
+
+	  <ion-row>
+	    <ion-col>
+	      <button ion-button block outline class="smallsquare">+</button>
+	    </ion-col>
+	    <ion-col>
+	      <button ion-button block outline class="smallsquare">+</button>	
+	    </ion-col>
+	    <ion-col>
+	      <ion-input placeholder="image URL"></ion-input>
+	    </ion-col>
+	    <ion-col>
+	    </ion-col>
+	  </ion-row>
+	</ion-grid>
+	
+	<!-- <ion-item href="#">
 		<ion-label>URL for Extra Info:</ion-label>
 		<ion-input type="url" [(ngModel)]="url" name="url" placeholder="Eg. www.inspirock.com"></ion-input>	
-	</ion-item>
-	<button ion-button type="submit" block>Done</button>
-</form>
+	</ion-item> -->
+	<button ion-button type="submit" block (click)="save()">Done</button>
+</ion-content>
 
 </ion-content>
