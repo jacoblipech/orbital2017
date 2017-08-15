@@ -11,10 +11,10 @@
 	<ion-content class="background">
 	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
 		<ion-card-content>
-		<ion-buttons end>
-			<button ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
-			<button class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
-			<ion-icon name="paper"></ion-icon>Suggest Another Activity</button>
+		<ion-buttons end >
+			<button color="lightblue2" ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
+			<button color="lightblue2" class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
+			<ion-icon class="suggest" name="paper"></ion-icon>Suggest Another Activity</button>
 		</ion-buttons>
 <!-- 			<ion-grid>
 				<ion-row align-items-center>
@@ -41,10 +41,7 @@
 					    <ion-col>
 					    		
 					   		<h1>{{activity.activity}}</h1>
-					   		<h2>{{activity.address}}</h2>
-							<p>{{activity.openingHours}}</p>
-							<p>{{activity.expenses}}</p>
-							<p>{{activity.remarks}}</p>
+					   		<h2>Address: {{activity.address}}</h2>
 
 						</ion-col>
 					  </ion-row>
@@ -57,7 +54,8 @@
 					      <ion-img width="80" height="80" src={{activity.url3}} ></ion-img>	
 					    </ion-col >
 					    <ion-col col-6>
-					    	<ion-input></ion-input>
+					    	<p>Opening Hours: {{activity.openingHours}}</p>
+							<p>Expenses: {{activity.expenses}}</p>
 					    </ion-col>
 					    <ion-col>
 					    </ion-col>
@@ -71,7 +69,7 @@
 					      <ion-img width="80" height="80" src={{activity.url5}} ></ion-img>
 					    </ion-col>
 					    <ion-col col-6>
-					      <ion-input></ion-input>
+					      <p>{{activity.remarks}}</p>
 					    </ion-col>
 					    <ion-col>
 					    </ion-col>
@@ -80,9 +78,9 @@
 
 			</ion-scroll>
 
-	        <ion-item (ngSubmit)="addComment(form.value, i)">
-	        	<ion-label>Add a comment:</ion-label>
-	          	<ion-input [(ngModel)]="comment" name="comment"></ion-input>
+
+		   	<ion-item class="comment" color="lightblue" (ngSubmit)="addComment(form.value, i)">
+	          	<ion-input [(ngModel)]="comment" name="comment" placeholder="write a comment..."></ion-input>
 	          <button ion-button item-right type="submit" icon-only>
 	          	<ion-icon name="send" md="md-send"></ion-icon>
 	          </button>
@@ -95,7 +93,7 @@
 		  	</button>
 	      </ion-chip>
 
-	      	<ion-item>
+	      	<ion-item color="lightblue2">
 				<ion-buttons end>
 					<button ion-button outline color="primary" (click)="increase(i)">
 					<ion-icon name="thumbs-up"></ion-icon>{{activity.likes}}</button>
@@ -105,6 +103,7 @@
 					 Delete</button>
 				</ion-buttons>
 		   	</ion-item>
+
 		</ion-card-content>
 		
 	</ion-card>

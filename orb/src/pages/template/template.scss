@@ -3,17 +3,21 @@ page-template {
 		.padding{
 			padding-top: 12px;
 		}
-		
+
 		.background{
 			background-image: url("../assets/images/background4.jpg");
 			background-repeat: no-repeat;
 			background-size: cover;
 			
 		}
+		.suggest{
+			color: #ebf2ff;
+		}
+
 		.card {
 			width: 50%;
 			position: relative;
-			height: 50%;
+			height: 55%;
 			left: 25%;
 			background: #78ACFF;
 		}
@@ -51,8 +55,15 @@ page-template {
 		ion-label {
 			font-weight: bold;
 		}
+
+		.comment{
+			color: black;		
+			text-input-placeholder-color: black !important;
+		}
 		
 	}
+	
+
 }
 
 // ion-datetime{
