@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ModalController, NavParams, ViewController } from 'ionic-angular';
-// import { UrlPage } from '../url/url';
+import { UrlPage } from '../url/url';
 
 /**
  * Generated class for the ActivityPage page.
@@ -58,17 +58,45 @@ export class ActivityPage {
 		this.viewCtrl.dismiss(activity);
 	}
 
-	// enterURL1() {
-	// 	let modal = this.modalCtrl.create(UrlPage);
- //   		modal.onDidDismiss(data => {
-        
- //        if (data) {
- //          this.url1 = data;
- //        } else {
- //          //this.logged = false;
- //        }
- //    });
- //  		modal.present();
-	// }
+	enterURL1() {
+		let modal = this.modalCtrl.create(UrlPage);
+   		modal.onDidDismiss(data => {
+          this.url1 = data;
+    	});
+  		modal.present();
+	}
+
+	enterURL2() {
+		let modal = this.modalCtrl.create(UrlPage);
+   		modal.onDidDismiss(data => {
+          this.url2 = data;
+    	});
+  		modal.present();
+	}
+
+	enterURL3() {
+		let modal = this.modalCtrl.create(UrlPage);
+   		modal.onDidDismiss(data => {
+          this.url3 = data;
+    	});
+  		modal.present();
+	}
+
+	enterURL4() {
+		let modal = this.modalCtrl.create(UrlPage);
+   		modal.onDidDismiss(data => {
+          this.url4 = data;
+    	});
+  		modal.present();
+	}
+
+	enterURL5() {
+		let modal = this.modalCtrl.create(UrlPage);
+   		modal.onDidDismiss(data => {
+          this.url5 = data;
+    	});
+  		modal.present();
+	}
+
 
 }

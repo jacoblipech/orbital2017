@@ -7,15 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>url</ion-title>
+    <ion-title>Enter Image URL</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-    <ion-item>
-        <ion-label><ion-icon name="url"></ion-icon></ion-label>
-        <ion-input [(ngModel)]="url1" placeholder="image"></ion-input>
-	</ion-item>
 <ion-content padding>
+  <ion-item>
+    <!-- <ion-label fixed>Enter Image URL: </ion-label> -->
+    <ion-input [(ngModel)]="url" type="text" placeholder="image URL"></ion-input>
+    <button (click)="saveURL()" ion-button>Save</button>
+  </ion-item>
 
 </ion-content>

@@ -18,6 +18,7 @@ import { PopoverPage } from '../pages/popover/popover';
 import { TemplatePage } from '../pages/template/template';
 import { ActivityPage } from '../pages/activity/activity';
 import { AlternativesPage } from '../pages/alternatives/alternatives';
+import { UrlPage } from '../pages/url/url';
 import { PlansProvider } from '../providers/plans/plans';
 import { ChatProvider } from '../providers/chat/chat';
 import { ActivityProvider } from '../providers/activity/activity';
@@ -29,7 +30,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     SignupPage,
-
+    UrlPage,
     ActivityPage,
     AlternativesPage,
     InvitePage
@@ -45,7 +46,7 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     LoginPage,
     SignupPage,
-
+    UrlPage,
     ActivityPage,
     AlternativesPage,
     InvitePage

@@ -14,17 +14,19 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class UrlPage {
 
-	url1: string;
+	url: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
-  	closeModal() {
-		this.viewCtrl.dismiss();
-	}
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad UrlPage');
+  }
+
+  saveURL() {
+    let data = this.url;
+
+    this.viewCtrl.dismiss(data);
   }
 
 }
