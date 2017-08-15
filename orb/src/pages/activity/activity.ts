@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController, NavParams, ViewController } from 'ionic-angular';
+// import { UrlPage } from '../url/url';
 
 /**
  * Generated class for the ActivityPage page.
@@ -14,15 +15,19 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class ActivityPage {
 
+	duration: string;
 	activity: string;
-    url: string;
+    url1: string;
+    url2: string;
+    url3: string;
+    url4: string;
+    url5: string;
     expenses: string;
     address: string;
     openingHours: string;
-    nearestLandmark: string;
     remarks: string;
-    imageUrl: string;
-	constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    
+	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController) {
 	}
 
 	ionViewDidLoad() {
@@ -35,19 +40,35 @@ export class ActivityPage {
 
 	save() {
 		let activity = {
+			duration: this.duration,
 			activity: this.activity,
-		    url: this.url,
+		    url1: this.url1,
+		    url2: this.url2,
+		    url3: this.url3,
+		    url4: this.url4,
+		    url5: this.url5,
 		    expenses: this.expenses,
 		    address: this.address,
 		    openingHours: this.openingHours,
-		    nearestLandmark: this.nearestLandmark,
 		    remarks: this.remarks,
-		    imageUrl: this.imageUrl,
 		    comments: [],
 		    likes: 0,
 		    alternatives: []
 		}
 		this.viewCtrl.dismiss(activity);
 	}
+
+	// enterURL1() {
+	// 	let modal = this.modalCtrl.create(UrlPage);
+ //   		modal.onDidDismiss(data => {
+        
+ //        if (data) {
+ //          this.url1 = data;
+ //        } else {
+ //          //this.logged = false;
+ //        }
+ //    });
+ //  		modal.present();
+	// }
 
 }

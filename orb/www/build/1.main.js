@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 283:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__popover__ = __webpack_require__(288);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopoverPageModule", function() { return PopoverPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__url__ = __webpack_require__(293);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UrlPageModule", function() { return UrlPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PopoverPageModule = (function () {
-    function PopoverPageModule() {
+var UrlPageModule = (function () {
+    function UrlPageModule() {
     }
-    return PopoverPageModule;
+    return UrlPageModule;
 }());
-PopoverPageModule = __decorate([
+UrlPageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */],
+            __WEBPACK_IMPORTED_MODULE_2__url__["a" /* UrlPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__url__["a" /* UrlPage */]),
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__popover__["a" /* PopoverPage */]
+            __WEBPACK_IMPORTED_MODULE_2__url__["a" /* UrlPage */]
         ]
     })
-], PopoverPageModule);
+], UrlPageModule);
 
-//# sourceMappingURL=popover.module.js.map
+//# sourceMappingURL=url.module.js.map
 
 /***/ }),
 
-/***/ 288:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__ = __webpack_require__(41);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UrlPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,52 +59,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
- * Generated class for the PopoverPage page.
+ * Generated class for the UrlPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var PopoverPage = (function () {
-    function PopoverPage(navCtrl, navParams, viewCtrl, planService) {
+var UrlPage = (function () {
+    function UrlPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
-        this.planService = planService;
-        this.user = this.navParams.data;
     }
-    PopoverPage.prototype.ionViewWillLoad = function () {
-        console.log(this.user);
-    };
-    PopoverPage.prototype.close = function () {
+    UrlPage.prototype.closeModal = function () {
         this.viewCtrl.dismiss();
     };
-    PopoverPage.prototype.goToPlan = function (index) {
-        var _this = this;
-        this.planService.getPlan(this.user.plans[index]).subscribe(function (plan) {
-            // plan should have user id so next page can load
-            plan.id = _this.user._id;
-            console.log(plan);
-            var opts = { animate: true, animation: "transition", duration: 1000 };
-            _this.navCtrl.setRoot('edit', plan, opts);
-            _this.navCtrl.popToRoot();
-        });
-        this.close();
+    UrlPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad UrlPage');
     };
-    return PopoverPage;
+    return UrlPage;
 }());
-PopoverPage = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])({
-        name: 'plans'
-    }),
+UrlPage = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-popover',template:/*ion-inline-start:"/Users/JacobLI/Downloads/orbital2017/orb/src/pages/popover/popover.html"*/'<!--\n  Generated template for the PopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-list>\n    <ion-list-header>Plans:</ion-list-header>\n    <button *ngFor="let plan of user.plans; let i = index;" ion-item (click)="goToPlan(i)">{{plan}}</button>\n    <!-- <button ion-item (click)="close()">Bali (4 Days)By vivek</button>\n    <button ion-item (click)="close()">Singapore (3 Days) By jacob</button> -->\n</ion-list>\n'/*ion-inline-end:"/Users/JacobLI/Downloads/orbital2017/orb/src/pages/popover/popover.html"*/,
+        selector: 'page-url',template:/*ion-inline-start:"/Users/JacobLI/Downloads/orbital2017/orb/src/pages/url/url.html"*/'<!--\n  Generated template for the UrlPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>url</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n    <ion-item>\n        <ion-label><ion-icon name="url"></ion-icon></ion-label>\n        <ion-input [(ngModel)]="url1" placeholder="image"></ion-input>\n	</ion-item>\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/JacobLI/Downloads/orbital2017/orb/src/pages/url/url.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */]])
-], PopoverPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ViewController */]])
+], UrlPage);
 
-//# sourceMappingURL=popover.js.map
+//# sourceMappingURL=url.js.map
 
 /***/ })
 

@@ -8,12 +8,15 @@ page-activity {
 
 	.activityForm{
 		width: 100% ;
-		height:0 ;
-		padding: 0 0 100% 0;
+		height: 0;
+		padding: 0% 0 70% 0;
 		background: #78ACFF;
-		#activity{
-			// margin-left: 300px;
+
+		input[type="text"] {
+			font-size:18px;
+			border-bottom: 1px solid white;
 		}
+
 	}
 
 	// ion-label {
@@ -26,9 +29,10 @@ page-activity {
 	// }
 
 	.squarebutton {
-		width: 80% ;
-		padding: 20% 0 20% 0;
-		border: 10px solid;
+		width: 97.5% ;
+		height: 0;
+		padding: 30% 0 30% 0;
+		border: 5px solid;
 		border-color: #6EA2FC;
 		font-size: 300%;
 		background: white;
@@ -36,9 +40,9 @@ page-activity {
 	}
 
 	.smallsquare{
-		width: 60% ;
-		padding: 20% 0 20% 0%;
-		border: 15px solid;
+		width: 95% ;
+		padding: 27% 0 27% 0%;
+		border: 5px solid;
 		border-color: #6EA2FC;
 		font-size: 300%;
 		background: white;

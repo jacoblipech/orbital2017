@@ -3,14 +3,17 @@ var Comment = require('./comment');
 var Alternative = require('./alternative');
  //Set up the activity schema
 var ActivitySchema = new mongoose.Schema({
+    duration: String,
     activity: String,
-    url: String,
+    url1: String,
+    url2: String,
+    url3: String,
+    url4: String,
+    url5: String,
     expenses: String,
     address: String,
     openingHours: String,
-    nearestLandmark: String,
     remarks: String,
-    imageUrl: String,
     likes: Number,
     comments: [{
     	type: mongoose.Schema.Types.ObjectId,

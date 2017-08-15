@@ -9833,7 +9833,7 @@ ion-fab-list[side=right] {
 }
 
 .grid {
-  padding: 5px;
+  padding: 0px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -9963,7 +9963,7 @@ ion-fab-list[side=right] {
 }
 
 .col {
-  padding: 5px;
+  padding: 0px;
   position: relative;
   width: 100%;
   margin: 0;
@@ -10010,366 +10010,366 @@ ion-fab-list[side=right] {
 }
 
 [col-1] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-2] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-3] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-4] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-5] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-6] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-7] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-8] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-9] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-10] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-11] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-12] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
@@ -10820,366 +10820,366 @@ ion-fab-list[side=right] {
 }
 
 [col-sm-1] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-2] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-3] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-4] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-5] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-6] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-7] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-8] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-9] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-10] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-11] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm-12] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-sm] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-sm] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-sm] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-sm] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-sm] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
@@ -11552,366 +11552,366 @@ ion-fab-list[side=right] {
 }
 
 [col-md-1] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-2] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-3] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-4] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-5] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-6] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-7] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-8] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-9] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-10] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-11] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md-12] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-md] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-md] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-md] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-md] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-md] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
@@ -12284,366 +12284,366 @@ ion-fab-list[side=right] {
 }
 
 [col-lg-1] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-2] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-3] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-4] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-5] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-6] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-7] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-8] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-9] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-10] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-11] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg-12] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-lg] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-lg] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-lg] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-lg] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-lg] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
@@ -13016,366 +13016,366 @@ ion-fab-list[side=right] {
 }
 
 [col-xl-1] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-1] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-2] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-2] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-3] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-3] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-4] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-4] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-5] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-5] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-6] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-6] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-7] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-7] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-8] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-8] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-9] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-9] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-10] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-10] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-11] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-11] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl-12] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl-12] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 [col-xl] {
-  padding: 5px;
+  padding: 0px;
 }
 
 @media (min-width: 576px) {
   [col-xl] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 768px) {
   [col-xl] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 992px) {
   [col-xl] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
 @media (min-width: 1200px) {
   [col-xl] {
-    padding: 5px;
+    padding: 0px;
   }
 }
 
@@ -13932,16 +13932,16 @@ ion-textarea {
 }
 
 .text-input::-moz-placeholder {
-  color: #999;
+  color: white;
 }
 
 .text-input:-ms-input-placeholder {
-  color: #999;
+  color: white;
 }
 
 .text-input::-webkit-input-placeholder {
   text-indent: 0;
-  color: #999;
+  color: white;
 }
 
 textarea.text-input {
@@ -27484,23 +27484,29 @@ page-activity .form {
 page-activity .activityForm {
   width: 100%;
   height: 0;
-  padding: 0 0 100% 0;
+  padding: 0% 0 70% 0;
   background: #78ACFF;
 }
 
+page-activity .activityForm input[type="text"] {
+  font-size: 18px;
+  border-bottom: 1px solid white;
+}
+
 page-activity .squarebutton {
-  width: 80%;
-  padding: 20% 0 20% 0;
-  border: 10px solid;
+  width: 97.5%;
+  height: 0;
+  padding: 30% 0 30% 0;
+  border: 5px solid;
   border-color: #6EA2FC;
   font-size: 300%;
   background: white;
 }
 
 page-activity .smallsquare {
-  width: 60%;
-  padding: 20% 0 20% 0%;
-  border: 15px solid;
+  width: 95%;
+  padding: 27% 0 27% 0%;
+  border: 5px solid;
   border-color: #6EA2FC;
   font-size: 300%;
   background: white;
