@@ -17,13 +17,18 @@ import { PlansProvider } from '../../providers/plans/plans';
 })
 export class PopoverPage {
 
-  plan: any;
+  plans: any[] = [];
   user: any = this.navParams.data;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public planService: PlansProvider) {
   }
 
   ionViewWillLoad() {
     console.log(this.user);
+    for (var i = 0; i < this.user.plans.length; i++) {
+      this.planService.getPlan(this.user.plans[i]).subscribe(plan => {
+        this.plans.push(plan);
+      });
+    }
   }
 
   close() {
