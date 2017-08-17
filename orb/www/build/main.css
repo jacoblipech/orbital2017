@@ -32538,6 +32538,10 @@ page-home .screentext {
   font-size: 130%;
 }
 
+page-invite .text-input::-webkit-input-placeholder {
+  color: grey;
+}
+
 page-invite ion-content {
   background-color: #32db64;
 }
@@ -32592,6 +32596,10 @@ page-invite .login-button {
   border-radius: 30px;
   font-size: 0.9em;
   border: 1px solid #fff;
+}
+
+page-login .text-input::-webkit-input-placeholder {
+  color: grey;
 }
 
 page-login ion-content {
@@ -32651,6 +32659,10 @@ page-login .login-button {
   border: 1px solid #fff;
 }
 
+page-signup .text-input::-webkit-input-placeholder {
+  color: grey;
+}
+
 page-signup ion-content {
   background-color: #32db64;
 }
@@ -32706,8 +32718,9 @@ page-signup .continue-button {
   border: 1px solid #fff;
 }
 
-page-template .card-page .padding {
-  padding-top: 12px;
+page-template .card-page input[type="text"] {
+  font-size: 18px;
+  border-bottom: 1px solid white;
 }
 
 page-template .card-page .background {
@@ -32717,7 +32730,7 @@ page-template .card-page .background {
 }
 
 page-template .card-page .suggest {
-  color: #ebf2ff;
+  font-color: #ebf2ff;
 }
 
 page-template .card-page .card {
@@ -32758,7 +32771,6 @@ page-template .card-page ion-label {
   font-weight: bold;
 }
 
-page-template .card-page .comment {
-  color: black;
-  text-input-placeholder-color: black !important;
+page-url .text-input::-webkit-input-placeholder {
+  color: grey;
 }

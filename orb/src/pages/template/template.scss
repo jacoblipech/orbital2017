@@ -1,8 +1,12 @@
 page-template {
 	.card-page {
-		.padding{
-			padding-top: 12px;
-		}
+
+			input[type="text"] {
+				font-size:18px;
+				border-bottom: 1px solid white;
+				// color: white; determines color to be used
+			}
+
 
 		.background{
 			background-image: url("../assets/images/background4.jpg");
@@ -10,8 +14,9 @@ page-template {
 			background-size: cover;
 			
 		}
+
 		.suggest{
-			color: #ebf2ff;
+			font-color: #ebf2ff;
 		}
 
 		.card {
@@ -44,10 +49,6 @@ page-template {
 			color: white;
 		}
 
-		// .cardButton {			
-			// height: 20px;
-		// }
-
 		ion-scroll {
 		    white-space: nowrap;
 		    height: 200px;
@@ -57,8 +58,10 @@ page-template {
 		}
 
 		.comment{
-			color: black;		
-			text-input-placeholder-color: black !important;
+			// color: black;		
+			// text-input-placeholder-color: black !important;
+
+
 		}
 		
 	}

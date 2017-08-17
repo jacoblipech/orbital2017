@@ -1,4 +1,8 @@
 page-login {
+    .text-input::-webkit-input-placeholder {
+        color: grey;
+    }
+    
 	ion-content {
             background-color: map-get($colors, secondary);
         }

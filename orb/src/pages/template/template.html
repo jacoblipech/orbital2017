@@ -9,12 +9,13 @@
 <ion-content class="card-page">
 	<!-- <p class="padding"></p> -->
 	<ion-content class="background">
-	<ion-card class="card" *ngFor="let activity of activities; let i = index;">
+	<ion-card class="card" *ngFor= "let activity of activities; let i = index;">
+
 		<ion-card-content>
 		<ion-buttons end >
 			<button color="lightblue2" ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
-			<button color="lightblue2" class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
-			<ion-icon class="suggest" name="paper"></ion-icon>Suggest Another Activity</button>
+			<button color="lightblue2" ion-button outline color="warning" (click)="launchAnotherPage(i)">Suggest Another Activity</button>
+			<!-- <ion-icon name="paper"></ion-icon> -->
 		</ion-buttons>
 <!-- 			<ion-grid>
 				<ion-row align-items-center>

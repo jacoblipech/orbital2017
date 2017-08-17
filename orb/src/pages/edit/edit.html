@@ -42,14 +42,19 @@
 
 <ion-content class="card-page">
   <!-- <p class="padding"></p> -->
-  <button ion-button icon-only class="back" (click)="decreaseDay()">
-    <ion-icon name="arrow-back"></ion-icon>
-  </button>
-  <button ion-button icon-only class="forward" (click)="increaseDay()">
-    <ion-icon name="arrow-forward"></ion-icon>
-  </button>
-  <h1 text-center style="display:inline;">Day {{days}}</h1>
+  
   <ion-content class="background">
+
+  <div text-center>
+      <button ion-button outline icon-only class="back" (click)="decreaseDay()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+        <h1 text-center style="display:inline;">Day {{days}}</h1>
+      <button ion-button outline icon-only class="forward" (click)="increaseDay()">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+  </div>
+
   <ion-card class="card" *ngFor="let activity of activities; let i = index;">
     <ion-card-content>
     <ion-buttons end >
