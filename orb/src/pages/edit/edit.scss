@@ -1,9 +1,74 @@
 page-edit {
+	
 	.header{
 		// text-align: center;
 		text-transform: uppercase;
 	}
 	.home{
 		padding-right: px;
+	}
+	
+	.card-page {
+		.padding{
+			padding-top: 12px;
+		}
+
+		.background{
+			background-image: url("../assets/images/background4.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			
+		}
+		.suggest{
+			color: #ebf2ff;
+		}
+
+		.card {
+			width: 50%;
+			position: relative;
+			height: 55%;
+			left: 25%;
+			background: #78ACFF;
+		}
+
+		.plus {
+			font-size: 130px;
+			margin-top: 100px;
+			position: relative;
+		    top: 50%;
+		    left: 45%;
+		    height: 40%;
+		    width: 10px;
+		    height: 10px;
+		    display: block;
+		    color: white;
+
+		}
+
+		.text{
+			margin-top: 320px;
+			margin-left: 40%;
+			position: relative;
+			font: 150% Helvetica, sans-serif;
+			color: white;
+		}
+
+		// .cardButton {			
+			// height: 20px;
+		// }
+
+		ion-scroll {
+		    white-space: nowrap;
+		    height: 200px;
+		}
+		ion-label {
+			font-weight: bold;
+		}
+
+		.comment{
+			color: black;		
+			text-input-placeholder-color: black !important;
+		}
+		
 	}
 }

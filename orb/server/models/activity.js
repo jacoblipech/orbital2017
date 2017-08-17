@@ -15,6 +15,7 @@ var ActivitySchema = new mongoose.Schema({
     openingHours: String,
     remarks: String,
     likes: Number,
+    days: Number,
     comments: [{
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "Comment"

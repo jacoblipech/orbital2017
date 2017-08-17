@@ -32400,6 +32400,63 @@ page-edit .home {
   padding-right: px;
 }
 
+page-edit .card-page .padding {
+  padding-top: 12px;
+}
+
+page-edit .card-page .background {
+  background-image: url("../assets/images/background4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+page-edit .card-page .suggest {
+  color: #ebf2ff;
+}
+
+page-edit .card-page .card {
+  width: 50%;
+  position: relative;
+  height: 55%;
+  left: 25%;
+  background: #78ACFF;
+}
+
+page-edit .card-page .plus {
+  font-size: 130px;
+  margin-top: 100px;
+  position: relative;
+  top: 50%;
+  left: 45%;
+  height: 40%;
+  width: 10px;
+  height: 10px;
+  display: block;
+  color: white;
+}
+
+page-edit .card-page .text {
+  margin-top: 320px;
+  margin-left: 40%;
+  position: relative;
+  font: 150% Helvetica, sans-serif;
+  color: white;
+}
+
+page-edit .card-page ion-scroll {
+  white-space: nowrap;
+  height: 200px;
+}
+
+page-edit .card-page ion-label {
+  font-weight: bold;
+}
+
+page-edit .card-page .comment {
+  color: black;
+  text-input-placeholder-color: black !important;
+}
+
 page-home img {
   position: fixed;
   top: 50%;

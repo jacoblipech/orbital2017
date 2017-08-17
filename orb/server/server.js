@@ -135,7 +135,8 @@ server.post('/activity/:plan_id', function(req,res) {
         nearestLandmark: req.body.nearestLandmark,
         remarks: req.body.remarks,
         imageUrl: req.body.imageUrl,
-        likes: 0
+        likes: 0,
+        days: req.body.days
     }
 
     Activity.create(newActivity, function(err, newActivity) {
