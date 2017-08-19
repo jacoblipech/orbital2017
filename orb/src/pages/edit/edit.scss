@@ -20,13 +20,14 @@ page-edit {
 			
 		}
 		.suggest{
+
 			color: #ebf2ff;
 		}
 
 		.card {
 			width: 50%;
 			position: relative;
-			height: 55%;
+			height: 90%;
 			left: 25%;
 			background: #78ACFF;
 		}
@@ -36,7 +37,7 @@ page-edit {
 			margin-top: 100px;
 			position: relative;
 		    top: 50%;
-		    left: 45%;
+		    left: 42.5%;
 		    height: 40%;
 		    width: 10px;
 		    height: 10px;
@@ -46,8 +47,8 @@ page-edit {
 		}
 
 		.text{
-			margin-top: 320px;
-			margin-left: 40%;
+			margin-top: 280px;
+			margin-left: 37%;
 			position: relative;
 			font: 150% Helvetica, sans-serif;
 			color: white;
@@ -59,13 +60,22 @@ page-edit {
 
 		ion-scroll {
 		    white-space: nowrap;
-		    height: 200px;
+		    height: 460px;
 		}
+
 		ion-label {
 			font-weight: bold;
 		}
 
+		ion-img {
+			width: 97.5% ;
+			height: 100%;
+			border: 10px solid;
+			border-color: #6EA2FC;
+		}
+
 		.comment{
+			// margin-top: 100px;
 			color: black;		
 			text-input-placeholder-color: black !important;
 		}
