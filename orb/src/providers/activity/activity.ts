@@ -32,7 +32,7 @@ export class ActivityProvider {
  
     this.http.post('http://localhost:3000/activity/' + id, JSON.stringify(activity), {headers: headers})
       .subscribe(res => {
-        console.log(res.json());
+        console.log(res.json(), id);
       });
  
   }

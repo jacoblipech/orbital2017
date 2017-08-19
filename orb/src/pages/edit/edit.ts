@@ -64,9 +64,9 @@ export class EditPage {
       console.log(user);
         this.authService.getUser(user.result.user._id).subscribe(data => {
           //console.log(data.plans[data.plans.length-1]);
-          if (this.plan.home) {
-            this.plansID = data.plans[data.plans.length-1];
-          } else {
+          this.plansID = data.plans[data.plans.length-1];
+          if (this.plan.home == false) {
+            
             this.plansID = data.plans[this.plan.index];
           }
           
@@ -285,7 +285,7 @@ export class EditPage {
         activity.days = this.days;
         this.activities.push(activity);
         //console.log(currActivity);
-        //console.log(this.activities);
+        console.log(this.plansID);
         this.activityService.createActivity(activity, this.plansID);        
       }
     });
