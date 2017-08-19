@@ -128,13 +128,16 @@ server.post('/activity/:plan_id', function(req,res) {
     console.log("creating activity");
     var newActivity = {
         activity: req.body.activity,
-        url: req.body.url,
+        duration: req.body.duration,
         expenses: req.body.expenses,
         address: req.body.address,
         openingHours: req.body.openingHours,
-        nearestLandmark: req.body.nearestLandmark,
         remarks: req.body.remarks,
-        imageUrl: req.body.imageUrl,
+        url1: req.body.url1,
+        url2: req.body.url2,
+        url3: req.body.url3,
+        url4: req.body.url4,
+        url5: req.body.url5,
         likes: 0,
         days: req.body.days
     }
@@ -221,6 +224,30 @@ server.post('/activity/:id/addlikes', function(req,res) {
                 console.log(newActivity); 
             });             
             res.json(foundActivity); 
+        } 
+    });
+});
+
+server.put('/activity/edit/:id/', function(req,res) {
+    var newActivity = {
+        activity: req.body.activity,
+        duration: req.body.duration,
+        expenses: req.body.expenses,
+        address: req.body.address,
+        openingHours: req.body.openingHours,
+        remarks: req.body.remarks,
+        url1: req.body.url1,
+        url2: req.body.url2,
+        url3: req.body.url3,
+        url4: req.body.url4,
+        url5: req.body.url5,
+    }
+    Activity.findByIdAndUpdate(req.params.id, newActivity, function(err, updatedActivity) { 
+        if (err) { 
+            res.send(err); 
+        } else { 
+                       
+            res.json(updatedActivity); 
         } 
     });
 });

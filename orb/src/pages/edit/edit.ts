@@ -377,24 +377,18 @@ export class EditPage {
     this.activityService.deleteActivity(activity._id);
   }
 
-  editActivity(activity){
+  editActivity(currActivity){
 
-    let modal = this.modalCtrl.create(ActivityPage);
+    let modal = this.modalCtrl.create(ActivityPage, currActivity);
 
     modal.onDidDismiss(activity => {
       if(activity){
-        //console.log(activity)
-        let currActivity = new AlternativeModel(activity, [], 0, []);
-        this.activities.push(currActivity);
-        //console.log(currActivity);
-        //console.log(this.activities);
-        this.activityService.createActivity(activity, this.plansID);        
+        this.activityService.editActivity(currActivity._id, activity);
+               
       }
     });
 
     modal.present();
-
-    this.activityService.editActivity(activity._id);
   }
 
   launchInvitePage() {

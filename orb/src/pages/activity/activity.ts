@@ -15,6 +15,7 @@ import { UrlPage } from '../url/url';
 })
 export class ActivityPage {
 
+	editInfo: any = this.navParams.data;
 	duration: string;
 	activity: string;
     url1: string;
@@ -31,7 +32,21 @@ export class ActivityPage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad ActivityPage');
+		
+		if (this.editInfo._id) {
+			console.log(this.editInfo);
+			this.duration = this.editInfo.duration;
+			this.activity = this.editInfo.activity;
+			this.expenses = this.editInfo.expenses;
+			this.url1 = this.editInfo.url1;
+			this.url2 = this.editInfo.url2;
+			this.url3 = this.editInfo.url3;
+			this.url4 = this.editInfo.url4;
+			this.url5 = this.editInfo.url5;
+			this.address = this.editInfo.address;
+			this.remarks = this.editInfo.remarks;
+			this.openingHours = this.editInfo.openingHours;
+		}
 	}
 
 	closeModal() {

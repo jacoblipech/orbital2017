@@ -236,7 +236,7 @@ export class TemplatePage {
 
     modal.present();
 
-    this.activityService.editActivity(activity._id);
+    this.activityService.editActivity(activity._id, activity);
   }
 
 }

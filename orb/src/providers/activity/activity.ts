@@ -45,9 +45,11 @@ export class ActivityProvider {
  
   }
 
-  editActivity(id){
- 
-    this.http.get('http://localhost:3000/activity/' + id).subscribe((res) => {
+  editActivity(id, activity){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    this.http.put('http://localhost:3000/activity/edit/' + id, JSON.stringify(activity), {headers: headers}).subscribe((res) => {
       console.log(res.json());
     });    
  
