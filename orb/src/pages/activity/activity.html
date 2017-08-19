@@ -23,7 +23,8 @@
 	<ion-grid >
 	  <ion-row>
 	    <ion-col col-6 class="square">
-	      <button ion-button block outline class="squarebutton" (click)="enterURL1()">+</button>
+	      <button *ngIf="!url1" ion-button block outline class="squarebutton" (click)="enterURL1()">+</button>
+	      <ion-img *ngIf="url1" width="350px" height="200px" src="{{url1}}" ></ion-img>
 	    </ion-col>
 	    <ion-col>
 	    		<ion-input [(ngModel)]="duration" id="duration" placeholder="add a duration"></ion-input>

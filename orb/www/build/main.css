@@ -32363,6 +32363,11 @@ page-activity .smallsquare {
   border-collapse: collapse;
 }
 
+page-activity ion-img {
+  border: 5px solid;
+  border-color: #6EA2FC;
+}
+
 page-alternatives .card-page {
   background: #A4CFF1;
 }
@@ -32457,6 +32462,25 @@ page-edit .card-page ion-img {
   height: 100%;
   border: 10px solid;
   border-color: #6EA2FC;
+}
+
+page-edit .card-page .squarebutton {
+  width: 380px;
+  height: 190px;
+  border: 10px solid;
+  border-color: #6EA2FC;
+  background: white;
+  font-size: 300%;
+}
+
+page-edit .card-page .smallsquare {
+  width: 185px;
+  height: 105px;
+  border: 5px solid;
+  border-color: #6EA2FC;
+  font-size: 300%;
+  background: white;
+  border-collapse: collapse;
 }
 
 page-edit .card-page .comment {

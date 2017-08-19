@@ -13,6 +13,7 @@ import { ActivityProvider } from '../../providers/activity/activity';
 import { AlternativeModel } from '../../app/models/alternative-model';
 import { ActivityPage } from '../activity/activity';
 import { AlternativesPage } from '../alternatives/alternatives';
+import { UrlPage } from '../url/url';
 
 /**
  * Generated class for the EditPage page.
@@ -402,5 +403,45 @@ export class EditPage {
     this.navCtrl.popToRoot();
     // console.log(this.user);
   }
+
+  // enterURL1() {
+  //   let modal = this.modalCtrl.create(UrlPage);
+  //      modal.onDidDismiss(data => {
+  //         this.activity[i].url1 = data;
+  //     });
+  //     modal.present();
+  // }
+
+  // enterURL2() {
+  //   let modal = this.modalCtrl.create(UrlPage);
+  //      modal.onDidDismiss(data => {
+  //         this.url2 = data;
+  //     });
+  //     modal.present();
+  // }
+
+  // enterURL3() {
+  //   let modal = this.modalCtrl.create(UrlPage);
+  //      modal.onDidDismiss(data => {
+  //         this.url3 = data;
+  //     });
+  //     modal.present();
+  // }
+
+  // enterURL4() {
+  //   let modal = this.modalCtrl.create(UrlPage);
+  //      modal.onDidDismiss(data => {
+  //         this.url4 = data;
+  //     });
+  //     modal.present();
+  // }
+
+  // enterURL5() {
+  //   let modal = this.modalCtrl.create(UrlPage);
+  //      modal.onDidDismiss(data => {
+  //         this.url5 = data;
+  //     });
+  //     modal.present();
+  // }
 
 }

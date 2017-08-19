@@ -74,6 +74,25 @@ page-edit {
 			border-color: #6EA2FC;
 		}
 
+		.squarebutton {
+			width: 380px ;
+			height: 190px;
+			border: 10px solid;
+			border-color: #6EA2FC;
+			background: white;
+			font-size: 300%;
+		}	
+
+		.smallsquare{
+			width: 185px ;
+			height: 105px ;
+			border: 5px solid;
+			border-color: #6EA2FC;
+			font-size: 300%;
+			background: white;
+			border-collapse: collapse;
+	}
+
 		.comment{
 			// margin-top: 100px;
 			color: black;		

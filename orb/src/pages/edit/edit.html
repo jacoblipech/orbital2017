@@ -82,7 +82,8 @@
           <h1>{{activity.duration}}</h1>
             <ion-row>
               <ion-col col-6 class="square">
-                <ion-img width="380px" height="200px" src="{{activity.url1}}" ></ion-img>
+                <ion-img *ngIf="activity.url1" width="380px" height="200px" src="{{activity.url1}}" ></ion-img>
+                <button *ngIf="!activity.url1" ion-button block outline class="squarebutton" (click)="enterURL1()">+</button>
               </ion-col>
               <ion-col>
                   
@@ -94,10 +95,12 @@
             
             <ion-row>
               <ion-col col-3>
-                <ion-img width="185" height="105" src={{activity.url2}} ></ion-img>
+                <ion-img *ngIf="activity.url2" width="185" height="105" src={{activity.url2}} ></ion-img>
+                <button *ngIf="!activity.url2" ion-button block outline class="smallsquare" (click)="enterURL2()">+</button>
               </ion-col>
               <ion-col col-3>
-                <ion-img width="185" height="105" src={{activity.url3}} ></ion-img> 
+                <ion-img *ngIf="activity.url3" width="185" height="105" src={{activity.url3}} ></ion-img> 
+                <button *ngIf="!activity.url3" ion-button block outline class="smallsquare" (click)="enterURL3()">+</button>
               </ion-col >
               <ion-col col-6>
                 <p>Opening Hours: {{activity.openingHours}}</p>
@@ -109,10 +112,12 @@
 
             <ion-row>
               <ion-col col-3>
-                <ion-img width="185" height="105" src={{activity.url4}} ></ion-img>
+                <ion-img *ngIf="activity.url4" width="185" height="105" src={{activity.url4}} ></ion-img>
+                <button *ngIf="!activity.url4" ion-button block outline class="smallsquare" (click)="enterURL4()">+</button>
               </ion-col>
               <ion-col col-3>
-                <ion-img width="185" height="105" src={{activity.url5}} ></ion-img>
+                <ion-img *ngIf="activity.url5" width="185" height="105" src={{activity.url5}} ></ion-img>
+                <button *ngIf="!activity.url5" ion-button block outline class="smallsquare" (click)="enterURL5()">+</button>
               </ion-col>
               <ion-col col-6>
                 <p>{{activity.remarks}}</p>
