@@ -41,15 +41,14 @@
 
 
 <ion-content class="card-page">
-  <!-- <p class="padding"></p> -->
   
   <ion-content class="background">
 
-  <div text-center>
+  <div>
       <button ion-button outline icon-only class="back" (click)="decreaseDay()">
         <ion-icon name="arrow-back"></ion-icon>
       </button>
-        <h1 text-center style="display:inline;">Day {{days}}</h1>
+        <h1 class="days" text-center style="display:inline;">DAY {{days}} of {{dayLength}}</h1>
       <button ion-button outline icon-only class="forward" (click)="increaseDay()">
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
@@ -57,11 +56,12 @@
 
   <ion-card class="card" *ngFor="let activity of activities; let i = index;">
     <ion-card-content>
-    <ion-buttons end >
-      <button color="lightblue2" ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
-      <button color="lightblue2" class="cardButton" ion-button outline color="warning" (click)="launchAnotherPage(i)">
-      <ion-icon class="suggest" name="paper"></ion-icon>Suggest Another Activity</button>
-    </ion-buttons>
+
+      <div text-end>
+        <button color="lightblue2" ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
+        <button color="lightblue2" ion-button outline (click)="launchAnotherPage(i)">
+        <ion-icon class="suggest" color="lightblue2" name="paper"></ion-icon>Suggest Another Activity</button>
+      </div>
 <!--      <ion-grid>
         <ion-row align-items-center>
             <ion-col col-2>
@@ -79,7 +79,7 @@
       <ion-scroll scrollY="true" text-wrap *ngIf="activity.activity">
         
         <ion-grid>
-          <h1>{{activity.duration}}</h1>
+          <h1 class="duration">{{activity.duration}}</h1>
             <ion-row>
               <ion-col col-6 class="square">
                 <ion-img *ngIf="activity.url1" width="380px" height="200px" src="{{activity.url1}}" ></ion-img>
@@ -87,8 +87,9 @@
               </ion-col>
               <ion-col>
                   
-                <h1>{{activity.activity}}</h1>
-                <h2>Address: {{activity.address}}</h2>
+                <h1 class="activity">{{activity.activity}}</h1>
+                <h2 class="address">Address: {{activity.address}}</h2>
+                <p class="opening">Opening Hours: {{activity.openingHours}}</p>
 
             </ion-col>
             </ion-row>
@@ -103,8 +104,7 @@
                 <button *ngIf="!activity.url3" ion-button block outline class="smallsquare" (click)="enterURL3()">+</button>
               </ion-col >
               <ion-col col-6>
-                <p>Opening Hours: {{activity.openingHours}}</p>
-              <p>Expenses: {{activity.expenses}}</p>
+                <p class="expenses">Expenses: {{activity.expenses}}</p>
               </ion-col>
               <ion-col>
               </ion-col>
@@ -120,7 +120,7 @@
                 <button *ngIf="!activity.url5" ion-button block outline class="smallsquare" (click)="enterURL5()">+</button>
               </ion-col>
               <ion-col col-6>
-                <p>{{activity.remarks}}</p>
+                <p class="remarks">Remarks: {{activity.remarks}}</p>
               </ion-col>
               <ion-col>
               </ion-col>
@@ -130,18 +130,20 @@
       </ion-scroll>
 
         <!-- this should be a form tag, dont change it to an ion-item tag. Have to find another way to style it -->
-        <form class="comment" color="lightblue" (ngSubmit)="addComment(comment, i)">
-              <ion-input [(ngModel)]="comment" name="comment" placeholder="write a comment..."></ion-input>
-            <button ion-button item-right type="submit" icon-only>
-              <ion-icon name="send" md="md-send"></ion-icon>
-            </button>
-          </form>
+      <div>
+        <form (ngSubmit)="addComment(comment, i)">
+          <div text-end>
+            <ion-input class="comment" [(ngModel)]="comment" name="comment" placeholder="write a comment..."></ion-input>
+              <!-- <button ion-button type="submit" icon-only end><ion-icon name="send" md="md-send"></ion-icon></button> -->
+          </div>
+        </form>
+      </div>
 
-        <ion-chip *ngFor="let comment of activity.comments">
+        <ion-chip class="comment" *ngFor="let comment of activity.comments">
           <ion-label *ngIf="comment">{{comment.user}}: {{ comment.comment }}</ion-label>
           <button ion-button small (click)="delete(comment, i)">
-          <ion-icon name="close"></ion-icon>
-        </button>
+            <ion-icon name="close"></ion-icon>
+          </button>
         </ion-chip>
 
           <ion-item color="lightblue2">

@@ -4,8 +4,16 @@ page-edit {
 		// text-align: center;
 		text-transform: uppercase;
 	}
-	.home{
-		padding-right: px;
+	.back{
+		margin-left: 410px;
+		margin-right: 250px;
+	}
+	.forward{
+		margin-left: 290px;
+	}
+	.days{
+		color: 	#4d8dff;
+		font-size: 250%;
 	}
 	
 	.card-page {
@@ -23,6 +31,11 @@ page-edit {
 
 			color: #ebf2ff;
 		}
+
+		ion-scroll {
+		    white-space: nowrap;
+		    height: 480px;
+		}		
 
 		.card {
 			width: 50%;
@@ -58,11 +71,6 @@ page-edit {
 			// height: 20px;
 		// }
 
-		ion-scroll {
-		    white-space: nowrap;
-		    height: 460px;
-		}
-
 		ion-label {
 			font-weight: bold;
 		}
@@ -73,6 +81,54 @@ page-edit {
 			border: 10px solid;
 			border-color: #6EA2FC;
 		}
+
+		.duration {
+			font-weight: bold;
+			margin-left: 10px;
+			color: white;
+			font-size: 240%;
+			letter-spacing: 3px;
+		}
+
+		.activity {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			color: white;
+			font-size: 180%;
+			font-weight: bold;
+			letter-spacing: 3px;
+		}
+
+		.address {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			color: white;
+			font-size: 130%;
+			
+		}
+
+		.opening {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			color: white;
+			font-size: 130%;
+			
+		}
+
+		.expenses {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			color: white;
+			font-size: 130%;
+		}
+
+		.remarks {
+			margin-left: 30px;
+			margin-bottom: 15px;
+			color: white;
+			font-size: 130%;
+			
+		}						
 
 		.squarebutton {
 			width: 380px ;
@@ -95,8 +151,14 @@ page-edit {
 
 		.comment{
 			// margin-top: 100px;
-			color: black;		
-			text-input-placeholder-color: black !important;
+			background: #dae8ff;
+			color: #5d97ff;
+			font-size: 125%;
+			text-input-placeholder-color: black;
+		}
+
+		.text-input::-webkit-input-placeholder {
+  			color: #9fbeff;
 		}
 		
 	}
