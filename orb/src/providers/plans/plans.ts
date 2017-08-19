@@ -17,19 +17,15 @@ export class PlansProvider {
     this.data = null;
   }
  
-  getPlan(id){
- 
-    
- 
-    
- 
+  getPlan(id){ 
       return this.http.get('http://localhost:3000/plan/' + id)
         .map(res => res.json())
-        
-   
- 
   }
- 
+  // deletePlan(planID) {
+  //   this.http.delete('http://localhost:3000/plan/' + planID).subscribe((res) => {
+  //     console.log(res.json());
+  //   });
+  // }
   createPlan(plan, id){
  
     let headers = new Headers();

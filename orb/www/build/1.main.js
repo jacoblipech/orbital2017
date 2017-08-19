@@ -48,6 +48,8 @@ PopoverPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -61,6 +63,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
  * Generated class for the PopoverPage page.
  *
@@ -68,11 +72,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var PopoverPage = (function () {
-    function PopoverPage(navCtrl, navParams, viewCtrl, planService) {
+    function PopoverPage(navCtrl, navParams, viewCtrl, planService, storage, authService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
         this.planService = planService;
+        this.storage = storage;
+        this.authService = authService;
         this.plans = [];
         this.user = this.navParams.data;
     }
@@ -93,12 +99,23 @@ var PopoverPage = (function () {
         this.planService.getPlan(this.user.plans[index]).subscribe(function (plan) {
             // plan should have user id so next page can load
             plan.id = _this.user._id;
+            plan.home = false;
+            plan.index = index;
             console.log(plan);
             var opts = { animate: true, animation: "transition", duration: 1000 };
             _this.navCtrl.setRoot('edit', plan, opts);
             _this.navCtrl.popToRoot();
         });
         this.close();
+    };
+    PopoverPage.prototype.delete = function (index) {
+        console.log("deleting");
+        if (index > -1) {
+            this.plans.splice(index, 1);
+        }
+        var planID = this.user.plans[index];
+        this.authService.deletePlan(this.user._id, planID);
+        //this.planService.deletePlan(planID);
     };
     return PopoverPage;
 }());
@@ -107,11 +124,12 @@ PopoverPage = __decorate([
         name: 'plans'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-popover',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/popover/popover.html"*/'<!--\n  Generated template for the PopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-list>\n    <ion-list-header>Plans:</ion-list-header>\n    <button *ngFor="let plan of plans; let i = index;" ion-item (click)="goToPlan(i)">{{plan.country}} ({{plan.days.length}} days)</button>\n    <!-- <button ion-item (click)="close()">Bali (4 Days)By vivek</button>\n    <button ion-item (click)="close()">Singapore (3 Days) By jacob</button> -->\n</ion-list>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/popover/popover.html"*/,
+        selector: 'page-popover',template:/*ion-inline-start:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/popover/popover.html"*/'<!--\n  Generated template for the PopoverPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-list>\n    <ion-list-header>Plans:</ion-list-header> \n    <ion-buttons *ngFor="let plan of plans; let i = index;">\n    <button ion-button icon-only (click)="delete(i)" class="close"><ion-icon  name="trash"></ion-icon></button>\n    <button  style="display:inline;" ion-item (click)="goToPlan(i)"> {{plan.country}} ({{plan.days.length}} days)</button>\n    </ion-buttons>\n    <!-- <button ion-item (click)="close()">Bali (4 Days)By vivek</button>\n    <button ion-item (click)="close()">Singapore (3 Days) By jacob</button> -->\n</ion-list>\n'/*ion-inline-end:"/home/vivek/webdev/angular2app/orbital2017/orb/src/pages/popover/popover.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_plans_plans__["a" /* PlansProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _f || Object])
 ], PopoverPage);
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=popover.js.map
 
 /***/ })

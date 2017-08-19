@@ -252,6 +252,31 @@ server.put('/activity/edit/:id/', function(req,res) {
     });
 });
 
+server.delete('/edit/:user_id/:plan_id', function(req,res) {
+    Plan.remove({
+            _id : req.params.plan_id
+        }, function(err, plan) {
+            console.log('plan removed');
+    });
+    User.findOne({
+            _id : req.params.user_id
+        }, function(err, user) {
+            console.log(user.plans.length);
+            user.plans.forEach(function(plan) {
+                if (plan == req.params.plan_id) {
+                    var index = user.plans.indexOf(plan);
+                    if (index > -1) {
+                        user.plans.splice(index,1);
+                    }
+                }
+            });
+            user.save(function(err, user){ 
+                console.log(user); 
+            }); 
+            console.log(user.plans.length);
+    });
+});
+
 server.delete('/comment/:comment_id/:activity_id', function(req, res) {
 
     Comment.remove({

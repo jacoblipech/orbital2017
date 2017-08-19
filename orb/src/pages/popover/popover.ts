@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { EditPage } from '../edit/edit';
 import { PlansProvider } from '../../providers/plans/plans';
+import { AuthProvider } from '../../providers/auth/auth';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the PopoverPage page.
  *
@@ -19,7 +21,8 @@ export class PopoverPage {
 
   plans: any[] = [];
   user: any = this.navParams.data;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public planService: PlansProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public planService: PlansProvider,
+    public storage: Storage, public authService: AuthProvider) {
   }
 
   ionViewWillLoad() {
@@ -39,12 +42,23 @@ export class PopoverPage {
     this.planService.getPlan(this.user.plans[index]).subscribe(plan => {
       // plan should have user id so next page can load
       plan.id = this.user._id;
+      plan.home = false;
+      plan.index = index;
       console.log(plan)
       let opts = { animate: true, animation: "transition", duration: 1000}
       this.navCtrl.setRoot('edit', plan, opts);
       this.navCtrl.popToRoot();
     });
     this.close()
+  }
+  delete(index) {
+    console.log("deleting");
+    if (index > -1) {
+      this.plans.splice(index, 1);
+    }
+    let planID = this.user.plans[index];
+    this.authService.deletePlan(this.user._id, planID);
+    //this.planService.deletePlan(planID);
   }
 
 }

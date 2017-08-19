@@ -54,77 +54,29 @@ export class EditPage {
     public authService: AuthProvider,
     public storage: Storage, public activityService: ActivityProvider,
   	) {
-      // this.storage.set('data', this.navParams.data);
-      // this.storage.get('data').then((data)=>{
-      //   console.log(data);
-      // });
-      //console.log(this.plan.days, this.plan.month, this.plan.country);
-  		// this.numbers = Array.apply(null, {
-    //     length: this.plan.days
-    //   }).map(Number.call, Number);
-      
       this.storage.get('currUser').then(data => {
         this.user = data; 
         this.username = this.user.email.split("@")[0];
       });
-  		this.tab1Root = 'template';
 	  }
-
-  // ngOnInit() {
-  //   //allows this.plan to retrieve data from storage upon being loaded
-  //   // this.storage.get('data').then((data)=>{
-  //   //     this.plan = data;
-  //   // });
-  //   console.log(this.navParams.get('id'))
-  //     this.authService.getUser(this.navParams.get('id')).subscribe(data => {
-  //       console.log(data);
-  //       console.log(data.plans[data.plans.length-1]);
-  //       this.plansID = data.plans[data.plans.length-1];
-  //       //console.log(this.plansID);
-  //       this.planService.getPlan(this.plansID).subscribe(data => {
-          
-  //         this.plan = data
-  //         this.dayLength = this.plan.days.length;
-  //         //console.log(this.plan);
-  //         //console.log(this.plan.days, this.plan.month, this.plan.country);
-          
-  //       });
-  //     });
-     
-  //   // console.log(this.plan); plan is correctly passed from home.ts
-  //   // console.log(this.user);
-    
-  //   //console.log(this.plansID);
-    
-  // }
-
   ionViewWillLoad() {
     this.storage.get('currUser').then(user => {
       console.log(user);
         this.authService.getUser(user.result.user._id).subscribe(data => {
-          console.log(data.plans[data.plans.length-1]);
-          this.plansID = data.plans[data.plans.length-1];
+          //console.log(data.plans[data.plans.length-1]);
+          if (this.plan.home) {
+            this.plansID = data.plans[data.plans.length-1];
+          } else {
+            this.plansID = data.plans[this.plan.index];
+          }
+          
           //console.log(this.plansID);
           this.planService.getPlan(this.plansID).subscribe(data => {       
             this.plan = data
             this.dayLength = this.plan.days.length;
-
             var actlength = data.activities.length;
-
-            //console.log("hi");
-            //console.log("ur act length "+ data.activities.length);
-
-            //this.activities = data.activities;
             for(var i2 = 0; i2 < actlength; i2++){
               this.activityService.getActivity(data.activities[i2]).subscribe(dat => {
-
-
-
-                // for(var i2 = 0; i2 < actlength; i2++){
-
-                //   console.log("i cmae here " + i2);
-                //   console.log(data.activities[i2]);
-                // }
                 // if data exists
                 if (dat != null) {
                   // make an empty comments array

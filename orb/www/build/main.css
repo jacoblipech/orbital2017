@@ -32659,6 +32659,11 @@ page-login .login-button {
   border: 1px solid #fff;
 }
 
+page-popover .close {
+  width: 8%;
+  display: inline;
+}
+
 page-signup .text-input::-webkit-input-placeholder {
   color: grey;
 }

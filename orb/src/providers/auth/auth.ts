@@ -17,14 +17,13 @@ export class AuthProvider {
   constructor(public http: Http, public storage: Storage) {
     
   }
-
+  deletePlan(userID, planID) {
+    this.http.delete('http://localhost:3000/edit/' + userID + '/' + planID).subscribe((res) => {
+      console.log(res.json());
+    });
+  }
   getUser(id){
- 
-    
- 
       return this.http.get('http://localhost:3000/edit/' + id).map(res => res.json());
-        
-    
   }
 
   checkAuthentication(){

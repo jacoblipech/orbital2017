@@ -176,7 +176,7 @@ export class HomePage {
         days: num,
         id: this.user.result.user._id,
         user: this.user,
-
+        home: true
         //logged: this.logged
       }
     }
