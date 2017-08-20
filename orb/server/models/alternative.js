@@ -4,13 +4,15 @@ var mongoose = require('mongoose');
 var AlternativeSchema = new mongoose.Schema({
 	user: String,
 	activity: String,
-    url: String,
+    url1: String,
+    url2: String,
+    url3: String,
+    url4: String,
+    url5: String,
     expenses: String,
     address: String,
     openingHours: String,
-    nearestLandmark: String,
     remarks: String,
-    imageUrl: String,
     originActivity: {
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "Activity"

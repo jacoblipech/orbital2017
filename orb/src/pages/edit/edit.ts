@@ -37,6 +37,10 @@ export class EditPage {
 
   plan: any = this.navParams.data;
   user: any;
+  altCounter: number = 0;
+  alt: any = undefined;
+  altIndex: number;
+  //altBoolean: boolean = false;
   dayLength: any;
   tab1Root: any;
   plansID: string;
@@ -315,6 +319,34 @@ export class EditPage {
     let modal = this.modalCtrl.create(AlternativesPage, this.activities[index]);
 
     modal.present();
+  }
+
+  nextAlt(index) {
+    
+    this.activityService.getAlternative(this.activities[index].alternatives[this.altCounter]).subscribe(alter => {
+      this.alt = alter;
+      console.log(this.altCounter,alter);
+    })
+    this.altCounter++;
+    console.log(this.altCounter);
+    //this.altBoolean = true;
+    this.altIndex = index;
+    
+  }
+
+  prevAlt(index) {
+    --this.altCounter;
+    //this.altBoolean = false;
+    //this.alt = undefined;
+    
+    this.activityService.getAlternative(this.activities[index].alternatives[this.altCounter-1]).subscribe(alter => {
+      this.alt = alter;
+      console.log(this.altCounter,alter);
+    })
+    if (this.altCounter == 0) {
+      this.altIndex = undefined;
+    }
+    
   }
 
   deleteActivity(activity){

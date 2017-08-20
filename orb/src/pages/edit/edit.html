@@ -54,7 +54,69 @@
       </button>
   </div>
 
-  <ion-card class="card" *ngFor="let activity of activities; let i = index;">
+
+  <div  *ngFor="let activity of activities; let i = index;"> <!-- Added a div to cover each card so as to add an alternatives arrow per activity card -->
+
+  <ion-card class="card" *ngIf="alt && altIndex == i">
+    <ion-card-content>
+
+      <ion-scroll scrollY="true" text-wrap *ngIf="alt">
+        
+        <ion-grid>
+          
+            <ion-row>
+              <ion-col col-6 class="square">
+                <ion-img *ngIf="alt.url1" width="380px" height="200px" src="{{alt.url1}}" ></ion-img>
+                <button *ngIf="!alt.url1" ion-button block outline class="squarebutton" (click)="enterURL1()">+</button>
+              </ion-col>
+              <ion-col>
+                  
+                <h1 class="activity">{{alt.activity}}</h1>
+                <h2 class="address">Address: {{alt.address}}</h2>
+                <p class="opening">Opening Hours: {{alt.openingHours}}</p>
+
+            </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col col-3>
+                <ion-img *ngIf="alt.url2" width="185" height="105" src={{alt.url2}} ></ion-img>
+                <button *ngIf="!alt.url2" ion-button block outline class="smallsquare" (click)="enterURL2()">+</button>
+              </ion-col>
+              <ion-col col-3>
+                <ion-img *ngIf="alt.url3" width="185" height="105" src={{alt.url3}} ></ion-img> 
+                <button *ngIf="!alt.url3" ion-button block outline class="smallsquare" (click)="enterURL3()">+</button>
+              </ion-col >
+              <ion-col col-6>
+                <p class="expenses">Expenses: {{activity.expenses}}</p>
+              </ion-col>
+              <ion-col>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col col-3>
+                <ion-img *ngIf="alt.url4" width="185" height="105" src={{alt.url4}} ></ion-img>
+                <button *ngIf="!alt.url4" ion-button block outline class="smallsquare" (click)="enterURL4()">+</button>
+              </ion-col>
+              <ion-col col-3>
+                <ion-img *ngIf="alt.url5" width="185" height="105" src={{alt.url5}} ></ion-img>
+                <button *ngIf="!alt.url5" ion-button block outline class="smallsquare" (click)="enterURL5()">+</button>
+              </ion-col>
+              <ion-col col-6>
+                <p class="remarks">Remarks: {{alt.remarks}}</p>
+              </ion-col>
+              <ion-col>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+      </ion-scroll>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card" *ngIf="i != altIndex">
     <ion-card-content>
 
       <div text-end>
@@ -160,65 +222,19 @@
     </ion-card-content>
     
   </ion-card>
+  
+  <!-- <button ion-button icon-only round small ><ion-icon name="arrow-dropleft"></ion-icon></button>
+  <h2 text-center style="display:inline;">Alternatives</h2> -->
+  <button ion-button icon-only round class="altButton" (click)="nextAlt(i)" *ngIf="activity.alternatives.length>0 && altCounter<activity.alternatives.length"><ion-icon name="arrow-dropright"></ion-icon></button>
+  <button ion-button icon-only round class="backAltButton" (click)="prevAlt(i)" *ngIf="activity.alternatives.length>0 && altCounter>0"><ion-icon name="arrow-dropleft"></ion-icon></button>
+  </div> <!-- Added a div to cover each card so as to add an alternatives arrow per activity card -->
 
   <ion-card>
     <ion-card-content>
-<!--      <ion-grid>
-        <ion-row align-items-center>
-            <ion-col col-2>
-            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>
-            </ion-col>
-            <ion-col col-1>
-               <p>-</p>
-            </ion-col>
-            <ion-col col-2>
-              <ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>
-            </ion-col>
-          </ion-row>
-      </ion-grid> -->
       <ion-icon class="plus" name="add-circle" (click)="launchActivityPage()"></ion-icon>
       <p class="text"> Suggest New Activity!</p>
     </ion-card-content>
   </ion-card>
-
-  <!-- <ion-card class="card">
-    <ion-card-content>
-      <ion-grid>
-        <ion-row align-items-center>
-            <ion-col col-2>
-            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>
-            </ion-col>
-            <ion-col col-1>
-               <p>-</p>
-            </ion-col>
-            <ion-col col-2>
-              <ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
-      <ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="card">
-    <ion-card-content>
-      <ion-grid>
-        <ion-row align-items-center>
-            <ion-col col-2>
-            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="fromDate" placeholder="Start Time"></ion-datetime>
-            </ion-col>
-            <ion-col col-1>
-               <p>-</p>
-            </ion-col>
-            <ion-col col-2>
-              <ion-datetime displayFormat="hh:mm A" [(ngModel)]="toDate" placeholder="End Time"></ion-datetime>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
-      <ion-icon class="plus" name="add-circle" md="md-add-circle"></ion-icon>
-    </ion-card-content>
-  </ion-card> -->
-
 </ion-content>
   
 </ion-content>

@@ -307,13 +307,15 @@ server.post('/alternative/:activity_id', function(req,res) {
     console.log("creating alternative");
     var newAlternative = {
         activity: req.body.activity,
-        url: req.body.url,
         expenses: req.body.expenses,
         address: req.body.address,
         openingHours: req.body.openingHours,
-        nearestLandmark: req.body.nearestLandmark,
         remarks: req.body.remarks,
-        imageUrl: req.body.imageUrl,
+        url1: req.body.url1,
+        url2: req.body.url2,
+        url3: req.body.url3,
+        url4: req.body.url4,
+        url5: req.body.url5,
         originActivity: req.params.activity_id
     }
 

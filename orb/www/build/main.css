@@ -32401,6 +32401,16 @@ page-edit .header {
   text-transform: uppercase;
 }
 
+page-edit .altButton {
+  margin-left: 1510px;
+  bottom: 300px;
+}
+
+page-edit .backAltButton {
+  margin-left: 310px;
+  bottom: 300px;
+}
+
 page-edit .back {
   margin-left: 410px;
   margin-right: 250px;
