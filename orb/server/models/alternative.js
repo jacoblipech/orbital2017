@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
  var Activity = require('./activity');
  //Set up the activity schema
 var AlternativeSchema = new mongoose.Schema({
+	duration: String,
 	user: String,
 	activity: String,
     url1: String,
@@ -13,6 +14,10 @@ var AlternativeSchema = new mongoose.Schema({
     address: String,
     openingHours: String,
     remarks: String,
+    comments: [{
+    	type: mongoose.Schema.Types.ObjectId,
+    	ref: "Comment"
+    }],
     originActivity: {
     	type: mongoose.Schema.Types.ObjectId,
     	ref: "Activity"

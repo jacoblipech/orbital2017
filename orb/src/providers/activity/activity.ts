@@ -75,6 +75,26 @@ export class ActivityProvider {
  
   }
 
+  createAndAddAltComment(comment, id){
+ 
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+ 
+    this.http.post('http://localhost:3000/alternative/' + id + '/addaltcomment', JSON.stringify(comment), {headers: headers})
+      .subscribe(res => {
+        console.log(res.json());
+      });
+ 
+  }
+
+  deleteAltComment(id, alt_id){
+ 
+    this.http.delete('http://localhost:3000/altcomment/' + id + '/' + alt_id).subscribe((res) => {
+      console.log(res.json());
+    });    
+ 
+  }
+
   addLikes(id, likes) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

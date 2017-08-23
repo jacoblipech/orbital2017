@@ -211,7 +211,34 @@ server.post('/activity/:id/addcomment', function(req,res) {
             });
         }
     });
-})
+});
+
+server.post('/alternative/:id/addaltcomment', function(req,res) {
+    var newComment = {
+        user: req.body.user,
+        comment: req.body.comment,
+        originActivity: req.body.originActivity
+    }
+    console.log(newComment);
+    Comment.create(newComment, function(err, newComment) {
+        if (err) {
+            res.send(err);
+        } else {
+            Alternative.findById(req.params.id, function(err, foundAlternative) { 
+                if (err) { 
+                    res.send(err); 
+                } else { 
+                    foundAlternative.comments.push(newComment); 
+                    foundAlternative.save(function(err, newAlternative){ 
+                        console.log(newAlternative); 
+                    }); 
+                     
+                    res.json(foundAlternative); 
+                } 
+            });
+        }
+    });
+});
 
 server.post('/activity/:id/addlikes', function(req,res) {
     Activity.findById(req.params.id, function(err, foundActivity) { 
@@ -303,9 +330,36 @@ server.delete('/comment/:comment_id/:activity_id', function(req, res) {
     });
 });
 
+server.delete('/altcomment/:comment_id/:alternative_id', function(req, res) {
+
+    Comment.remove({
+            _id : req.params.comment_id
+        }, function(err, comment) {
+            console.log('Comment removed');
+    });
+    Alternative.findOne({
+            _id : req.params.alternative_id
+        }, function(err, alternative) {
+            console.log(alternative.comments);
+            alternative.comments.forEach(function(comment) {
+                if (comment == req.params.comment_id) {
+                    var index = alternative.comments.indexOf(comment);
+                    if (index > -1) {
+                        alternative.comments.splice(index,1);
+                    }
+                }
+            });
+            alternative.save(function(err, alternative){ 
+                console.log(alternative); 
+            }); 
+            console.log(alternative.comments);
+    });
+});
+
 server.post('/alternative/:activity_id', function(req,res) {
     console.log("creating alternative");
     var newAlternative = {
+        duration: req.body.duration,
         activity: req.body.activity,
         expenses: req.body.expenses,
         address: req.body.address,

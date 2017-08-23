@@ -59,11 +59,15 @@
 
   <ion-card class="card" *ngIf="alt && altIndex == i">
     <ion-card-content>
-
+      <div text-end>
+        <button color="lightblue2" ion-button round outline small (click)="launchAlternativesPage(i)">{{activity.alternatives.length}}</button>
+        <button color="lightblue2" ion-button outline (click)="launchAnotherPage(i)">
+        <ion-icon class="suggest" color="lightblue2" name="paper"></ion-icon>Suggest Another Activity</button>
+      </div>
       <ion-scroll scrollY="true" text-wrap *ngIf="alt">
         
         <ion-grid>
-          
+          <h1 class="duration">{{alt.duration}}</h1>
             <ion-row>
               <ion-col col-6 class="square">
                 <ion-img *ngIf="alt.url1" width="380px" height="200px" src="{{alt.url1}}" ></ion-img>
@@ -112,6 +116,32 @@
           </ion-grid>
 
       </ion-scroll>
+
+      <div>
+        <form (ngSubmit)="addAltComment(comment, alt)">
+          <div text-end>
+            <ion-input class="comment" [(ngModel)]="comment" name="comment" placeholder="write a comment..."></ion-input>
+              <!-- <button ion-button type="submit" icon-only end><ion-icon name="send" md="md-send"></ion-icon></button> -->
+          </div>
+        </form>
+      </div>
+
+        <ion-item class="comment" *ngFor="let comment of alt.comments">
+          <ion-label style="display:inline;" *ngIf="comment">{{comment.user}}: {{ comment.comment }} <button class="commentClose" ion-button round small outline icon-only (click)="deleteAltComment(comment, i)">
+            <ion-icon name="close"></ion-icon>
+          </button></ion-label>
+          
+        </ion-item>
+        <ion-item color="lightblue2">
+        <ion-buttons end>
+          <button ion-button outline color="primary" (click)="increase(i)">
+          <ion-icon name="thumbs-up"></ion-icon>{{activity.likes}}</button>
+          <button ion-button outline color="primary" name="edit" (click)="editActivity(activity)">
+          Edit</button>
+          <button name="trash" class="cardButton" ion-button outline color="danger" (click)="deleteActivity(activity)">
+           Delete</button>
+        </ion-buttons>
+        </ion-item>
 
     </ion-card-content>
   </ion-card>
@@ -201,12 +231,12 @@
         </form>
       </div>
 
-        <ion-chip class="comment" *ngFor="let comment of activity.comments">
-          <ion-label *ngIf="comment">{{comment.user}}: {{ comment.comment }}</ion-label>
-          <button ion-button small (click)="delete(comment, i)">
+        <ion-item class="comment" *ngFor="let comment of activity.comments">
+          <ion-label style="display:inline;" *ngIf="comment">{{comment.user}}: {{ comment.comment }} <button class="commentClose" ion-button round small outline icon-only (click)="delete(comment, i)">
             <ion-icon name="close"></ion-icon>
-          </button>
-        </ion-chip>
+          </button></ion-label>
+          
+        </ion-item>
 
           <ion-item color="lightblue2">
         <ion-buttons end>

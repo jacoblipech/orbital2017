@@ -269,6 +269,49 @@ export class EditPage {
     // this.activities[index].addComment(formValue);
     this.comment = ''
   }
+
+  deleteAltComment(chip, index) {
+    console.log(chip);
+    var commentIndex = this.activities[index].comments.indexOf(chip);
+    // send in id of comment and delete it from back end
+    this.activityService.deleteAltComment(chip._id, chip.originActivity);
+    if (index > -1) {
+      // delete the comment in front end
+      this.alt.comments.splice(commentIndex,1);
+      
+    }
+  }
+
+  addAltComment(comment, alt) {
+    // formValue is the comment content and we add the username to the formValue object
+    let formValue = {
+      comment: comment,
+      user: this.username
+    }
+    
+    // add the comment content into the activities array for front end
+    this.alt.comments.push(formValue)
+    // this is to refresh the actvity id cuz when you create an activity the id has not been included in the front end,
+    // so we do this so the front end now has an activity id and we can use that info later
+    this.storage.get('currUser').then(user => {
+        this.authService.getUser(user.result.user._id).subscribe(data => {
+          this.plansID = data.plans[data.plans.length-1];
+          this.planService.getPlan(this.plansID).subscribe(data => {       
+            this.plan = data
+          });
+        });
+    });
+    // make a new comment which has username, content, and the activity ID it is under
+    let newComment = {
+      user:this.username,
+      comment:formValue.comment,
+      originActivity:this.alt._id
+    }
+    this.activityService.createAndAddAltComment(newComment, this.alt._id); 
+    // this.activities[index].addComment(formValue);
+    this.comment = ''
+  }
+
   increase(index) {
     // increase likes for front end
     this.activities[index].likes++;
@@ -325,6 +368,23 @@ export class EditPage {
     
     this.activityService.getAlternative(this.activities[index].alternatives[this.altCounter]).subscribe(alter => {
       this.alt = alter;
+      var commentsArr = [];
+      if (alter != null) {
+        // make an empty comments array
+        var j = 0;
+        var datlength = alter.comments.length;
+        while (j < datlength) {
+          //console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j])
+          this.activityService.getComment(alter.comments[j]).subscribe(comment => {
+            console.log(comment, j);
+            commentsArr.push(comment);
+          })
+        j++;
+        }
+      }
+      if (alter != null) {
+        alter.comments = commentsArr;
+      }
       console.log(this.altCounter,alter);
     })
     this.altCounter++;
@@ -341,6 +401,23 @@ export class EditPage {
     
     this.activityService.getAlternative(this.activities[index].alternatives[this.altCounter-1]).subscribe(alter => {
       this.alt = alter;
+      var commentsArr = [];
+      if (alter != null) {
+        // make an empty comments array
+        var j = 0;
+        var datlength = alter.comments.length;
+        while (j < datlength) {
+          //console.log('variable j: ' + j + ' and comments is: ' + dat.comments[j])
+          this.activityService.getComment(alter.comments[j]).subscribe(comment => {
+            console.log(comment, j);
+            commentsArr.push(comment);
+          })
+        j++;
+        }
+      }
+      if (alter != null) {
+        alter.comments = commentsArr;
+      }
       console.log(this.altCounter,alter);
     })
     if (this.altCounter == 0) {
